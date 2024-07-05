@@ -12,3 +12,15 @@ mat-card {
   button {
     width: 100%;
   }
+
+  h2 {
+    text-align: center;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #673ab7;
+  }
