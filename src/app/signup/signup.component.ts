@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // Services Import
@@ -15,6 +15,13 @@ import { signUpData } from './model/signupdata';
 })
 
 export class SignupComponent implements OnInit {
+
+  // implement the hide button for password form field
+  hide = signal(true);  // CHECK WHAT THIS IS!!
+  clickPasswordToggle(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
+  }
 
   signUpForm: FormGroup = new FormGroup({});  // initialize a formgroup acting as our sign-up form 
 
