@@ -5,5 +5,6 @@ export interface signUpData {
     email: string,
     phone: number,
     dateofbirth: Date,
-    password: string   
+    password: string,
+    newsletterintent: boolean   
 }

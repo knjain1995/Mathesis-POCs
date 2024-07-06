@@ -7,12 +7,13 @@ import { SignUpService } from '../sign-up.service';
 
 // Model import
 import { signUpData } from './model/signupdata';
+import { UtilityService } from '../utility.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
-  providers: [SignUpService, provideNativeDateAdapter()]  // providing sign-up service but only to sign-up component
+  providers: [SignUpService, UtilityService, provideNativeDateAdapter()]  // providing sign-up service but only to sign-up component
 })
 
 export class SignupComponent implements OnInit {
@@ -33,6 +34,7 @@ export class SignupComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,  //inject formbuilder to create forms
     private signUpService: SignUpService, //inject signup service to recieve signup information
+    private utilityService: UtilityService //inject utility service to show snackbar messages
   ) {}
 
   // initializing form in the Oninit lifecycle hook
@@ -43,13 +45,17 @@ export class SignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
       dateofbirth: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],   
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      newsletterintent: [false]   
     });  
   }
 
   // Function to be executed with Submit button is clicked 
   onSubmit(): void {
     if(this.signUpForm.valid) { // check if signup form is valid
+      
+      this.utilityService.showRegistrationSuccessMessage("Registration Succesful! Welcome "+this.signUpForm.value.firstname);
+
       let userData: signUpData = this.signUpForm.value; //  initialize a variable of type signUpData (interface) to have the input field values 
       this.signUpService.signup(userData);  // call signup function in sign-up service and pass the userdata to be displayed
     }

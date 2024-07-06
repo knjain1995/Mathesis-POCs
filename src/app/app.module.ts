@@ -21,6 +21,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatSnackBarModule,
+    MatCheckboxModule,
+    MatTooltipModule
   ],
   providers: [
     provideAnimationsAsync()
