@@ -15,6 +15,7 @@ export class SignUpService {
     console.log("Last Name: ", signUpData.lastname);
     console.log("Email: ", signUpData.email);
     console.log("Phone Number: ", signUpData.phone);
+    console.log("Date of Birth: ", signUpData.dateofbirth);
     console.log("Password: ", signUpData.password);   
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 // Services Import
 import { SignUpService } from '../sign-up.service';
@@ -11,7 +12,7 @@ import { signUpData } from './model/signupdata';
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
-  providers: [SignUpService]  // providing sign-up service but only to sign-up component
+  providers: [SignUpService, provideNativeDateAdapter()]  // providing sign-up service but only to sign-up component
 })
 
 export class SignupComponent implements OnInit {
@@ -27,7 +28,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,  //inject formbuilder to create forms
-    private signUpService: SignUpService //inject signup service to recieve signup information
+    private signUpService: SignUpService, //inject signup service to recieve signup information
   ) {}
 
   // initializing form in the Oninit lifecycle hook
@@ -37,6 +38,7 @@ export class SignupComponent implements OnInit {
       lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      dateofbirth: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],   
     });  
   }

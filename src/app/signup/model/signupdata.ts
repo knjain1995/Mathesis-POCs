@@ -4,5 +4,6 @@ export interface signUpData {
     lastname: string,
     email: string,
     phone: number,
+    dateofbirth: Date,
     password: string   
 }
