@@ -22,5 +22,9 @@ mat-card {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #673ab7;
+    background-image: url('../../assets/signup-background-image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #4f02d3;
   }
