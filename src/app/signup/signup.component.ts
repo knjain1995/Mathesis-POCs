@@ -24,6 +24,10 @@ export class SignupComponent implements OnInit {
     event.stopPropagation();
   }
 
+  // set max date for date selection to be 1 day before current day
+  readonly currentDate = new Date();
+  readonly maxDate = new Date(this.currentDate.getTime() - (24 * 60 * 60 * 1000));    
+
   signUpForm: FormGroup = new FormGroup({});  // initialize a formgroup acting as our sign-up form 
 
   constructor(
