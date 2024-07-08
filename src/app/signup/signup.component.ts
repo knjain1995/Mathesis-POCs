@@ -1,13 +1,14 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 // Services Import
 import { SignUpService } from '../sign-up.service';
+import { UtilityService } from '../utility.service';
 
 // Model import
-import { signUpData } from './model/signupdata';
-import { UtilityService } from '../utility.service';
+import { signUpData } from '../model/signupdata';
 
 @Component({
   selector: 'app-signup',
@@ -34,7 +35,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,  //inject formbuilder to create forms
     private signUpService: SignUpService, //inject signup service to recieve signup information
-    private utilityService: UtilityService //inject utility service to show snackbar messages
+    private utilityService: UtilityService, //inject utility service to show snackbar messages
+    private router: Router
   ) {}
 
   // initializing form in the Oninit lifecycle hook
@@ -52,15 +54,28 @@ export class SignupComponent implements OnInit {
 
   // Function to be executed with Submit button is clicked 
   onSubmit(): void {
+    
     if(this.signUpForm.valid) { // check if signup form is valid
       
-      this.utilityService.showRegistrationSuccessMessage("Registration Succesful! Welcome "+this.signUpForm.value.firstname);
-
       let userData: signUpData = this.signUpForm.value; //  initialize a variable of type signUpData (interface) to have the input field values 
-      this.signUpService.signup(userData);  // call signup function in sign-up service and pass the userdata to be displayed
+      
+      // call addSignUp function in sign-up service and pass the userdata
+      let signUpCheck = this.signUpService.addSignUp(userData).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.utilityService.showRegistrationMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
+          this.router.navigate(['/dashboard/']);
+        },
+        error: (error) => {
+          console.log(error);
+          this.utilityService.showRegistrationMessage("Registration Failed: " + error); // if login not succesful
+        }
+      });      
+   
     }
+
     else {
-      console.error('Sign Up Error'); // this should'nt run
+      console.error('Sign Up Error'); // this shouldn't run
     }
   }
 

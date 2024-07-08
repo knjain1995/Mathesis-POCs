@@ -3,7 +3,7 @@
     <h2 mat-subheader>Register</h2>
       <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
 
-        <!-- EMAIL FORMFIELD -->
+        <!-- FIRST NAME FORMFIELD -->
         <mat-form-field appearance="fill">
           <mat-label>First Name</mat-label>
           <input matInput formControlName="firstname" placeholder="First Name" required>
@@ -12,7 +12,7 @@
           </mat-error>
         </mat-form-field>
     
-        <!-- FIRST NAME FORMFIELD -->
+        <!-- LAST NAME FORMFIELD -->
         <mat-form-field appearance="fill">
           <mat-label>Last Name</mat-label>
           <input matInput formControlName="lastname" placeholder="Last Name" required>
@@ -21,7 +21,7 @@
           </mat-error>
         </mat-form-field>
     
-        <!-- LAST NAME FORMFIELD -->
+        <!-- EMAIL FORMFIELD -->
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" placeholder="Email" required>

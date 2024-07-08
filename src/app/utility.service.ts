@@ -11,10 +11,11 @@ export class UtilityService {
   ) { }
 
   // display success messages
-  showRegistrationSuccessMessage(message: string) {
+  showRegistrationMessage(message: string) {
     const snackBarConfig = new MatSnackBarConfig();
-    snackBarConfig.panelClass = ['snackbar-success'];
     snackBarConfig.duration = 3000;
     this.snackBar.open(message, 'Dismiss', snackBarConfig);
   }
+
 }
+ 
