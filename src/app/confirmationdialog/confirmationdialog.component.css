@@ -1,0 +1,11 @@
+h2 {
+    text-align: center;
+}
+
+.deleteButton {
+    --mdc-text-button-label-text-color: #ff0266;
+}
+
+mat-dialog-actions {
+    justify-content: center;
+}

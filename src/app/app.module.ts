@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 // Components
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
+import { ConfirmationdialogComponent } from './confirmationdialog/confirmationdialog.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 // Animations
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -25,12 +28,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { ConfirmationdialogComponent } from './confirmationdialog/confirmationdialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ConfirmationdialogComponent } from './confirmationdialog/confirmationdi
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [
     provideAnimationsAsync()

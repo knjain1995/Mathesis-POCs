@@ -19,16 +19,6 @@
       "dateofbirth": "1995-01-13T18:30:00.000Z",
       "password": "password",
       "newsletterintent": true
-    },
-    {
-      "id": "cab8",
-      "firstname": "sdfkdhjfsklj",
-      "lastname": "qfjjsdfklj",
-      "email": "sdnfj@fdjksnfl",
-      "phone": "8923458374",
-      "dateofbirth": "2023-01-01T18:30:00.000Z",
-      "password": "dfljkhgdlfj",
-      "newsletterintent": false
     }
   ]
 }

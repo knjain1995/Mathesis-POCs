@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
 // Model imports
 import { signUpData } from './model/signupdata';
 
@@ -18,8 +17,6 @@ export class SignUpService {
   // URL to JSON server
   serverURL = 'http://localhost:3000';
 
-  // allSignUpData: signUpData[] = []; 
-
   // Make HTTP post request to json server and return an observable
   addSignUp(signUpData: signUpData): Observable<any> {
     return this.httpClient.post(this.serverURL+'/signUpData', signUpData);
@@ -30,33 +27,9 @@ export class SignUpService {
     return this.httpClient.get<signUpData[]>(this.serverURL+'/signUpData');
   }
 
+  // delete signup data of passed id
   deleteSignUp(id: string): Observable<any> {
     return this.httpClient.delete(this.serverURL+'/signUpData/'+id);
   }
 
 }
-
-
-    // addSignUp(signUpData: signUpData): void {
-
-    //   this.httpClient.post(this.serverURL+'/signUpData', signUpData).subscribe({
-    //     next: (res) => {
-    //       console.log(res);
-    //       this.utilityService.showRegistrationMessage("Registration Succesful! Welcome " + signUpData.firstname);
-    //     },
-    //     error: (error) => {
-    //       console.log(error);
-    //       this.utilityService.showRegistrationMessage("Registration Failed: " + error);
-    //     }
-    //   });
-    // }
-
-    // console.log('Sign Up Successful');
-    // console.log("First Name: ", signUpData.firstname);
-    // console.log("Last Name: ", signUpData.lastname);
-    // console.log("Email: ", signUpData.email);
-    // console.log("Phone Number: ", signUpData.phone);
-    // console.log("Date of Birth: ", signUpData.dateofbirth);
-    // console.log("Password: ", signUpData.password);
-    // console.log("Signed up for newsletter: ", signUpData.newsletterintent);
-       

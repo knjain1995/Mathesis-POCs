@@ -1,1 +1,7 @@
-<p>confirmationdialog works!</p>
+<h2 mat-dialog-title>Delete</h2>
+    <mat-dialog-content>{{ data.message }}</mat-dialog-content>
+    <mat-dialog-actions>
+        <!-- bind value as true/false which is read in the dashboard component as the return of afterClosed() -->
+        <button class="cancelButton" mat-button [mat-dialog-close]="false" cdkFocusIntial>Cancel</button>   
+        <button class="deleteButton" mat-button [mat-dialog-close]="true">Confirm</button>
+    </mat-dialog-actions>
