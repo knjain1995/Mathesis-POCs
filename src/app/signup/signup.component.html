@@ -1,6 +1,6 @@
 <div class="container">
   <mat-card>
-    <h2 mat-subheader *ngIf="editRegId">Update</h2>
+    <h2 mat-subheader *ngIf="editRegId">Update User</h2>
     <h2 mat-subheader *ngIf="!editRegId">Register</h2>
     
       <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
@@ -92,7 +92,7 @@
         </mat-form-field>
 
         <!-- NEWSLETTER SIGNUP -->
-          <mat-checkbox formControlName="newsletterintent">Sign Up For Newsletter</mat-checkbox>
+        <mat-checkbox formControlName="newsletterintent">Sign Up For Newsletter</mat-checkbox>
 
         <!-- UPDATE BUTTON -->
         <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid" *ngIf="editRegId">
@@ -103,7 +103,9 @@
         <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid" *ngIf="!editRegId">
           Sign Up
         </button>
-        
       </form>
+      <span class="sign-in-link centered-text" *ngIf="!editRegId">Already Signed Up? 
+        <a routerLink="/login">Sign In</a>
+      </span>
   </mat-card>
 </div>

@@ -1,0 +1,112 @@
+<div class="container">
+    <mat-card>
+      <!-- <h2 mat-subheader *ngIf="editRegId">Update</h2> -->
+      <!-- <h2 mat-subheader *ngIf="!editRegId">Register</h2> -->
+        <h2 mat-subheader>Add Student Details</h2>
+        <form [formGroup]="studentProfileForm" (ngSubmit)="onSubmit()">
+  
+          <!-- FIRST NAME FORMFIELD -->
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" placeholder="First Name" required>
+            <mat-error *ngIf="studentProfileForm.get('firstName')?.hasError('required')  && studentProfileForm.get('firstName')?.touched">
+              First Name is required
+            </mat-error>
+          </mat-form-field>
+      
+          <!-- LAST NAME FORMFIELD -->
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" placeholder="Last Name" required>
+            <mat-error *ngIf="studentProfileForm.get('lastName')?.hasError('required') && studentProfileForm.get('lastName')?.touched">
+              Last Name is required
+            </mat-error>
+          </mat-form-field>
+      
+          <!-- EMAIL FORMFIELD -->
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Email" required>
+            <mat-error *ngIf="studentProfileForm.get('email')?.hasError('required') && studentProfileForm.get('email')?.touched">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="studentProfileForm.get('email')?.hasError('email') && studentProfileForm.get('email')?.touched">
+              Enter a valid email
+            </mat-error>
+          </mat-form-field>
+      
+          <!-- PHONE NUMBER FORMFIELD -->
+          <mat-form-field appearance="fill">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phoneNumber" placeholder="Phone Number" required>
+            <mat-error *ngIf="studentProfileForm.get('phoneNumber')?.hasError('required') && studentProfileForm.get('phoneNumber')?.touched">
+              Phone Number is required
+            </mat-error>
+            <mat-error *ngIf="studentProfileForm.get('phoneNumber')?.hasError('pattern') && studentProfileForm.get('phoneNumber')?.touched">
+              Enter a valid 10-digit phone number
+            </mat-error>
+            <mat-hint align="end">
+              {{studentProfileForm.get('phoneNumber')?.value?.length || 0}}/10 characters
+            </mat-hint>
+          </mat-form-field>
+  
+          <!-- DATE OF BIRTH FORMFIELD -->
+          <mat-form-field appearance="fill">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="bdpicker" [max]="maxDate" formControlName="dateOfBirth" placeholder="Choose a date or enter DD/MM/YYYY" required>
+            <mat-datepicker-toggle matIconSuffix [for]="bdpicker"></mat-datepicker-toggle>
+            <mat-datepicker #bdpicker></mat-datepicker>
+            <mat-error *ngIf="studentProfileForm.get('dateOfBirth')?.invalid">
+              Valid Date of Birth is required
+            </mat-error>
+            <mat-hint align="end">
+              MM/DD/YYYY
+            </mat-hint>
+          </mat-form-field>
+
+          <!-- ADDRESS FORMFIELD -->
+          <mat-form-field appearance="fill">
+            <mat-label>Present Address</mat-label>
+            <textarea matInput formControlName="presentAddress" placeholder="House No, Street Name, Area, City, Country - Zipcode" required></textarea>
+            <mat-error *ngIf="studentProfileForm.get('presentAddress')?.hasError('required') && studentProfileForm.get('presentAddress')?.touched">
+              Please enter the address
+            </mat-error>
+          </mat-form-field>
+
+          <!-- STUDENT ID NUMBER -->
+           <mat-form-field appearance="fill">
+            <mat-label>Student ID Number</mat-label>
+            <input matInput formControlName="studentIDNumber" placeholder="WAxxx" required>
+            <mat-error *ngIf="studentProfileForm.get('studentIDNumber')?.hasError('required') && studentProfileForm.get('studentIDNumber')?.touched">
+              Please enter the student ID
+            </mat-error>
+            <mat-error *ngIf="studentProfileForm.get('studentIDNumber')?.hasError('pattern') && studentProfileForm.get('studentIDNumber')?.touched">
+              Please a valid student ID
+            </mat-error>
+            <mat-hint align="end">
+              Format: WAxxx
+            </mat-hint>
+           </mat-form-field>
+           
+          <!--   -->
+
+
+
+          <!-- NEWSLETTER SIGNUP -->
+            <mat-checkbox formControlName="newsletterintent">Sign Up For Newsletter</mat-checkbox>
+  
+          <!-- UPDATE BUTTON -->
+          <!-- <button mat-raised-button color="primary" type="submit" [disabled]="studentProfileForm.invalid" *ngIf="editRegId">
+            Update
+          </button> -->
+  
+          <!-- SIGNUP BUTTON -->
+          <!-- <button mat-raised-button color="primary" type="submit" [disabled]="studentProfileForm.invalid" *ngIf="!editRegId"> -->
+          <button mat-raised-button color="primary" type="submit" [disabled]="studentProfileForm.invalid">
+            Sign Up
+          </button>
+          
+        </form>
+    </mat-card>
+  </div>
+  

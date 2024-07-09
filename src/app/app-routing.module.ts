@@ -6,6 +6,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentInformationDashboardComponent } from './student-information-dashboard/student-information-dashboard.component';
+import { CreateStudentProfileComponent } from './create-student-profile/create-student-profile.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/newsignup', pathMatch: 'full'},  // default routing to sign-up component
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'editsignup/:id', component: SignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'studentinfodashboard', component: StudentInformationDashboardComponent}
+  {path: 'studentinfodashboard', component: StudentInformationDashboardComponent},
+  {path: 'createstudentprofile', component: CreateStudentProfileComponent}
 ];
 
 @NgModule({

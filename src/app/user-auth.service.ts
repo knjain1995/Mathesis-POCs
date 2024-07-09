@@ -32,11 +32,13 @@ export class UserAuthService  {
     console.log(this.allSignUpData);
     console.log(currentLoginData);
        
-    let correctLogin = this.allSignUpData.find(signedUpUsers => signedUpUsers.email === currentLoginData.email);  
-    console.log(correctLogin);
-      
-    if(correctLogin) {
-      return correctLogin.firstname;
+    let correctEmail = this.allSignUpData.find(signedUpUsers => signedUpUsers.email === currentLoginData.email);  
+    let correctPassword = this.allSignUpData.find(signedUpUsers => signedUpUsers.password === currentLoginData.password);
+    console.log(correctEmail);
+    console.log(correctPassword);
+    
+    if(correctEmail && correctPassword) {
+      return correctEmail.firstname;
     }
     else{
       return null;

@@ -25,3 +25,14 @@ mat-card {
   h2 {
     text-align: center;
   }
+
+  .sign-in-link {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    text-decoration: none; /* Remove underline */
+  }
+
+  .centered-text {
+    display: block;
+    text-align: center;
+  }

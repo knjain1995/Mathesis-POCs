@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/dashboard/']);
       }
       else {
-        this.utilityService.showWarningMessage("Could Not Find User");
+        this.utilityService.showWarningMessage("Error Occured! Please Check Email and Password");
       }  
     }
 

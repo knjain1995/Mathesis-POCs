@@ -9,7 +9,6 @@ import { UtilityService } from '../utility.service';
 
 // Model import
 import { signUpData } from '../model/signupdata';
-import { P } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-signup',
@@ -59,7 +58,7 @@ export class SignupComponent implements OnInit {
       firstname: ['', Validators.required], 
       lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      phone: ['', [Validators.required, Validators.pattern(/^[1-9][0-9]{9}$/)]],
       dateofbirth: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       newsletterintent: [false]   

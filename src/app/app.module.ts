@@ -36,6 +36,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { CreateStudentProfileComponent } from './create-student-profile/create-student-profile.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MatMenuModule } from '@angular/material/menu';
     DashboardComponent,
     ConfirmationdialogComponent,
     StudentInformationDashboardComponent,
-    NavigationComponent
+    NavigationComponent,
+    CreateStudentProfileComponent
   ],
   imports: [
     BrowserModule,
