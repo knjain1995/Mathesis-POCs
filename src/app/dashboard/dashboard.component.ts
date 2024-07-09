@@ -4,15 +4,16 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
 // Import Components
+import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationdialog.component';
 
 // Import Services
 import { SignUpService } from '../sign-up.service';
 import { UtilityService } from '../utility.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 // Import Models
 import { signUpData } from '../model/signupdata';
-import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationdialog.component';
 
 
 @Component({
@@ -38,7 +39,8 @@ import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationd
   constructor(  // inject services
     private signUpService: SignUpService,
     private utilityService: UtilityService,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private router: Router
   ) {}
 
   // ngAfterViewInit(): void { // lifecycle hook that Angular calls after it has fully initialized the component's view. This is the appropriate place to perform any additional initialization that requires access to the view, such as setting up the paginator and sorter for a table.
@@ -112,6 +114,7 @@ import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationd
   
     // Function invoked when a row is to be edited
     editRow(id: string) {
-      this.utilityService.showWarningMessage("This Functionality is Absent!");
-    }  
+      this.router.navigate(['/editsignup/'+id]);
+      // this.utilityService.showWarningMessage("This Functionality is Absent!");
+    } 
   }

@@ -13,6 +13,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ConfirmationdialogComponent } from './confirmationdialog/confirmationdialog.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { StudentInformationDashboardComponent } from './student-information-dashboard/student-information-dashboard.component';
 
 // Animations
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -32,6 +33,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { NavigationComponent } from './navigation/navigation.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     SignupComponent,
     LoginComponent,
     DashboardComponent,
-    ConfirmationdialogComponent
+    ConfirmationdialogComponent,
+    StudentInformationDashboardComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +65,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [
     provideAnimationsAsync()

@@ -1,24 +1,34 @@
 {
   "signUpData": [
     {
-      "id": "0e73",
-      "firstname": "fjsdbfhk",
-      "lastname": "nfjsdbkhb",
-      "email": "bfshdb@fjsdnjkf",
+      "firstname": "fjsdb",
+      "lastname": "nfjsd",
+      "email": "bfshdb@fjsd",
       "phone": "8374283748",
       "dateofbirth": "1994-12-31T18:30:00.000Z",
       "password": "dsfvdsvf",
-      "newsletterintent": true
+      "newsletterintent": true,
+      "id": "0e73"
     },
     {
-      "id": "59f6",
       "firstname": "Kartik",
       "lastname": "Jain",
       "email": "knjain@gmail.com",
-      "phone": "9810776689",
+      "phone": "9810776999",
       "dateofbirth": "1995-01-13T18:30:00.000Z",
       "password": "password",
-      "newsletterintent": true
+      "newsletterintent": true,
+      "id": "59f6"
+    },
+    {
+      "firstname": "sjdfgnlsdng",
+      "lastname": "gdfnlkng",
+      "email": "lsdknfgln@gdrfjkogh",
+      "phone": "5830498509",
+      "dateofbirth": "2015-05-04T18:30:00.000Z",
+      "password": "fsdghfdh",
+      "newsletterintent": false,
+      "id": "ca1f"
     }
   ]
 }

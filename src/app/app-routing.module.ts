@@ -5,11 +5,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { StudentInformationDashboardComponent } from './student-information-dashboard/student-information-dashboard.component';
 
 const routes: Routes = [
-  {path: '', component: SignupComponent},  // default routing to sign-up component
+  {path: '', redirectTo: '/newsignup', pathMatch: 'full'},  // default routing to sign-up component
+  {path: 'newsignup', component: SignupComponent},
+  {path: 'editsignup/:id', component: SignupComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'studentinfodashboard', component: StudentInformationDashboardComponent}
 ];
 
 @NgModule({

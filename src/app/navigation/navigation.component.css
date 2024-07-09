@@ -1,0 +1,38 @@
+/* mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  } */
+
+
+  mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .toolbar-buttons {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .menu-button {
+    display: none;
+  }
+  
+  @media (max-width: 600px) {
+    .toolbar-buttons {
+      display: none;
+    }
+  
+    .menu-button {
+      display: block;
+    }
+  }

@@ -22,9 +22,19 @@ export class SignUpService {
     return this.httpClient.post(this.serverURL+'/signUpData', signUpData);
   }
 
+  // Get specific signup's information from JSON server
+  getSignUp(id: string): Observable<signUpData> {
+    return this.httpClient.get<signUpData>(this.serverURL+'/signUpData/'+id);
+  }
+
   // Get all signup information from JSON server
   getAllSignUp(): Observable<signUpData[]> {
     return this.httpClient.get<signUpData[]>(this.serverURL+'/signUpData');
+  }
+
+  // Put updated form in the dataset
+  updateSignUp(id: string, editedSignUpData: signUpData) {
+    return this.httpClient.put(this.serverURL+'/signUpData/'+id, editedSignUpData);
   }
 
   // delete signup data of passed id
