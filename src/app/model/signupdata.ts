@@ -8,4 +8,4 @@ export interface signUpData {
     dateofbirth: Date,
     password: string,
     newsletterintent: boolean   
-}
+}   

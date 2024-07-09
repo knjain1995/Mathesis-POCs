@@ -31,8 +31,7 @@ export class UserAuthService  {
   checkLogin(currentLoginData: loginData): any {
     console.log(this.allSignUpData);
     console.log(currentLoginData);
-    
-    
+       
     let correctLogin = this.allSignUpData.find(signedUpUsers => signedUpUsers.email === currentLoginData.email);  
     console.log(correctLogin);
       

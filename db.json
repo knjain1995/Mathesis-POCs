@@ -1,36 +1,6 @@
 {
   "signUpData": [
     {
-      "id": "4ds4",
-      "firstname": "Kartik",
-      "lastname": "Jain",
-      "email": "knjain@gmail.com",
-      "phone": "9810776648",
-      "dateofbirth": "1995-01-13T18:30:00.000Z",
-      "password": "password",
-      "newsletterintent": true
-    },
-    {
-      "id": "5ds5",
-      "firstname": "Leo",
-      "lastname": "Jain",
-      "email": "leo@gmail.com",
-      "phone": "8810556648",
-      "dateofbirth": "2010-06-23T18:30:00.000Z",
-      "password": "pawspet",
-      "newsletterintent": false
-    },
-    {
-      "id": "cfa5",
-      "firstname": "dsnfjbsdh",
-      "lastname": "kjfdbfbsk",
-      "email": "bfsdfbk@fjsdkjfb",
-      "phone": "8742837498",
-      "dateofbirth": "1999-12-31T18:30:00.000Z",
-      "password": "bsdhfbhd",
-      "newsletterintent": false
-    },
-    {
       "id": "0e73",
       "firstname": "fjsdbfhk",
       "lastname": "nfjsdbkhb",
@@ -41,54 +11,24 @@
       "newsletterintent": true
     },
     {
-      "id": "a44f",
-      "firstname": "ksdfbkhsd",
-      "lastname": "fdhbghs",
-      "email": "dfshbfhk@ddjgksb",
-      "phone": "4723977498",
-      "dateofbirth": "1989-12-31T18:30:00.000Z",
-      "password": "dshvbfhsdv",
-      "newsletterintent": false
-    },
-    {
-      "id": "4ede",
-      "firstname": "gsahdgha",
-      "lastname": "ssdfhsh",
-      "email": "gdsfghg@sdgfu",
-      "phone": "6378624878",
-      "dateofbirth": "2001-02-01T18:30:00.000Z",
-      "password": "hdsgfhgsdhfg",
-      "newsletterintent": false
-    },
-    {
-      "id": "c976",
-      "firstname": "sdfjsdkhgf",
-      "lastname": "dssfjhdsf",
-      "email": "fdbshfb@fkbdskhfb",
-      "phone": "4732984782",
-      "dateofbirth": "2003-12-31T18:30:00.000Z",
-      "password": "kbfksdhj",
-      "newsletterintent": false
-    },
-    {
-      "id": "1601",
-      "firstname": "gfkadgf",
-      "lastname": "fsdhfg",
-      "email": "fhsdg@fdjshfkj",
-      "phone": "8543798473",
-      "dateofbirth": "2012-03-02T18:30:00.000Z",
-      "password": "jsdbfkjdbf",
-      "newsletterintent": false
-    },
-    {
-      "id": "06b9",
-      "firstname": "sbfhbsdjhb",
-      "lastname": "bfhsjdbfhjb",
-      "email": "jhdbfshjbf@fdshjfkjh",
-      "phone": "8732984799",
-      "dateofbirth": "2011-12-31T18:30:00.000Z",
-      "password": "shdjkfhdsfjkh",
+      "id": "59f6",
+      "firstname": "Kartik",
+      "lastname": "Jain",
+      "email": "knjain@gmail.com",
+      "phone": "9810776689",
+      "dateofbirth": "1995-01-13T18:30:00.000Z",
+      "password": "password",
       "newsletterintent": true
+    },
+    {
+      "id": "cab8",
+      "firstname": "sdfkdhjfsklj",
+      "lastname": "qfjjsdfklj",
+      "email": "sdnfj@fdjksnfl",
+      "phone": "8923458374",
+      "dateofbirth": "2023-01-01T18:30:00.000Z",
+      "password": "dfljkhgdlfj",
+      "newsletterintent": false
     }
   ]
 }

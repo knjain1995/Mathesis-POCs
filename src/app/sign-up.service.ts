@@ -30,6 +30,10 @@ export class SignUpService {
     return this.httpClient.get<signUpData[]>(this.serverURL+'/signUpData');
   }
 
+  deleteSignUp(id: string): Observable<any> {
+    return this.httpClient.delete(this.serverURL+'/signUpData/'+id);
+  }
+
 }
 
 

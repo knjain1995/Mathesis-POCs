@@ -27,13 +27,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { ConfirmationdialogComponent } from './confirmationdialog/confirmationdialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    ConfirmationdialogComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatDatepickerModule,
     MatSnackBarModule,
     MatCheckboxModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule
   ],
   providers: [
     provideAnimationsAsync()

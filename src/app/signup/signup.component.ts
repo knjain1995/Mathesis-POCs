@@ -63,12 +63,12 @@ export class SignupComponent implements OnInit {
       let signUpCheck = this.signUpService.addSignUp(userData).subscribe({
         next: (res) => {
           console.log(res);
-          this.utilityService.showRegistrationMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
+          this.utilityService.showSuccessMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
           this.router.navigate(['/dashboard/']);
         },
         error: (error) => {
           console.log(error);
-          this.utilityService.showRegistrationMessage("Registration Failed: " + error); // if login not succesful
+          this.utilityService.showWarningMessage("Registration Failed: " + error); // if login not succesful
         }
       });      
    

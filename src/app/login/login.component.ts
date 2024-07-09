@@ -56,30 +56,12 @@ export class LoginComponent implements OnInit {
       let loggedInUser = this.userAuth.checkLogin(userData);
 
       if( loggedInUser !== null) {
-          this.utilityService.showRegistrationMessage("Login Succesful! Welcome " + loggedInUser);  // if succesful login
+          this.utilityService.showSuccessMessage("Login Succesful! Welcome " + loggedInUser);  // if succesful login
           this.router.navigate(['/dashboard/']);
       }
       else {
-        this.utilityService.showRegistrationMessage("Could Not Find User");
-      }
-      // console.log(userData);
-
-      
-      
-
-      // // call addSignUp function in sign-up service and pass the userdata
-      // let signUpCheck = this.signUpService.addSignUp().subscribe({
-      //   next: (res) => {
-      //     console.log(res);
-      //     this.utilityService.showRegistrationMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
-      //     this.router.navigate(['/signupdetails/'+res.id]);
-      //   },
-      //   error: (error) => {
-      //     console.log(error);
-      //     this.utilityService.showRegistrationMessage("Registration Failed: " + error); // if login not succesful
-      //   }
-      // });      
-   
+        this.utilityService.showWarningMessage("Could Not Find User");
+      }  
     }
 
     else {

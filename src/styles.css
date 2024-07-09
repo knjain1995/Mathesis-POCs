@@ -2,3 +2,17 @@
 /* Angular material automatically made the below css */
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Custom styling for snackbar showing success messages */
+  .snackbar-success {
+      --mdc-snackbar-container-color: #008b00;
+      --mdc-snackbar-supporting-text-color: white;
+      --mat-snack-bar-button-color: white;   
+  }
+
+/* Custom styling for snackbar showing warning messages */
+  .snackbar-warning {
+    --mdc-snackbar-container-color: #ff0266;
+    --mdc-snackbar-supporting-text-color: white;
+    --mat-snack-bar-button-color: white;
+  }
