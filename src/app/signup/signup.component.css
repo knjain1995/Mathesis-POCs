@@ -1,5 +1,6 @@
 mat-card {
     max-width: 400px;
+    min-width: 300px;
     margin: auto;
     padding: 2em;
   }
@@ -8,6 +9,14 @@ mat-card {
     width: 100%;
     margin-bottom: 1em;
   }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    overflow: auto;
+  }
   
   button {
     width: 100%;
@@ -15,16 +24,4 @@ mat-card {
 
   h2 {
     text-align: center;
-  }
-
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url('../../assets/signup-background-image.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #4f02d3;
   }

@@ -29,6 +29,16 @@
       "password": "fsdghfdh",
       "newsletterintent": false,
       "id": "ca1f"
+    },
+    {
+      "id": "5238",
+      "firstname": "testfn1",
+      "lastname": "testfn2",
+      "email": "test@email1",
+      "phone": "7428397489",
+      "dateofbirth": "2013-01-02T18:30:00.000Z",
+      "password": "sdfgsdhbfgh",
+      "newsletterintent": false
     }
   ]
 }
