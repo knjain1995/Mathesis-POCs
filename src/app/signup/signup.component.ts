@@ -1,6 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { provideNativeDateAdapter } from '@angular/material/core';
+import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 // Services Import
@@ -42,8 +42,11 @@ export class SignupComponent implements OnInit {
     private utilityService: UtilityService, //inject utility service to show snackbar messages
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private userAuthService: UserAuthService
-  ) {}
+    private userAuthService: UserAuthService,
+    private dateAdapter: DateAdapter<Date>
+  ) {
+    this.dateAdapter.setLocale('en-IN');  // set locale to india to accept date in DD/MM/YYYY format
+  }
 
   // Function to check if there are any parameters in the link
   checkIdInURL(): void {
@@ -55,8 +58,8 @@ export class SignupComponent implements OnInit {
   // initializing form in the Oninit lifecycle hook
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({  // Setting up individual form controls and validations
-      firstname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]], 
-      lastname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
+      firstname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]], 
+      lastname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],
       email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]],
       phone: ['', [Validators.required, Validators.pattern(/^[1-9][0-9]{9}$/)]],
       dateofbirth: ['', Validators.required],
@@ -97,41 +100,41 @@ export class SignupComponent implements OnInit {
 
 
       // check if email while signing up is duplicate
-      this.userAuthService.checkDuplicateEmail(currentSignUpData).subscribe({
-        next: (res) => {
-          console.log(res);
-          // this.utilityService.showWarningMessage("This Email ID is already in use");  // if data updated succesfully
+      this.userAuthService.checkDuplicateEmail(currentSignUpData, this.editRegId).subscribe({
+        next: (isDuplicate) => {
+          if (isDuplicate) {
+            this.utilityService.showWarningMessage("This Email ID is already in use");
+            return; // exit the function
+          }
+          
+          if (this.editRegId) {
+            this.signUpService.updateSignUp(this.editRegId, currentSignUpData).subscribe((res) => {
+              this.utilityService.showSuccessMessage("Registration Information Updated Sucessfully");  // if data updated succesfully
+              this.router.navigate(['/dashboard']);
+            });
+          }
+
+          // If we do not have a legitimate ID add new subscription details
+          else {
+            let signUpCheck = this.signUpService.addSignUp(currentSignUpData).subscribe({
+              next: (res) => {
+                console.log(res);
+                this.utilityService.showSuccessMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
+                this.router.navigate(['/dashboard']);
+              },
+              error: (error) => {
+                console.log(error);
+                this.utilityService.showWarningMessage("Registration Failed!"); // if login not succesful
+              }
+            }); 
+          }
         },
         error: (error) => {
           console.log(error);
         }
       });
-
-      // If we have an ID in the link, run functionality for update
-      if(this.editRegId) {
-        this.signUpService.updateSignUp(this.editRegId, currentSignUpData).subscribe((res) => {
-          this.utilityService.showSuccessMessage("Registration Information Updated Sucessfully");  // if data updated succesfully
-          this.router.navigate(['/dashboard']);
-        });
-      }
-  
-      // If we do not have a legitimate ID add new subscription details
-      else {
-        let signUpCheck = this.signUpService.addSignUp(currentSignUpData).subscribe({
-          next: (res) => {
-            console.log(res);
-            this.utilityService.showSuccessMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
-            this.router.navigate(['/dashboard']);
-          },
-          error: (error) => {
-            console.log(error);
-            this.utilityService.showWarningMessage("Registration Failed!"); // if login not succesful
-          }
-        });    
-      }
-
     }
-    
+
     else {
       console.error('Sign Up Error'); // this shouldn't run
     }    
