@@ -9,12 +9,13 @@ import { UtilityService } from '../utility.service';
 
 // Model import
 import { signUpData } from '../model/signupdata';
+import { UserAuthService } from '../user-auth.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
-  providers: [SignUpService, UtilityService, provideNativeDateAdapter()]  // providing sign-up service but only to sign-up component
+  providers: [SignUpService, UtilityService, UserAuthService, provideNativeDateAdapter()]  // providing sign-up service but only to sign-up component
 })
 
 export class SignupComponent implements OnInit {
@@ -40,14 +41,13 @@ export class SignupComponent implements OnInit {
     private signUpService: SignUpService, //inject signup service to recieve signup information
     private utilityService: UtilityService, //inject utility service to show snackbar messages
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private userAuthService: UserAuthService
   ) {}
 
   // check if there are any parameters in the link
   checkIdInURL(): void {
-    this.activatedRoute.params.subscribe(params => {
-      console.log(params);
-      
+    this.activatedRoute.params.subscribe(params => {    
       this.editRegId = params['id'];
     });
   }
@@ -88,34 +88,55 @@ export class SignupComponent implements OnInit {
   onSubmit(): void {
     
     if(this.signUpForm.valid) { // check if signup form is valid
-      
+      debugger
       let currentSignUpData: signUpData = this.signUpForm.value; //  initialize a variable of type signUpData (interface) to have the input field values 
-
+      // console.log("THIS: "+this.userAuthService.checkDuplicateEmailPhone(currentSignUpData));
+      // let duplicateUser = this.userAuthService.checkDuplicateEmailPhone(currentSignUpData);  // check if email or phone number is a duplicate
+      // console.log(duplicateUser);
+      // console.log(duplicateUser[0]);
+      
+      // let dupEmail = duplicateUser[0];  // duplicate email
+      // let dupPhone = duplicateUser[1];  // duplicate phone number
       // check if there are any parameters in the link
       this.checkIdInURL();
 
-      // If we have an ID in the link, run functionality for update
-      if(this.editRegId) {
-        this.signUpService.updateSignUp(this.editRegId, currentSignUpData).subscribe((res) => {
-          this.utilityService.showSuccessMessage("Registration Information Updated Sucessfully");  // if data updated succesfully
-          this.router.navigate(['/dashboard/']);          
-        });
-      }
-   
-      // If we do not have a legitimate ID add new subscription details
-      else {
-        let signUpCheck = this.signUpService.addSignUp(currentSignUpData).subscribe({
-          next: (res) => {
-            console.log(res);
-            this.utilityService.showSuccessMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
-            this.router.navigate(['/dashboard/']);
-          },
-          error: (error) => {
-            console.log(error);
-            this.utilityService.showWarningMessage("Registration Failed!"); // if login not succesful
-          }
-        });    
-      }
+      // if(dupEmail && dupPhone) {
+
+          // If we have an ID in the link, run functionality for update
+        if(this.editRegId) {
+          this.signUpService.updateSignUp(this.editRegId, currentSignUpData).subscribe((res) => {
+            this.utilityService.showSuccessMessage("Registration Information Updated Sucessfully");  // if data updated succesfully
+            this.router.navigate(['/dashboard']);
+          });
+        }
+          
+    
+        // If we do not have a legitimate ID add new subscription details
+        else {
+          let signUpCheck = this.signUpService.addSignUp(currentSignUpData).subscribe({
+            next: (res) => {
+              console.log(res);
+              this.utilityService.showSuccessMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
+              this.router.navigate(['/dashboard']);
+            },
+            error: (error) => {
+              console.log(error);
+              this.utilityService.showWarningMessage("Registration Failed!"); // if login not succesful
+            }
+          });    
+        }
+
+      // }
+
+      // else {
+      //   if (!dupEmail) {
+      //     this.utilityService.showWarningMessage("Registration Failed! Email Already Used");
+      //   }
+      //   if (!dupPhone) {
+      //     this.utilityService.showWarningMessage("Registration Failed! Phone Number Already Used");
+      //   }
+      // }
+
     }
     
     else {

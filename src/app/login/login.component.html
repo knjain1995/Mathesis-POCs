@@ -18,24 +18,17 @@
           <!-- PASSWORD FORMFIELD -->
           <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
-            <!-- <input matInput type="password" formControlName="password" placeholder="Password" required> -->
             <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" placeholder="Password" required>
             <!-- BUTTON TO TOGGLE PASSWORD VISIBILITY -->
             <button mat-icon-button matSuffix type="button" (click)="clickPasswordToggle($event)">
               <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
             <!-- BUTTON END -->
-            <!-- <mat-error *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
               Password is required
             </mat-error>
-            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength') && loginForm.get('password')?.touched">
-              Password must be at least 6 characters
-            </mat-error>
-            <mat-hint align="end">
-              {{loginForm.get('password')?.value?.length || 0}}/6+ characters
-            </mat-hint> -->
           </mat-form-field>
-        
+  
           <!-- LOGIN BUTTON -->
           <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
             Login

@@ -115,6 +115,5 @@ import { signUpData } from '../model/signupdata';
     // Function invoked when a row is to be edited
     editRow(id: string) {
       this.router.navigate(['/editsignup/'+id]);
-      // this.utilityService.showWarningMessage("This Functionality is Absent!");
     } 
   }

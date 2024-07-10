@@ -1,16 +1,6 @@
 {
   "signUpData": [
     {
-      "firstname": "fjsdb",
-      "lastname": "nfjs",
-      "email": "bfshdb@fj",
-      "phone": "8374283748",
-      "dateofbirth": "1994-12-31T18:30:00.000Z",
-      "password": "dsfvdsvf",
-      "newsletterintent": true,
-      "id": "0e73"
-    },
-    {
       "firstname": "Kartik",
       "lastname": "Jain",
       "email": "knjain@gmail.com",
@@ -21,23 +11,43 @@
       "id": "59f6"
     },
     {
-      "firstname": "sjdfgnlsdng",
-      "lastname": "gdfnlkng",
-      "email": "lsdknfgln@gdrfjkogh",
-      "phone": "5830498509",
-      "dateofbirth": "2015-05-04T18:30:00.000Z",
-      "password": "fsdghfdh",
-      "newsletterintent": false,
-      "id": "ca1f"
+      "id": "1b08",
+      "firstname": "test1fn",
+      "lastname": "test1ln",
+      "email": "test1@email.com",
+      "phone": "9732487239",
+      "dateofbirth": "2010-07-23T18:30:00.000Z",
+      "password": "test1password",
+      "newsletterintent": true
     },
     {
-      "id": "5238",
-      "firstname": "testfn1",
-      "lastname": "testfn2",
-      "email": "test@email1",
-      "phone": "7428397489",
-      "dateofbirth": "2013-01-02T18:30:00.000Z",
-      "password": "sdfgsdhbfgh",
+      "id": "9275",
+      "firstname": "test2fn",
+      "lastname": "test2ln",
+      "email": "test2@email.com",
+      "phone": "9384792837",
+      "dateofbirth": "2024-06-20T18:30:00.000Z",
+      "password": "test2password",
+      "newsletterintent": false
+    },
+    {
+      "id": "18d1",
+      "firstname": "test3fn",
+      "lastname": "test3ln",
+      "email": "test3@email.com",
+      "phone": "8736487326",
+      "dateofbirth": "1999-09-08T18:30:00.000Z",
+      "password": "test3password",
+      "newsletterintent": true
+    },
+    {
+      "id": "127a",
+      "firstname": "Kartik",
+      "lastname": "Jain",
+      "email": "knjain@gmail.com",
+      "phone": "9374928374",
+      "dateofbirth": "1994-12-31T18:30:00.000Z",
+      "password": "password",
       "newsletterintent": false
     }
   ]

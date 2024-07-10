@@ -109,7 +109,7 @@ export class CreateStudentProfileComponent implements OnInit {
           next: (res) => {
             console.log(res);
             this.utilityService.showSuccessMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
-            this.router.navigate(['/dashboard/']);
+            this.router.navigate(['/dashboard']);
           },
           error: (error) => {
             console.log(error);

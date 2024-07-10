@@ -24,7 +24,7 @@ body {
 
 /* Custom styling for snackbar showing warning messages */
   .snackbar-warning {
-    --mdc-snackbar-container-color: #ff0266;
+    --mdc-snackbar-container-color: #b00020;
     --mdc-snackbar-supporting-text-color: white;
     --mat-snack-bar-button-color: white;
   }
