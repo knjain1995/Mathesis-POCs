@@ -2,7 +2,7 @@
   "signUpData": [
     {
       "firstname": "Kartik",
-      "lastname": "Jain",
+      "lastname": "Jainu",
       "email": "knjain@gmail.com",
       "phone": "9810776999",
       "dateofbirth": "1995-01-13T18:30:00.000Z",
@@ -71,16 +71,6 @@
       "id": "6KHZ"
     },
     {
-      "firstname": "Tommi",
-      "lastname": "Formby",
-      "email": "tformby6@nature.com",
-      "phone": "3024484856",
-      "dateofbirth": "2004-02-18T09:21:19Z",
-      "password": "hQ6!~}HF(0",
-      "newsletterintent": false,
-      "id": "XO6F"
-    },
-    {
       "firstname": "Lilith",
       "lastname": "Langrick",
       "email": "llangrick7@berkeley.edu",
@@ -101,14 +91,14 @@
       "id": "48SH"
     },
     {
-      "firstname": "North",
-      "lastname": "Van Son",
-      "email": "nvanson9@naver.com",
-      "phone": "2397243110",
-      "dateofbirth": "1999-12-14T04:12:31Z",
-      "password": "pT2(`shKch",
-      "newsletterintent": false,
-      "id": "ZIX4"
+      "id": "8734",
+      "firstname": "Bharat",
+      "lastname": "Sharma",
+      "email": "bharat@gmail.edu",
+      "phone": "1812776629",
+      "dateofbirth": "2024-06-30T18:30:00.000Z",
+      "password": "bharat",
+      "newsletterintent": true
     }
   ]
 }

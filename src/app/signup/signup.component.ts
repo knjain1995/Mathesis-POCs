@@ -107,6 +107,7 @@ export class SignupComponent implements OnInit {
             return; // exit the function
           }
           
+          // If we an id in the link, run the update form on signup page
           if (this.editRegId) {
             this.signUpService.updateSignUp(this.editRegId, currentSignUpData).subscribe((res) => {
               this.utilityService.showSuccessMessage("Registration Information Updated Sucessfully");  // if data updated succesfully
@@ -119,6 +120,10 @@ export class SignupComponent implements OnInit {
             let signUpCheck = this.signUpService.addSignUp(currentSignUpData).subscribe({
               next: (res) => {
                 console.log(res);
+
+              // SET LOCAL STORAGE TO EMULATE SESSION
+              localStorage.setItem('loggedIn', 'true');
+
                 this.utilityService.showSuccessMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
                 this.router.navigate(['/dashboard']);
               },

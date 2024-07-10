@@ -18,6 +18,7 @@ export class NavigationComponent {
   
   // Route to Login Page
   logout() {
+    localStorage.removeItem('loggedIn');
     this.router.navigate(['/login'])
     }
 

@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+
 // Components
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
@@ -72,7 +73,7 @@ import { CreateStudentProfileComponent } from './create-student-profile/create-s
     MatMenuModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })

@@ -56,6 +56,10 @@ export class LoginComponent implements OnInit {
       this.userAuth.checkLogin(userData).subscribe({
         next: (loggedInUser) => {
           if(loggedInUser!==null) {
+
+            // SET LOCAL STORAGE TO EMULATE SESSION
+            localStorage.setItem('loggedIn', 'true');
+            
             this.utilityService.showSuccessMessage("Login Succesful! Welcome " + loggedInUser);  // if succesful login
             this.router.navigate(['/dashboard']);
             // console.log('we are here');
