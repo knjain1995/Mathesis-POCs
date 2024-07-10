@@ -31,14 +31,14 @@
       "newsletterintent": false
     },
     {
-      "id": "18d1",
-      "firstname": "test3fn",
-      "lastname": "test3ln",
+      "firstname": "testfn",
+      "lastname": "testln",
       "email": "test3@email.com",
       "phone": "8736487326",
       "dateofbirth": "1999-09-08T18:30:00.000Z",
       "password": "test3password",
-      "newsletterintent": true
+      "newsletterintent": true,
+      "id": "18d1"
     },
     {
       "id": "127a",
@@ -68,6 +68,36 @@
       "phone": "7439875933",
       "dateofbirth": "1993-12-31T18:30:00.000Z",
       "password": "nfsdbfjksd",
+      "newsletterintent": false
+    },
+    {
+      "id": "8399",
+      "firstname": "hsdfghsdkhg",
+      "lastname": "fdsfvdjhv",
+      "email": "knjain@gmail.com",
+      "phone": "3284837498",
+      "dateofbirth": "2024-06-30T18:30:00.000Z",
+      "password": "hsahdkjahss",
+      "newsletterintent": false
+    },
+    {
+      "id": "85a7",
+      "firstname": "askdkgaks",
+      "lastname": "fsdjhfjh",
+      "email": "knjain@gmail.com",
+      "phone": "7343724870",
+      "dateofbirth": "1995-01-13T18:30:00.000Z",
+      "password": "sdjafkjbsdfk",
+      "newsletterintent": false
+    },
+    {
+      "id": "848f",
+      "firstname": "sgfsgdfhj",
+      "lastname": "fsdfhgsj",
+      "email": "knjain@gmail.com",
+      "phone": "4723987498",
+      "dateofbirth": "1995-01-13T18:30:00.000Z",
+      "password": "sdhfkhdjshf",
       "newsletterintent": false
     }
   ]

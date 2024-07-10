@@ -9,8 +9,11 @@
         <mat-form-field appearance="fill">
           <mat-label>First Name</mat-label>
           <input matInput formControlName="firstname" placeholder="First Name" required>
-          <mat-error *ngIf="signUpForm.get('firstname')?.hasError('required')  && signUpForm.get('firstname')?.touched">
+          <mat-error *ngIf="signUpForm.get('firstname')?.hasError('required') && signUpForm.get('firstname')?.touched">
             First Name is required
+          </mat-error>
+          <mat-error *ngIf="signUpForm.get('firstname')?.hasError('pattern') && signUpForm.get('firstname')?.touched">
+            Please only enter valid characters a-zA-z
           </mat-error>
         </mat-form-field>
     
@@ -21,6 +24,9 @@
           <mat-error *ngIf="signUpForm.get('lastname')?.hasError('required') && signUpForm.get('lastname')?.touched">
             Last Name is required
           </mat-error>
+          <mat-error *ngIf="signUpForm.get('lastname')?.hasError('pattern') && signUpForm.get('lastname')?.touched">
+            Please only enter valid characters a-zA-z
+          </mat-error>
         </mat-form-field>
     
         <!-- EMAIL FORMFIELD -->
@@ -30,7 +36,7 @@
           <mat-error *ngIf="signUpForm.get('email')?.hasError('required') && signUpForm.get('email')?.touched">
             Email is required
           </mat-error>
-          <mat-error *ngIf="signUpForm.get('email')?.hasError('email') && signUpForm.get('email')?.touched">
+          <mat-error *ngIf="signUpForm.get('email')?.hasError('pattern') && signUpForm.get('email')?.touched">
             Enter a valid email
           </mat-error>
         </mat-form-field>

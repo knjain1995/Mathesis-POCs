@@ -45,7 +45,7 @@ export class SignupComponent implements OnInit {
     private userAuthService: UserAuthService
   ) {}
 
-  // check if there are any parameters in the link
+  // Function to check if there are any parameters in the link
   checkIdInURL(): void {
     this.activatedRoute.params.subscribe(params => {    
       this.editRegId = params['id'];
@@ -55,9 +55,9 @@ export class SignupComponent implements OnInit {
   // initializing form in the Oninit lifecycle hook
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({  // Setting up individual form controls and validations
-      firstname: ['', Validators.required], 
-      lastname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      firstname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]], 
+      lastname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
+      email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]],
       phone: ['', [Validators.required, Validators.pattern(/^[1-9][0-9]{9}$/)]],
       dateofbirth: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -82,46 +82,53 @@ export class SignupComponent implements OnInit {
         }
       });
     }
+
   }
 
   // Function to be executed with Submit button is clicked 
   onSubmit(): void {
     
     if(this.signUpForm.valid) { // check if signup form is valid
-      debugger
-      let currentSignUpData: signUpData = this.signUpForm.value; //  initialize a variable of type signUpData (interface) to have the input field values 
- 
-
-      console.log("Duplicate: "+this.userAuthService.checkDuplicateEmail(currentSignUpData));
+      // debugger
+      let currentSignUpData: signUpData = this.signUpForm.value; //  initialize a variable of type signUpData (interface) to have the input field values   
 
       // check if there are any parameters in the link
       this.checkIdInURL();
 
-      // if(dupEmail && dupPhone) {
 
-          // If we have an ID in the link, run functionality for update
-        if(this.editRegId) {
-          this.signUpService.updateSignUp(this.editRegId, currentSignUpData).subscribe((res) => {
-            this.utilityService.showSuccessMessage("Registration Information Updated Sucessfully");  // if data updated succesfully
+      // check if email while signing up is duplicate
+      this.userAuthService.checkDuplicateEmail(currentSignUpData).subscribe({
+        next: (res) => {
+          console.log(res);
+          // this.utilityService.showWarningMessage("This Email ID is already in use");  // if data updated succesfully
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+
+      // If we have an ID in the link, run functionality for update
+      if(this.editRegId) {
+        this.signUpService.updateSignUp(this.editRegId, currentSignUpData).subscribe((res) => {
+          this.utilityService.showSuccessMessage("Registration Information Updated Sucessfully");  // if data updated succesfully
+          this.router.navigate(['/dashboard']);
+        });
+      }
+  
+      // If we do not have a legitimate ID add new subscription details
+      else {
+        let signUpCheck = this.signUpService.addSignUp(currentSignUpData).subscribe({
+          next: (res) => {
+            console.log(res);
+            this.utilityService.showSuccessMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
             this.router.navigate(['/dashboard']);
-          });
-        }
-          
-    
-        // If we do not have a legitimate ID add new subscription details
-        else {
-          let signUpCheck = this.signUpService.addSignUp(currentSignUpData).subscribe({
-            next: (res) => {
-              console.log(res);
-              this.utilityService.showSuccessMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
-              this.router.navigate(['/dashboard']);
-            },
-            error: (error) => {
-              console.log(error);
-              this.utilityService.showWarningMessage("Registration Failed!"); // if login not succesful
-            }
-          });    
-        }
+          },
+          error: (error) => {
+            console.log(error);
+            this.utilityService.showWarningMessage("Registration Failed!"); // if login not succesful
+          }
+        });    
+      }
 
     }
     
