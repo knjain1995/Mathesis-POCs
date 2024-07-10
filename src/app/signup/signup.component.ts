@@ -90,13 +90,10 @@ export class SignupComponent implements OnInit {
     if(this.signUpForm.valid) { // check if signup form is valid
       debugger
       let currentSignUpData: signUpData = this.signUpForm.value; //  initialize a variable of type signUpData (interface) to have the input field values 
-      // console.log("THIS: "+this.userAuthService.checkDuplicateEmailPhone(currentSignUpData));
-      // let duplicateUser = this.userAuthService.checkDuplicateEmailPhone(currentSignUpData);  // check if email or phone number is a duplicate
-      // console.log(duplicateUser);
-      // console.log(duplicateUser[0]);
-      
-      // let dupEmail = duplicateUser[0];  // duplicate email
-      // let dupPhone = duplicateUser[1];  // duplicate phone number
+ 
+
+      console.log("Duplicate: "+this.userAuthService.checkDuplicateEmail(currentSignUpData));
+
       // check if there are any parameters in the link
       this.checkIdInURL();
 
@@ -125,17 +122,6 @@ export class SignupComponent implements OnInit {
             }
           });    
         }
-
-      // }
-
-      // else {
-      //   if (!dupEmail) {
-      //     this.utilityService.showWarningMessage("Registration Failed! Email Already Used");
-      //   }
-      //   if (!dupPhone) {
-      //     this.utilityService.showWarningMessage("Registration Failed! Phone Number Already Used");
-      //   }
-      // }
 
     }
     

@@ -53,16 +53,22 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid) { // check if signup form is valid
       
       let userData = this.loginForm.value; //  initialize a variable of type signUpData (interface) to have the input field values 
-      let loggedInUser = this.userAuth.checkLogin(userData);
-
-      if(loggedInUser!==null) {
-          this.utilityService.showSuccessMessage("Login Succesful! Welcome " + loggedInUser);  // if succesful login
-          this.router.navigate(['/dashboard']);
-          // console.log('we are here');
-      }
-      else {
-        this.utilityService.showWarningMessage("Error Occured! Please Check Email and Password");
-      }  
+      this.userAuth.checkLogin(userData).subscribe({
+        next: (loggedInUser) => {
+          if(loggedInUser!==null) {
+            this.utilityService.showSuccessMessage("Login Succesful! Welcome " + loggedInUser);  // if succesful login
+            this.router.navigate(['/dashboard']);
+            // console.log('we are here');
+          }
+          else {
+            this.utilityService.showWarningMessage("Error Occured! Please Check Email and Password");
+          }
+        },
+        error: (error) => {
+          console.error(error);
+          this.utilityService.showWarningMessage("Error Occurred! Please Try Again Later");
+        }
+      });  
     }
 
     else {

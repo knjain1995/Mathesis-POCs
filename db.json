@@ -49,6 +49,26 @@
       "dateofbirth": "1994-12-31T18:30:00.000Z",
       "password": "password",
       "newsletterintent": false
+    },
+    {
+      "id": "d072",
+      "firstname": "fidsfuy",
+      "lastname": "fuidsfiuhs",
+      "email": "knjain@gmail.com",
+      "phone": "3457834759",
+      "dateofbirth": "1989-12-31T18:30:00.000Z",
+      "password": "fshdfkhkdjshf",
+      "newsletterintent": false
+    },
+    {
+      "id": "136f",
+      "firstname": "hssahdjh",
+      "lastname": "fhsdkjhf",
+      "email": "knjain@gmail.com",
+      "phone": "7439875933",
+      "dateofbirth": "1993-12-31T18:30:00.000Z",
+      "password": "nfsdbfjksd",
+      "newsletterintent": false
     }
   ]
 }
