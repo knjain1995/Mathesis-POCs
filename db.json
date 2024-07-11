@@ -2,10 +2,10 @@
   "signUpData": [
     {
       "firstname": "Kartik",
-      "lastname": "Jainu",
+      "lastname": "Jain",
       "email": "knjain@gmail.com",
       "phone": "9810776999",
-      "dateofbirth": "1995-01-13T18:30:00.000Z",
+      "dateofbirth": "1995-01-11T18:30:00.000Z",
       "password": "password",
       "newsletterintent": true,
       "id": "59f6"
@@ -25,7 +25,7 @@
       "lastname": "Rasher",
       "email": "hrasher1@craigslist.org",
       "phone": "7971573051",
-      "dateofbirth": "2020-10-29T00:02:31Z",
+      "dateofbirth": "2020-10-13T18:30:00.000Z",
       "password": "mF1`\\Jh,Gp}",
       "newsletterintent": false,
       "id": "9LAK"
@@ -47,7 +47,7 @@
       "phone": "7025782203",
       "dateofbirth": "2013-06-29T17:46:00Z",
       "password": "cW8*,!B{_r",
-      "newsletterintent": true,
+      "newsletterintent": false,
       "id": "M4KA"
     },
     {
@@ -89,16 +89,6 @@
       "password": "bQ4,.A5",
       "newsletterintent": false,
       "id": "48SH"
-    },
-    {
-      "id": "8734",
-      "firstname": "Bharat",
-      "lastname": "Sharma",
-      "email": "bharat@gmail.edu",
-      "phone": "1812776629",
-      "dateofbirth": "2024-06-30T18:30:00.000Z",
-      "password": "bharat",
-      "newsletterintent": true
     }
   ]
 }

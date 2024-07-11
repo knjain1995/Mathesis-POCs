@@ -1,12 +1,18 @@
 <div class="container">
     <mat-card>
-      <h2 mat-subheader>Login</h2>
+      <mat-card-header>
+         <mat-card-title>
+          <h2>Login</h2>
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      
+    
           <!-- EMAIL FORMFIELD -->
           <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" placeholder="Email" required>
+            <input class="input-fields" matInput formControlName="email" placeholder="Email" required>
             <mat-error *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched">
               Email is required
             </mat-error>
@@ -30,13 +36,18 @@
           </mat-form-field>
   
           <!-- LOGIN BUTTON -->
-          <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+          <button class="signup-login-submit-button" mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
             Login
           </button>
         </form>
+      </mat-card-content>
+
+      <mat-card-footer>
         <span class="sign-in-link centered-text">First Time User? 
           <a routerLink="/newsignup">Sign Up</a>
         </span>
+      </mat-card-footer>
+
     </mat-card>
   </div>
   
