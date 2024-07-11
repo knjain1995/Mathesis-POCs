@@ -12,28 +12,33 @@
       <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
 
         <!-- FIRST NAME FORMFIELD -->
-        <mat-form-field appearance="fill">
-          <mat-label>First Name</mat-label>
-          <input matInput formControlName="firstname" placeholder="First Name" required>
-          <mat-error *ngIf="signUpForm.get('firstname')?.hasError('required') && signUpForm.get('firstname')?.touched">
-            First Name is required
-          </mat-error>
-          <mat-error *ngIf="signUpForm.get('firstname')?.hasError('pattern') && signUpForm.get('firstname')?.touched">
-            Please only enter valid characters a-zA-z
-          </mat-error>
-        </mat-form-field>
-    
-        <!-- LAST NAME FORMFIELD -->
-        <mat-form-field appearance="fill">
-          <mat-label>Last Name</mat-label>
-          <input matInput formControlName="lastname" placeholder="Last Name" required>
-          <mat-error *ngIf="signUpForm.get('lastname')?.hasError('required') && signUpForm.get('lastname')?.touched">
-            Last Name is required
-          </mat-error>
-          <mat-error *ngIf="signUpForm.get('lastname')?.hasError('pattern') && signUpForm.get('lastname')?.touched">
-            Please only enter valid characters a-zA-z
-          </mat-error>
-        </mat-form-field>
+         <div class="name-form-fields-container">
+
+          <mat-form-field class="name-form-fields" appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstname" placeholder="First Name" required>
+            <mat-error *ngIf="signUpForm.get('firstname')?.hasError('required') && signUpForm.get('firstname')?.touched">
+              First Name is required
+            </mat-error>
+            <mat-error *ngIf="signUpForm.get('firstname')?.hasError('pattern') && signUpForm.get('firstname')?.touched">
+              Please only enter a-zA-z
+            </mat-error>
+          </mat-form-field>
+      
+          <!-- LAST NAME FORMFIELD -->
+          <mat-form-field class="name-form-fields" appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastname" placeholder="Last Name" required>
+            <mat-error *ngIf="signUpForm.get('lastname')?.hasError('required') && signUpForm.get('lastname')?.touched">
+              Last Name is required
+            </mat-error>
+            <mat-error *ngIf="signUpForm.get('lastname')?.hasError('pattern') && signUpForm.get('lastname')?.touched">
+              Please only enter a-zA-z
+            </mat-error>
+          </mat-form-field>
+
+         </div>
+        
     
         <!-- EMAIL FORMFIELD -->
         <mat-form-field appearance="fill">
@@ -104,7 +109,8 @@
         </mat-form-field>
 
         <!-- NEWSLETTER SIGNUP -->
-        <mat-checkbox formControlName="newsletterintent" labelPosition="before">Sign Up For Newsletter</mat-checkbox>
+        <mat-slide-toggle formControlName="newsletterintent" labelPosition="before">Sign Up For Newsletter</mat-slide-toggle>
+        <!-- <mat-checkbox formControlName="newsletterintent" labelPosition="before">Sign Up For Newsletter</mat-checkbox> -->
 
         <!-- UPDATE BUTTON -->
         <button class="signup-login-submit-button" mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid" *ngIf="editRegId">
@@ -124,6 +130,10 @@
       </span>
     </mat-card-footer>	
       
+  </mat-card>
+
+  <mat-card class="image-card">
+    <img src='../../assets/material-school.jpeg' alt="material-school">
   </mat-card>
 
 </div>

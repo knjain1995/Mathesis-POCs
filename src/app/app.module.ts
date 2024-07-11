@@ -15,6 +15,7 @@ import { ConfirmationdialogComponent } from './confirmationdialog/confirmationdi
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentInformationDashboardComponent } from './student-information-dashboard/student-information-dashboard.component';
+import { CreateStudentProfileComponent } from './create-student-profile/create-student-profile.component';
 
 // Animations
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -37,7 +38,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { CreateStudentProfileComponent } from './create-student-profile/create-student-profile.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { CreateStudentProfileComponent } from './create-student-profile/create-s
     MatTableModule,
     MatDialogModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSlideToggleModule
   ],
   providers: [
     provideAnimationsAsync(),

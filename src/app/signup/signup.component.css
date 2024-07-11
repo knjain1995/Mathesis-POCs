@@ -1,5 +1,5 @@
 mat-card {
-    max-width: 400px;
+    max-width: 500px;
     min-width: 300px;
     margin: auto;
     padding: 2em;
@@ -8,6 +8,15 @@ mat-card {
   mat-form-field {
     width: 100%;
     margin-bottom: 1em;
+  }
+
+  .name-form-fields {
+    width: 45%
+  }
+
+  .name-form-fields-container {
+    display: flex;
+    justify-content: space-between;
   }
 
   mat-checkbox {
@@ -24,5 +33,12 @@ mat-card {
 
   .signup-login-submit-button {
     margin-top: 1em;
+  }
+
+  .image-card {
+    max-width: 700px;
+    min-width: 300px;
+    margin: auto;
+    padding: 2em;
   }
 

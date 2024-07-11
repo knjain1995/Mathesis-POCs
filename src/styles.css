@@ -38,8 +38,8 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   /* background-image: url('assets/signup-background-image.png'); */
-  background-image: url('assets/material-school.jpeg');
-  /* background-image: url('assets/material-background.jpg'); */
+  /* background-image: url('assets/material-school.jpeg'); */
+  background-image: url('assets/material-background.jpg');
   background-color: rgb(65, 41, 132);
   background-size: cover;
   background-position: center;
