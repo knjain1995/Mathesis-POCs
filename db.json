@@ -27,7 +27,7 @@
       "phone": "7971573051",
       "dateofbirth": "2020-10-13T18:30:00.000Z",
       "password": "mF1`\\Jh,Gp}",
-      "newsletterintent": false,
+      "newsletterintent": true,
       "id": "9LAK"
     },
     {
@@ -87,7 +87,7 @@
       "phone": "3694099556",
       "dateofbirth": "2009-07-26T20:04:08Z",
       "password": "bQ4,.A5",
-      "newsletterintent": false,
+      "newsletterintent": true,
       "id": "48SH"
     },
     {

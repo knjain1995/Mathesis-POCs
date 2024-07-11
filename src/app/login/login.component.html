@@ -6,7 +6,7 @@
    
       <mat-expansion-panel class="expansion-panel-image" hideToggle [expanded]="!panelOpenState()">
 
-           <h3>Mathesis Academy</h3>
+           <h2>Mathesis Academy</h2>
 
         <img src="../../assets/material-school.jpeg " alt="Material School">
 
@@ -15,21 +15,19 @@
 
       <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)" hideToggle>
 
-        <mat-expansion-panel-header class="login-expansion-header">
+        <mat-expansion-panel-header tyle="margin: 0 auto" class="login-expansion-header">
 
-          <!-- <mat-content></mat-content> -->
-
-          <!-- <mat-panel-title>
+          <mat-panel-title>
             <mat-card-header>
               <mat-card-title>
                <h3>Login</h3>
              </mat-card-title>
            </mat-card-header>
-          </mat-panel-title> -->
+          </mat-panel-title>
 
-        <mat-panel-description>
-          <h3>_________Login_________</h3>
-        </mat-panel-description>
+        <!-- <mat-panel-description>
+          <h3>Login</h3>
+        </mat-panel-description> -->
 
         </mat-expansion-panel-header>
         

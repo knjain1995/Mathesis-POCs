@@ -12,10 +12,20 @@ mat-card {
 
   mat-expansion-panel {
     text-align: center;
+    align-items: center;
   }
 
   mat-expansion-panel-header mat-panel-description {
     text-align: center;
+    color: white;
+  }
+
+  .mat-content.mat-content-hide-toggle {
+    margin: 0;
+  }
+
+  .header-whitespace {
+    visibility: none;    
   }
 
    .container {
@@ -28,5 +38,6 @@ mat-card {
 
   img {
     padding: 0;
-    max-width: 366px;
+    max-width: 100%;
+    
   }
