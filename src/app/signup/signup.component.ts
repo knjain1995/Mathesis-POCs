@@ -103,7 +103,7 @@ export class SignupComponent implements OnInit {
       this.userAuthService.checkDuplicateEmail(currentSignUpData, this.editRegId).subscribe({
         next: (isDuplicate) => {
           if (isDuplicate) {
-            this.utilityService.showWarningMessage("This Email ID is already in use");
+            this.utilityService.showWarningMessage("This Email ID or Phone Number is already in use");
             return; // exit the function
           }
           

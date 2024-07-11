@@ -48,7 +48,7 @@ export class UserAuthService  {
   }
 
 
-  // Function to check if email has already been used by another user to signup
+  // Function to check if email or password has already been used by another user to signup
   checkDuplicateEmail(currentSignUpData: signUpData, userId?: string): Observable<boolean> {
     // get all signups and check if the user info checks out
     return new Observable(observer => {
@@ -56,9 +56,16 @@ export class UserAuthService  {
         next: (res) => {
           console.log('all signups loaded in checklogin');
           this.allSignUpData = res;
+  
           let duplicateEmail = this.allSignUpData.find(signedUpUser =>
             signedUpUser.email === currentSignUpData.email && signedUpUser.id !== userId) !== undefined;
-          observer.next(duplicateEmail);
+  
+          let duplicatePhone = this.allSignUpData.find(signedUpUser =>
+            signedUpUser.phone === currentSignUpData.phone && signedUpUser.id !== userId) !== undefined; 
+  
+          let duplicateDetails = duplicateEmail || duplicatePhone;
+            
+          observer.next(duplicateDetails);
         },
         error: (error) => {
           console.log(error);
