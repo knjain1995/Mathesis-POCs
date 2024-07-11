@@ -1,7 +1,7 @@
 mat-card {
     max-width: 100%;
     min-width: 90%;
-    margin: 2em auto;
+    margin: 5em auto;
     padding: 2em;
   }
   
@@ -38,5 +38,9 @@ mat-card {
   .mat-column-edit, .mat-column-delete {
   width: 60px;
   text-align: center;
+}
+
+.fitlered-no-value {
+  color: white;
 }
   

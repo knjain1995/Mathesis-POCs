@@ -20,6 +20,9 @@ import { loginData } from '../model/logindata';
 
 export class LoginComponent implements OnInit {
 
+  //makes the panel shutoff
+  readonly panelOpenState = signal(false);
+
   // implement the hide button for password form field
   hide = signal(true);  // CHECK WHAT THIS IS!!
   clickPasswordToggle(event: MouseEvent) {

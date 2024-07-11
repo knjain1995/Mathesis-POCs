@@ -5,81 +5,81 @@
 @import '../node_modules/@angular/material/prebuilt-themes/magenta-violet.css';
 /* @import '../node_modules/@angular/material/prebuilt-themes/azure-blue.css'; */
 
-html, body { 
-  /* height: 100%; */
-  min-height: 100vh;
- }
+  html, body { 
+    height: 100%;
+    /* min-height: 100vh; */
+  }
 
- mat-card {
-  /* --mdc-elevated-card-container-color: rgba(117, 106, 147, 0.98); */
-  /* --mdc-elevated-card-container-color: rgb(121, 101, 180); */
-  /* --mdc-elevated-card-container-color: rgb(86, 71, 129); */
-  /* --mdc-elevated-card-container-color: rgb(55, 101, 179); */
-  /* background-image: url('assets/material-background.jpg'); */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
- }
+  mat-card {
+    /* --mdc-elevated-card-container-color: rgba(117, 106, 147, 0.98); */
+    /* --mdc-elevated-card-container-color: rgb(121, 101, 180); */
+    /* --mdc-elevated-card-container-color: rgb(86, 71, 129); */
+    /* --mdc-elevated-card-container-color: rgb(55, 101, 179); */
+    /* background-image: url('assets/material-background.jpg'); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
- mat-card-header {
-  align-self : center;
-  color: white;
-}
+  mat-card-header {
+    align-self : center;
+    color: white;
+  }
 
-mat-hint {
-  color: white;
-}
+  mat-hint {
+    color: white;
+  }
 
-mat-card-footer {
-  color: white;
-}
+  mat-card-footer {
+    color: white;
+  }
 
-body { 
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  /* background-image: url('assets/signup-background-image.png'); */
-  /* background-image: url('assets/material-school.jpeg'); */
-  background-image: url('assets/material-background.jpg');
-  background-color: rgb(65, 41, 132);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  /* background-color: #4a0cb5; */
-}
+  body { 
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    /* background-image: url('assets/signup-background-image.png'); */
+    /* background-image: url('assets/material-school.jpeg'); */
+    background-image: url('assets/material-background.jpg');
+    background-color: rgb(65, 41, 132);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: #4a0cb5; */
+  }
 
-.signup-login-submit-button {
-  width: 100%;
-  /* margin-top: 1em; */
-  margin-bottom: 1em;
-}
+  .signup-login-submit-button {
+    width: 100%;
+    /* margin-top: 1em; */
+    margin-bottom: 1em;
+  }
 
 
-/* CSS for the signup/ sign in link at card footer */
-.sign-in-link {
-  font-size: 14px;
-  text-decoration: none; /* Remove underline */
-}
+  /* CSS for the signup/ sign in link at card footer */
+  .sign-in-link {
+    font-size: 14px;
+    text-decoration: none; /* Remove underline */
+  }
 
-.sign-in-link a {
-  font-size: 14px;
-  color: rgb(255, 171, 243);
-  text-decoration: none; /* Remove underline */
-}
+  .sign-in-link a {
+    font-size: 14px;
+    color: rgb(255, 171, 243);
+    text-decoration: none; /* Remove underline */
+  }
 
-.centered-text {
-  display: block;
-  text-align: center;
-}
-/* ///////////////// */
+  .centered-text {
+    display: block;
+    text-align: center;
+  }
+  /* ///////////////// */
 
-/* Custom styling for snackbar showing success messages */
+  /* Custom styling for snackbar showing success messages */
   .snackbar-success {
       --mdc-snackbar-container-color: #008b00;
       --mdc-snackbar-supporting-text-color: white;
       --mat-snack-bar-button-color: white;   
   }
 
-/* Custom styling for snackbar showing warning messages */
+  /* Custom styling for snackbar showing warning messages */
   .snackbar-warning {
     --mdc-snackbar-container-color: #b00020;
     --mdc-snackbar-supporting-text-color: white;

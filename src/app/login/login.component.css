@@ -1,5 +1,5 @@
 mat-card {
-    max-width: 400px;
+    max-width: 500px;
     min-width: 300px;
     margin: auto;
     padding: 2em;
@@ -9,11 +9,24 @@ mat-card {
     width: 100%;
     margin-bottom: 1em;
   }
-  
-  .container {
+
+  mat-expansion-panel {
+    text-align: center;
+  }
+
+  mat-expansion-panel-header mat-panel-description {
+    text-align: center;
+  }
+
+   .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh; /* Full viewport height */
     overflow: auto;
+  }
+
+  img {
+    padding: 0;
+    max-width: 366px;
   }

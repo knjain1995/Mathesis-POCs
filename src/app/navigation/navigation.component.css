@@ -8,7 +8,9 @@
   } */
 
 
-  mat-toolbar {
+  .navigation-toolbar {
+    position: fixed;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
