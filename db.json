@@ -97,7 +97,7 @@
       "phone": "9999999993",
       "dateofbirth": "1969-06-08T18:30:00.000Z",
       "password": "spiderman",
-      "newsletterintent": true,
+      "newsletterintent": false,
       "id": "231a"
     }
   ]

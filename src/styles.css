@@ -16,6 +16,9 @@
     /* --mdc-elevated-card-container-color: rgb(86, 71, 129); */
     /* --mdc-elevated-card-container-color: rgb(55, 101, 179); */
     /* background-image: url('assets/material-background.jpg'); */
+    /* min-width: 100%;
+    min-height: 100%; */
+    justify-content: center;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

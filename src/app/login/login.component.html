@@ -38,6 +38,7 @@
             <mat-form-field appearance="fill">
               <mat-label>Email</mat-label>
               <input class="input-fields" matInput formControlName="email" placeholder="Email" required>
+              <mat-icon matSuffix>email</mat-icon>
               <mat-error *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched">
                 Email is required
               </mat-error>

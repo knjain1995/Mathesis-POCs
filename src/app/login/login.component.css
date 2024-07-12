@@ -13,6 +13,7 @@ mat-card {
   mat-expansion-panel {
     text-align: center;
     align-items: center;
+    margin-bottom: 0;
   }
 
   mat-expansion-panel-header mat-panel-description {

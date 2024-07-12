@@ -1,5 +1,5 @@
 <div class="container">
-  
+
   <mat-card>
 
     <mat-card-header>    
@@ -46,6 +46,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" placeholder="Email" required>
+          <mat-icon matSuffix>email</mat-icon>
           <mat-error *ngIf="signUpForm.get('email')?.hasError('required') && signUpForm.get('email')?.touched">
             Email is required
           </mat-error>
@@ -58,6 +59,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Phone Number</mat-label>
           <input matInput formControlName="phone" placeholder="Phone Number" required>
+          <mat-icon matSuffix>phone</mat-icon>
           <mat-error *ngIf="signUpForm.get('phone')?.hasError('required') && signUpForm.get('phone')?.touched">
             Phone Number is required
           </mat-error>
