@@ -1,36 +1,48 @@
-mat-card {
-    max-width: 500px;
-    min-width: 300px;
-    margin: auto;
-    padding: 2em;
-  }
-  
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 1em;
-  }
-
-  .name-form-fields {
-    width: 45%
-  }
-
-  .name-form-fields-container {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  mat-checkbox {
-    padding-top: -1em;
-  }
-
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full viewport height */
-    overflow: auto;
-  }
+/* GENERAL STYLING IRRESPECTIVE OF SCREENSIZE */
 
   .signup-login-submit-button {
     margin-top: 1em;
   }
+
+  /* //////////////////////////////////////// */
+
+/* For phone in portrait  */
+@media screen and (max-width: 600px) {
+  
+  .container {
+    overflow-y: auto;
+  }
+
+  mat-card {
+    max-width: 100%;
+    min-height: 100%;
+    padding: 1em;
+
+    justify-content: center;
+  }
+
+}
+
+
+/* For all other devices and phones in landscape mode  */
+@media screen and (min-width: 600px) {
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+
+  }
+
+  mat-card {
+    display: block;
+    padding: 2em;
+    max-width: 500px;
+    justify-content: center;
+    overflow-y: auto;
+  }
+
+}

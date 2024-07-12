@@ -1,44 +1,61 @@
-mat-card {
-    max-width: 500px;
-    min-width: 300px;
-    margin: auto;
-    padding: 2em;
-  }
+
+/* GENERAL STYLING IRRESPECTIVE OF SCREENSIZE */
+
+mat-expansion-panel {
+  color: white;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+mat-card-header {
+  padding-bottom: 16px;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* //////////////////////////////////////// */
+
+/* For phone in portrait  */
+@media screen and (max-width: 600px) {
   
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 1em;
+  .container {
+    overflow-y: auto;
   }
 
-  mat-expansion-panel {
-    text-align: center;
-    align-items: center;
-    margin-bottom: 0;
+  mat-card {
+    max-width: 100%;
+    min-height: 100%;
+    justify-content: center;
   }
 
-  mat-expansion-panel-header mat-panel-description {
-    text-align: center;
-    color: white;
-  }
+}
 
-  .mat-content.mat-content-hide-toggle {
-    margin: 0;
-  }
 
-  .header-whitespace {
-    visibility: none;    
-  }
-
-   .container {
+/* For all other devices and phones in landscape mode  */
+@media screen and (min-width: 600px) {
+  
+  .container {
     display: flex;
+    flex-direction: column;
+
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
-    overflow: auto;
+    overflow-y: auto;
+
   }
 
-  img {
-    padding: 0;
-    max-width: 100%;
-    
+  mat-card {
+    display: block;
+    padding: 2em;
+    max-width: 500px;
+    justify-content: center;
+    overflow-y: auto;
   }
+
+  h2 {
+    margin-top: 0.5em;
+  }
+
+}

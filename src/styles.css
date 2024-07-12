@@ -6,10 +6,34 @@
 /* @import '../node_modules/@angular/material/prebuilt-themes/azure-blue.css'; */
 
   html, body { 
-    min-height: 100%;
+    margin: 0;
+    /* min-height: 100%; */
     min-height: 100vh;
+    height: 100vh;
+    min-width: 300px;
   }
 
+  body { 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+
+  .container {
+    /* background-image: url('assets/signup-background-image.png'); */
+    /* background-image: url('assets/material-school.jpeg'); */
+    background-image: url('assets/material-background.jpg');
+    background-color: rgb(65, 41, 132); /* incase image doesnt load */
+    /* background-color: #4a0cb5; */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 100vh;
+    height: 100vh;
+
+    margin: 0;
+  }
+
+/* default formatting for mat-card IMPORTANT */
   mat-card {
     /* --mdc-elevated-card-container-color: rgba(117, 106, 147, 0.98); */
     /* --mdc-elevated-card-container-color: rgb(121, 101, 180); */
@@ -18,46 +42,43 @@
     /* background-image: url('assets/material-background.jpg'); */
     /* min-width: 100%;
     min-height: 100%; */
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
+    /* justify-content: center; */
+    /* background-size: cover; */
+    /* background-position: center; */
+    /* background-repeat: no-repeat; */
+    opacity: 80%;
   }
 
+/* all mat-card-header should have text in white and be centered */
   mat-card-header {
-    align-self : center;
+    justify-content: center;
     color: white;
   }
 
+/* all mat-hint should have text color white */
   mat-hint {
     color: white;
   }
 
+/* all mat-card-footer should have text color white */
   mat-card-footer {
     color: white;
   }
 
-  body { 
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    /* background-image: url('assets/signup-background-image.png'); */
-    /* background-image: url('assets/material-school.jpeg'); */
-    background-image: url('assets/material-background.jpg');
-    background-color: rgb(65, 41, 132);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* background-color: #4a0cb5; */
-  }
-
-  .signup-login-submit-button {
+/* all mat-form-fields should extend to the container */
+  mat-form-field {
     width: 100%;
-    /* margin-top: 1em; */
     margin-bottom: 1em;
   }
 
+  /* CSS to create a gap between the login/signup/update button and footer link */
+  .signup-login-submit-button {
+    width: 100%;
+    margin-bottom: 1em;
+  }
 
-  /* CSS for the signup/ sign in link at card footer */
+  /* CSS for the signup/sign-in link at card footer */
   .sign-in-link {
     font-size: 14px;
     text-decoration: none; /* Remove underline */
@@ -73,14 +94,16 @@
     display: block;
     text-align: center;
   }
-  /* ///////////////// */
+  /* /////////////////////////////////////////////// */
+
+
 
   /* Custom styling for snackbar showing success messages */
   .snackbar-success {
-      --mdc-snackbar-container-color: #008b00;
-      --mdc-snackbar-supporting-text-color: white;
-      --mat-snack-bar-button-color: white;   
-  }
+    --mdc-snackbar-container-color: #008b00;
+    --mdc-snackbar-supporting-text-color: white;
+    --mat-snack-bar-button-color: white;   
+  } 
 
   /* Custom styling for snackbar showing warning messages */
   .snackbar-warning {
@@ -88,3 +111,23 @@
     --mdc-snackbar-supporting-text-color: white;
     --mat-snack-bar-button-color: white;
   }
+/* /////////////////////////////////////////////////// */
+
+
+
+
+/* For phone in portrait  */
+  @media screen and (max-width: 600px) {
+          /*  */
+  }
+
+/* For desktop and phone, tablet and foldable in landscape  */
+  @media screen and (min-width:840px) {
+
+  
+  }
+
+
+
+  
+

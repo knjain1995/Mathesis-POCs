@@ -4,7 +4,7 @@
 
     <mat-accordion>
    
-      <mat-expansion-panel class="expansion-panel-image" hideToggle [expanded]="!panelOpenState()">
+      <mat-expansion-panel hideToggle [expanded]="!panelOpenState()">
 
            <h2>Mathesis Academy</h2>
 
@@ -15,7 +15,7 @@
 
       <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)" hideToggle>
 
-        <mat-expansion-panel-header tyle="margin: 0 auto" class="login-expansion-header">
+        <mat-expansion-panel-header>
 
           <mat-panel-title>
             <mat-card-header>
@@ -26,7 +26,7 @@
           </mat-panel-title>
 
         <!-- <mat-panel-description>
-          <h3>Login</h3>
+          <h3></h3>
         </mat-panel-description> -->
 
         </mat-expansion-panel-header>
