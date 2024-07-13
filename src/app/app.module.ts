@@ -42,6 +42,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { MatListModule } from '@angular/material/list';
     ConfirmationdialogComponent,
     StudentInformationDashboardComponent,
     NavigationComponent,
-    CreateStudentProfileComponent
+    CreateStudentProfileComponent,
+    NavDrawerComponent
   ],
   imports: [
     BrowserModule,

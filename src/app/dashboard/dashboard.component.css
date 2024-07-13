@@ -1,44 +1,57 @@
-/* mat-card {
-    max-width: 100%;
-    min-width: 90%;
-    margin: 5em auto;
-    padding: 2em;
-  } */
-
-  mat-card {
-    display: block;
-    padding: 2em;
-    max-width: 100%;
-    min-height: 100%;
-    justify-content: center;
-    overflow-y: auto;
-  }
-
-  
-  
   .container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    /* align-items: center; */
-    overflow-y: auto;
+    height: 100vh;
+    /* overflow-y: auto; */
+    /* min-height: 300px; */
+    /* max-height: 100vh; */
+  }
+
+  app-navigation {
+    /* position: sticky; */
+    /* min-height: 20%; */
+    min-height: 70px;
+    height: 70px;
+    max-height: 70px;
+  } 
+
+  mat-card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    
+    padding: 1em;
+    max-width: 100%;
+    overflow: hidden;
+    /* height: 100%; */
+    /* max-height: 100%; */
+    /* justify-content: flex-start; */
+    /* min-height: 100%; */
+  }
+
+  mat-card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: hidden;
   }
 
   table {
     width: 100%;
-    min-width: auto;
-    table-layout: auto;
+    min-width: 100%;
+    /* table-layout: auto; */
   }
 
   .table-container {
     width: 100%;
     overflow-x: auto;
-    margin-top: 1em;
+    overflow-y: auto;
+    flex-grow: 1;
   }
 
-  mat-paginator {
+  .mat-paginator {
     width: 100%;
-    overflow-x: auto;
   }
 
   .mat-column-edit, .mat-column-delete {
@@ -50,3 +63,14 @@
   color: white;
 }
   
+
+/* For phone in portrait  */
+@media (max-height: 800px) {
+  .toolbar-buttons {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+  }
+}

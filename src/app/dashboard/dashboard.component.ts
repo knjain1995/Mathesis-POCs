@@ -64,7 +64,7 @@ import { signUpData } from '../model/signupdata';
     this.signUpService.getAllSignUp().subscribe({
       next: (res) => {
         this.dataSource = new MatTableDataSource(res);  // assign dataSource as a MatTableDataSource 
-        this.displayedColumns = ['firstname', 'lastname', 'email', 'phone', 'dateofbirth', 'newsletterintent', 'edit', 'delete'] // define all columns that would be displayed, we skipped password
+        this.displayedColumns = ['id', 'firstname', 'lastname', 'email', 'phone', 'dateofbirth', 'newsletterintent', 'edit', 'delete'] // define all columns that would be displayed, we skipped password
         this.dataSource.paginator = this.paginator; // assign paginator to dataSource
         this.dataSource.sort = this.sort; // assign sorter to datasource       
       },

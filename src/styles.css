@@ -11,6 +11,8 @@
     min-height: 100vh;
     height: 100vh;
     min-width: 300px;
+    min-height: 300px;
+    /* max-height: 100vh; */
   }
 
   body { 
@@ -29,6 +31,7 @@
 
     min-height: 100vh;
     height: 100vh;
+    max-height: 100vh;
 
     margin: 0;
   }
