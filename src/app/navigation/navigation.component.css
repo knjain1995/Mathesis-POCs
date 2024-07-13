@@ -1,19 +1,21 @@
-/* mat-toolbar {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .spacer {
-    flex: 1 1 auto;
-  } */
 
-
-  .navigation-toolbar {
+.navigation-toolbar {
+    /* position: sticky;   */
     position: fixed;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    z-index: 1000;  /* push navbar over other components */
+    height: 10%;
+    min-height: 90px;
+    min-width: 340px;
+    font-size: 30px;
+    font-weight: bold;
+
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* flex-wrap: wrap; */
+  }
+
+  .navigation-toolbar button {
+    font-size: 20px;  
   }
   
   .spacer {
@@ -29,7 +31,9 @@
     display: none;
   }
   
-  @media (max-width: 600px) {
+
+/* For phone in portrait  */
+  @media (max-width: 800px) {
     .toolbar-buttons {
       display: none;
     }

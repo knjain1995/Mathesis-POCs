@@ -1,17 +1,16 @@
   <mat-toolbar class="navigation-toolbar">
-    <span>Mathesis POC</span>
-    <span class="spacer"></span>
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-button">
+    <button mat-icon-button type="button" [matMenuTriggerFor]="menu" class="menu-button">
       <mat-icon>menu</mat-icon>
     </button>
+    <span>Mathesis POC</span>
+    <span class="spacer"></span>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/dashboard">Registration Dashboard</button>
-      <button mat-menu-item routerLink="/studentinfodashboard">Student Information Dashboard</button>
-      <button mat-menu-item (click)="logout()">Logout</button>
-    </mat-menu>
+      <button mat-menu-item type="button" routerLink="/dashboard">Sign-Up Information</button>
+      <button mat-menu-item type="button" routerLink="/studentinfodashboard">Student Information</button>
+    </mat-menu>    
     <div class="toolbar-buttons">
-      <button mat-button routerLink="/dashboard">Registration Dashboard</button>
-      <button mat-button routerLink="/studentinfodashboard">Student Information Dashboard</button>
-      <button mat-button type="button" (click)="logout()">Logout</button>
+      <button mat-button type="button" routerLink="/dashboard">Sign-Up Information</button>
+      <button mat-button type="button" routerLink="/studentinfodashboard">Student Information</button>
     </div>
+    <button mat-button type="button" (click)="logout()">Logout</button>
   </mat-toolbar>

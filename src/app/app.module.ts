@@ -40,6 +40,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatToolbarModule,
     MatMenuModule,
     MatSlideToggleModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [
     provideAnimationsAsync(),

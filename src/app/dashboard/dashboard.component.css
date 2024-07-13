@@ -1,21 +1,27 @@
-mat-card {
+/* mat-card {
     max-width: 100%;
     min-width: 90%;
     margin: 5em auto;
     padding: 2em;
-  }
-  
-  mat-form-field {
-    width: 100%;
+  } */
+
+  mat-card {
+    display: block;
+    padding: 2em;
+    max-width: 100%;
+    min-height: 100%;
+    justify-content: center;
+    overflow-y: auto;
   }
 
+  
+  
   .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 2em;
-    height: 100vh; /* Full viewport height */
-    overflow: auto;
+    justify-content: flex-start;
+    /* align-items: center; */
+    overflow-y: auto;
   }
 
   table {
