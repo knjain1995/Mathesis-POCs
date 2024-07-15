@@ -14,8 +14,6 @@ import { SignupComponent } from './signup/signup.component';
 import { ConfirmationdialogComponent } from './confirmationdialog/confirmationdialog.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { StudentInformationDashboardComponent } from './student-information-dashboard/student-information-dashboard.component';
-import { CreateStudentProfileComponent } from './create-student-profile/create-student-profile.component';
 
 // Animations
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -51,9 +49,7 @@ import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
     LoginComponent,
     DashboardComponent,
     ConfirmationdialogComponent,
-    StudentInformationDashboardComponent,
     NavigationComponent,
-    CreateStudentProfileComponent,
     NavDrawerComponent
   ],
   imports: [

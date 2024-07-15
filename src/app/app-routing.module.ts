@@ -5,8 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { StudentInformationDashboardComponent } from './student-information-dashboard/student-information-dashboard.component';
-import { CreateStudentProfileComponent } from './create-student-profile/create-student-profile.component';
 import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -14,9 +12,7 @@ const routes: Routes = [
   {path: 'newsignup', component: SignupComponent, canActivate: [authGuard]},
   {path: 'editsignup/:id', component: SignupComponent, canActivate: [authGuard]},
   {path: 'login', component: LoginComponent, canActivate: [authGuard]},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [authGuard]},
-  {path: 'studentinfodashboard', component: StudentInformationDashboardComponent, canActivate: [authGuard]},
-  {path: 'createstudentprofile', component: CreateStudentProfileComponent, canActivate: [authGuard]}
+  {path: 'dashboard', component: DashboardComponent, canActivate: [authGuard]}
 ];
 
 @NgModule({
