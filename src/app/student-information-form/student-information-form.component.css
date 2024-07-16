@@ -1,0 +1,68 @@
+/* GENERAL STYLING IRRESPECTIVE OF SCREENSIZE */
+
+/* mat-card-title {
+    h2 {
+        text-align: center;
+    }
+} */
+
+h2 {
+    text-align: center;
+}
+
+.signup-login-submit-button {
+    margin-top: 1em;
+  }
+
+.student-nationality-information {
+    /* css for the nationality information part of the form */
+    color: white;
+}
+
+.student-scholarship-information {
+    /* css for the scholarship information part of the form */
+    color: white;
+}
+
+  /* //////////////////////////////////////// */
+
+/* For phone in portrait  */
+@media screen and (max-width: 600px) {
+  
+  .container {
+    overflow-y: auto;
+  }
+
+  mat-card {
+    max-width: 100%;
+    min-height: 100%;
+    padding: 1em;
+
+    justify-content: center;
+  }
+
+}
+
+
+/* For all other devices and phones in landscape mode  */
+@media screen and (min-width: 600px) {
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+
+  }
+
+  mat-card {
+    display: block;
+    padding: 2em;
+    max-width: 700px;
+    justify-content: center;
+    overflow-y: auto;
+  }
+
+}

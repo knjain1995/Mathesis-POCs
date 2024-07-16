@@ -1,22 +1,26 @@
 // Signup form fields
 export interface studentData {
-    firstName: string,
-    lastName: string,
-    email: string,
-    phoneNumber: number,
-    dateOfBirth: Date,
-    presentAddress: string, // text area
+    studentFirstName: string,
+    studentlastName: string,
+    studentEmail: string,
+    studentPhoneNumber: number,
+    studentDateOfBirth: Date,
+    studentPresentAddress: string, // text area
     studentIDNumber: number,    // input: WAXXX
-    academicYear: Date, // Date range
-    degreeProgram: string,  // Selection
-    studentType: string, // International, Domestic (radio)
-    scholarshipStatus: boolean, // Yes, No
+    studentAcademicYear: Date, // Date range
+    studentDegreeProgram: string,  // Selection
+    studentNationality: string, // International, Domestic (radio)
+    studentScholarshipStatus: boolean, // Yes, No
+    studentScholarshipGained: string,   // One of Chevening, Dean's Award, Other and other is a input field
+    studentScholarsipsGained_CheveningScholarship: boolean,
+    studentScholarsipsGained_DeansScholarship: boolean,
+    studentScholarsipsGained_Other: string,
     // Autopopulate core modules based on selected degree program and select elective modules
-    coreModule1: string,    // Selection
-    coreModule2: string,
-    electiveModule1: string,
-    electiveModule2: string,
-    electiveModule3: string,
+    studentCoreModule1: string,    // Selection
+    studentCoreModule2: string,
+    studentElectiveModule1: string,
+    studentElectiveModule2: string,
+    studentElectiveModule3: string,
 }
 
 // ecFirstName: string,    // Emergency Contact Details

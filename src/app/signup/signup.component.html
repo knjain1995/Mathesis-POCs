@@ -67,7 +67,7 @@
             Enter a valid 10-digit phone number
           </mat-error>
           <mat-hint align="end">
-            {{signUpForm.get('phone')?.value?.length || 0}}/10 characters
+            {{signUpForm.get('phone')?.value?.length || 0}}/10 digits
           </mat-hint>
         </mat-form-field>
 
@@ -75,7 +75,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Date of Birth</mat-label>
           
-          <input matInput [matDatepicker]="bdpicker" [max]="maxDate" formControlName="dateofbirth" placeholder="Choose a date" required>
+          <input matInput formControlName="dateofbirth"  [matDatepicker]="bdpicker" [max]="maxDate" placeholder="Choose a date" required>
           
           <mat-datepicker-toggle matIconSuffix [for]="bdpicker"></mat-datepicker-toggle>
           

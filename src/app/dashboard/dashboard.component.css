@@ -1,76 +1,76 @@
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100vh;
-    /* overflow-y: auto; */
-    /* min-height: 300px; */
-    /* max-height: 100vh; */
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+  /* overflow-y: auto; */
+  /* min-height: 300px; */
+  /* max-height: 100vh; */
+}
 
-  app-navigation {
-    /* position: sticky; */
-    /* min-height: 20%; */
-    min-height: 70px;
-    height: 70px;
-    max-height: 70px;
-  } 
+app-navigation {
+  /* position: sticky; */
+  /* min-height: 20%; */
+  min-height: 70px;
+  height: 70px;
+  max-height: 70px;
+} 
 
-  mat-card {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    
-    padding: 1em;
-    max-width: 100%;
-    overflow: hidden;
-    /* height: 100%; */
-    /* max-height: 100%; */
-    /* justify-content: flex-start; */
-    /* min-height: 100%; */
-  }
+mat-card {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  
+  padding: 1em;
+  max-width: 100%;
+  overflow: hidden;
+  /* height: 100%; */
+  /* max-height: 100%; */
+  /* justify-content: flex-start; */
+  /* min-height: 100%; */
+}
 
-  mat-card-content {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    overflow-y: hidden;
-  }
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: hidden;
+}
 
-  table {
-    width: 100%;
-    min-width: 100%;
-    /* table-layout: auto; */
-  }
+table {
+  width: 100%;
+  min-width: 100%;
+  /* table-layout: auto; */
+}
 
-  .table-container {
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: auto;
-    flex-grow: 1;
-  }
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  flex-grow: 1;
+}
 
-  .mat-paginator {
-    width: 100%;
-  }
+.mat-paginator {
+  width: 100%;
+}
 
-  .mat-column-edit, .mat-column-delete {
-  width: 60px;
-  text-align: center;
+.mat-column-edit, .mat-column-delete {
+width: 60px;
+text-align: center;
 }
 
 .fitlered-no-value {
-  color: white;
+color: white;
 }
-  
+
 
 /* For phone in portrait  */
 @media (max-height: 800px) {
-  .toolbar-buttons {
-    display: none;
-  }
+.toolbar-buttons {
+  display: none;
+}
 
-  .menu-button {
-    display: block;
-  }
+.menu-button {
+  display: block;
+}
 }
