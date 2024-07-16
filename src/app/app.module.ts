@@ -82,7 +82,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatListModule,
     MatSelectModule,
     MatRadioModule,
-    MatStepperModule
+    MatStepperModule,
   ],
   providers: [
     provideAnimationsAsync(),

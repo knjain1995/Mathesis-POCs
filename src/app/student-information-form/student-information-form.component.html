@@ -14,7 +14,7 @@
             <form [formGroup]="studentInformationForm" (ngSubmit)="onSubmit()">
 
                 <!-- MAT STEPPER START -->
-                <mat-stepper [linear]="true">
+                <mat-stepper [orientation]="(stepperOrientation | async)!" [linear]="false">
                     
                     <!-- MAT STEP 1 START -->
                     <mat-step label="Personal Details" [editable]="true" [stepControl]="studentInformationForm" 
@@ -156,31 +156,35 @@
                         <!-- STUDENT NATIONALITY -->
                         <div class="student-nationality-information">
                             <mat-label>Students' Nationality</mat-label>
-                            <mat-radio-group formControlName="studentNationality">
-                                <mat-radio-button value="Domestic">Domestic</mat-radio-button>
-                                <mat-radio-button value="International">International</mat-radio-button>
-                            </mat-radio-group>    
+                            <div class="form-radio-button-group">
+                                <mat-radio-group formControlName="studentNationality">
+                                    <mat-radio-button value="Domestic">Domestic</mat-radio-button>
+                                    <mat-radio-button value="International">International</mat-radio-button>    
+                                </mat-radio-group>    
+                            </div>
                         </div>
                         
                         <!-- SCHOLARSHIP STATUS -->
                         <div class="student-scholarship-information">
                             <mat-label>Does the student have a scholarship?</mat-label>
-                            <mat-radio-group formControlName="studentScholarshipStatus">
-                                <mat-radio-button value="No">No</mat-radio-button>
-                                <mat-radio-button value="Yes">Yes</mat-radio-button>
-                            </mat-radio-group>
+                            <div class="form-radio-button-group">
+                                <mat-radio-group formControlName="studentScholarshipStatus">
+                                    <mat-radio-button value="No">No</mat-radio-button>
+                                    <mat-radio-button value="Yes">Yes</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
                         </div>
-
 
                         <!-- SCHOLARSHIP GAINED -->
                         <!-- Only show if scholarship status is true -->
-                        <div *ngIf="studentInformationForm.get('studentScholarshipStatus')?.value==='Yes'">
-                            
+                        <div class="scholarship-gained-info-group" *ngIf="studentInformationForm.get('studentScholarshipStatus')?.value==='Yes'">
+                            <p>Please select the scholarships gained:</p>
+
                             <mat-checkbox formControlName="studentScholarsipsGained_CheveningScholarship">Chevening Scholarship</mat-checkbox>
                             
                             <mat-checkbox formControlName="studentScholarsipsGained_DeansScholarship">Dean's Scholarship</mat-checkbox>
                             
-                            <mat-form-field appearance="fill">
+                            <mat-form-field >
                                 <mat-label>Other</mat-label>
                                 <input matInput formControlName="studentScholarsipsGained_Other" placeholder="Other Scholarship">
                             </mat-form-field>
@@ -304,9 +308,9 @@
     </mat-card>
 
     <!-- DELETE// CURRENTLY USING FOR DEBUGGING -->
-     <div style="background-color: white;">
+     <!-- <div style="background-color: white;">
         {{studentInformationForm.value | json}}
-     </div>
+     </div> -->
      <!-- ///////////////////////////////////// -->
    
 </div>

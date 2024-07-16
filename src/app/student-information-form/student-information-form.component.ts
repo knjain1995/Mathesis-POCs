@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
-
+import { StepperOrientation } from '@angular/cdk/stepper';
+import { map, Observable } from 'rxjs';
 
 // Services Import
 import { UtilityService } from '../utility.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 // Models Import
 import { studentData } from '../model/studentdata';
@@ -14,19 +16,27 @@ import { studentData } from '../model/studentdata';
   selector: 'app-student-information-form',
   templateUrl: './student-information-form.component.html',
   styleUrl: './student-information-form.component.css',
-  providers: [provideNativeDateAdapter()]
+  providers: [UtilityService, provideNativeDateAdapter()]
 })
 
 export class StudentInformationFormComponent implements OnInit {
   
+  stepperOrientation!: Observable<StepperOrientation>;  // bound to orientation in html  
+
 
   // inject dependencies
   constructor(
     private utilityService: UtilityService,
     private formBuilder: FormBuilder,
-    private dateAdapter: DateAdapter<Date>
+    private dateAdapter: DateAdapter<Date>,
+    private breakPointObserver: BreakpointObserver  // to check matching state of media queries
   ) {
     this.dateAdapter.setLocale('en-IN');
+
+    // Use BreakpointObserver to create an observable that will emit
+    // the appropriate stepper orientation based on the screen size
+    this.stepperOrientation = breakPointObserver.observe('(max-width: 600px')
+    .pipe(map(({matches}) => (matches ? 'vertical' : 'horizontal')));
   }
 
 

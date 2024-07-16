@@ -1,11 +1,5 @@
 /* GENERAL STYLING IRRESPECTIVE OF SCREENSIZE */
 
-/* mat-card-title {
-    h2 {
-        text-align: center;
-    }
-} */
-
 h2 {
     text-align: center;
 }
@@ -17,10 +11,16 @@ h2 {
 .student-nationality-information {
     /* css for the nationality information part of the form */
     color: white;
+    margin-bottom: 1em;
 }
 
 .student-scholarship-information {
     /* css for the scholarship information part of the form */
+    color: white;
+    margin-bottom: 1em;
+}
+
+.scholarship-gained-info-group {
     color: white;
 }
 
@@ -32,6 +32,7 @@ h2 {
   .container {
     overflow-y: auto;
   }
+
 
   mat-card {
     max-width: 100%;
