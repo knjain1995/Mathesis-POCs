@@ -129,7 +129,7 @@
                         <mat-option *ngFor="let degreeProgram of degreePrograms" [value]="degreeProgram">{{degreeProgram}}</mat-option>
                     </mat-select>
                     <mat-error *ngIf="studentInformationForm.get('studentDegreeProgram')?.hasError('required') && studentInformationForm.get('studentDegreeProgram')?.touched">
-                        Degree Program is required
+                        Please select a degree program
                     </mat-error>    
                 </mat-form-field>
 
@@ -184,27 +184,39 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Elective Module 1</mat-label>
                     <mat-select formControlName="studentElectiveModule1" placeholder="Choose an option">
-                        <mat-option>Please Choose</mat-option>
+                        <mat-option *ngIf="this.studentElectiveModule1List.length==0">Please Choose a Degree Program</mat-option>
+                        <mat-option *ngIf="this.studentElectiveModule1List.length!=0">Please Choose</mat-option>
                         <mat-option *ngFor="let elective1 of studentElectiveModule1List" [value]="elective1">{{elective1}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="studentInformationForm.get('studentElectiveModule1')?.hasError('required') && studentInformationForm.get('studentElectiveModule1')?.touched">
+                        Please select an elective
+                    </mat-error>
                 </mat-form-field>
 
                 <!-- ELECTIVE MODULE 2 FORMFIELD -->
                 <mat-form-field appearance="fill">
                     <mat-label>Elective Module 2</mat-label>
                     <mat-select formControlName="studentElectiveModule2" placeholder="Choose an option">
-                        <mat-option>Please Choose</mat-option>
+                        <mat-option *ngIf="this.studentElectiveModule2List.length==0">Please Choose a Degree Program</mat-option>
+                        <mat-option *ngIf="this.studentElectiveModule2List.length!=0">Please Choose</mat-option>
                         <mat-option *ngFor="let elective2 of studentElectiveModule2List" [value]="elective2">{{elective2}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="studentInformationForm.get('studentElectiveModule2')?.hasError('required') && studentInformationForm.get('studentElectiveModule2')?.touched">
+                        Please select an elective
+                    </mat-error>
                 </mat-form-field>
 
                 <!-- ELECTIVE MODULE 3 FORMFIELD -->
                 <mat-form-field appearance="fill">
                     <mat-label>Elective Module 3</mat-label>
                     <mat-select formControlName="studentElectiveModule3" placeholder="Choose an option">
-                        <mat-option>Please Choose</mat-option>
+                        <mat-option *ngIf="this.studentElectiveModule3List.length==0">Please Choose a Degree Program</mat-option>
+                        <mat-option *ngIf="this.studentElectiveModule3List.length!=0">Please Choose</mat-option>
                         <mat-option *ngFor="let elective3 of studentElectiveModule3List" [value]="elective3">{{elective3}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="studentInformationForm.get('studentElectiveModule3')?.hasError('required') && studentInformationForm.get('studentElectiveModule3')?.touched">
+                        Please select an elective
+                    </mat-error>
                 </mat-form-field>
 
 

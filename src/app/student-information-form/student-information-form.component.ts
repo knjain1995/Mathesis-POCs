@@ -38,11 +38,15 @@ export class StudentInformationFormComponent implements OnInit {
   academicYears: string[] = []; // assign academic years form selection field
   degreePrograms: string[] = []; // assign degree program form selection field
   degreeProgramModules: any = {};  // assign degree program modules for selection fields
-  studentElectiveModule1List: string[] = [];
-  studentElectiveModule2List: string[] = [];
-  studentElectiveModule3List: string[] = [];
+  selectedProgramModulesList: string[] = [];  // all elective modules for selected degree program
+  studentElectiveModule1List: string[] = [];  // all elective modules for selected degree program with selected electives (2 and 3) filtered out
+  studentElectiveModule2List: string[] = [];  // all elective modules for selected degree program with selected electives (1 and 3) filtered out
+  studentElectiveModule3List: string[] = [];  // all elective modules for selected degree program with selected electives (1 and 2) filtered out
+  filteredOutElectives: string[] = ['', '', ''];  // electives selected in each of the selection fields
 
   ngOnInit(): void {
+
+    // initialize form
     this.studentInformationForm = this.formBuilder.group({
       studentFirstName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],
       studentLastName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],
@@ -64,15 +68,14 @@ export class StudentInformationFormComponent implements OnInit {
       studentElectiveModule1: ['', Validators.required],
       studentElectiveModule2: ['', Validators.required],
       studentElectiveModule3: ['', Validators.required]
-      
-      // studentCoreModule1: ['', Validators.required],
-      // studentCoreModule2: ['', Validators.required],
     });
 
+    // call methods to load selection fiels
     this.getAcademicYears();  // load academic years
-    this.getDegreeProgramModules(); // load degree program modules
+    this.getDegreeProgramModules(); // load degree program modules (call before getDegreePrograms to get keys)
     this.getDegreePrograms(); // load degree programs
 
+    // subscribe to chanege in student scholarship status field, reset its subfields if set to false
     this.studentInformationForm.get('studentScholarshipStatus')?.valueChanges.subscribe(res => {
       if (res==='No') {
         this.studentInformationForm.patchValue({
@@ -88,17 +91,17 @@ export class StudentInformationFormComponent implements OnInit {
       this.setModulesBasedOnDegreeProgram(res);
     });
 
-    // Subscribe to changes in the selective fields
+    // Subscribe to changes in the selective fields after selecting elective module 1
     this.studentInformationForm.get('studentElectiveModule1')?.valueChanges.subscribe(res => {
       this.setElectivesList23(res);
     });
 
-    // Subscribe to changes in the selective fields
+    // Subscribe to changes in the selective fields after selecting elective module 2
     this.studentInformationForm.get('studentElectiveModule2')?.valueChanges.subscribe(res => {
       this.setElectivesList13(res);
     });
 
-    // Subscribe to changes in the selective fields
+    // Subscribe to changes in the selective fields after selecting elective module 3
     this.studentInformationForm.get('studentElectiveModule3')?.valueChanges.subscribe(res => {
       this.setElectivesList12(res);
     });
@@ -201,63 +204,74 @@ export class StudentInformationFormComponent implements OnInit {
   
   // set core modules and selection list of electives basd on degree program selected
   setModulesBasedOnDegreeProgram(degreeProgram: string): void {
-    const selectedProgram = this.degreeProgramModules[degreeProgram];  
+
+    const selectedProgram = this.degreeProgramModules[degreeProgram];  // get the object of the selected program from dictionary
 
     if (selectedProgram) {
       this.studentInformationForm.patchValue({
-        studentCoreModule1: selectedProgram.coreModules[0] || '',
-        studentCoreModule2: selectedProgram.coreModules[1] || '',
-        studentElectiveModule1: '',       
-        studentElectiveModule2: '',
-        studentElectiveModule3: ''
+        studentCoreModule1: selectedProgram.coreModules[0] || '', // set as the first core module
+        studentCoreModule2: selectedProgram.coreModules[1] || '', // set as the second core module
+        studentElectiveModule1: '', // initialize to blank      
+        studentElectiveModule2: '', // initialize to blank
+        studentElectiveModule3: ''  // initialize to blank
       });
 
-      this.studentElectiveModule1List = selectedProgram.electiveModules;
-      this.studentElectiveModule2List = selectedProgram.electiveModules;
-      this.studentElectiveModule3List = selectedProgram.electiveModules;
+      this.studentElectiveModule1List = selectedProgram.electiveModules;  // list shown at field elective module 1
+      this.studentElectiveModule2List = selectedProgram.electiveModules;  // list shown at field elective module 2
+      this.studentElectiveModule3List = selectedProgram.electiveModules;  // list shown at field elective module 3
+      this.selectedProgramModulesList = selectedProgram.electiveModules;  // complete list of elective modules, this remains complete during the entire time
+      this.filteredOutElectives = ['', '', '']; // initialize filtered out electives as an empty array
+    }
 
-    // Disable the core module fields
-    // this.studentInformationForm.get('studentCoreModule1')?.disable();
-    // this.studentInformationForm.get('studentCoreModule2')?.disable();
-
+    else { // reset elective module lists if we deselect Degree Program
+      this.studentElectiveModule1List = [];
+      this.studentElectiveModule2List = [];
+      this.studentElectiveModule3List = [];
+      this.selectedProgramModulesList = []; 
+      this.filteredOutElectives = ['', '', '']; 
     }
   }
 
-    // Methods to filter out selected electives in subsequent elective lists
+    // Method to filter out electives for elective fields 2 and 3 after selecting elective in field 1
     setElectivesList23(selectedElective1: string): void {
-      this.studentElectiveModule2List = this.studentElectiveModule2List.filter(list => list !== selectedElective1);
-      this.studentElectiveModule3List = this.studentElectiveModule3List.filter(list => list !== selectedElective1);
+
+      if (selectedElective1)  {
+        this.filteredOutElectives[0] = selectedElective1; // assign the elective selected in elective 1
+      }
+      else {
+        this.filteredOutElectives[0] = '';
+      }
+
+      this.studentElectiveModule2List = this.selectedProgramModulesList.filter(module => module !== this.filteredOutElectives[0] && module !== this.filteredOutElectives[2]);  // remove electives selected in 1 and 3
+      this.studentElectiveModule3List = this.selectedProgramModulesList.filter(module => module !== this.filteredOutElectives[0] && module !== this.filteredOutElectives[1]);  // remove electives selected in 1 and 2
     }
   
-    // Methods to filter out selected electives in subsequent elective lists
+    // Method to filter out electives for elective fields 1 and 3 after selecting elective in field 2
     setElectivesList13(selectedElective2: string): void {
-      this.studentElectiveModule1List = this.studentElectiveModule1List.filter(list => list !== selectedElective2);
-      this.studentElectiveModule3List = this.studentElectiveModule3List.filter(list => list !== selectedElective2);
+
+      if (selectedElective2)  {
+        this.filteredOutElectives[1] = selectedElective2; // assign the elective selected in elective 2
+      }
+      else {
+        this.filteredOutElectives[1] = '';
+      }
+      
+      this.studentElectiveModule1List = this.selectedProgramModulesList.filter(module => module !== this.filteredOutElectives[1] && module !== this.filteredOutElectives[2]);  // remove electives selected in 2 and 3
+      this.studentElectiveModule3List = this.selectedProgramModulesList.filter(module => module !== this.filteredOutElectives[1] && module !== this.filteredOutElectives[0]);  // remove electives selected in 1 and 2 
     }
   
-    // Methods to filter out selected electives in subsequent elective lists
+    // Method to filter out electives for elective fields 1 and 2 after selecting elective in field 3
     setElectivesList12(selectedElective3: string): void {
-      this.studentElectiveModule1List = this.studentElectiveModule1List.filter(list => list !== selectedElective3);
-      this.studentElectiveModule2List = this.studentElectiveModule2List.filter(list => list !== selectedElective3);
+
+      if (selectedElective3)  {
+        this.filteredOutElectives[2] = selectedElective3; // assign the elective selected in elective 3
+      }
+      else {
+        this.filteredOutElectives[2] = '';
+      }
+
+      this.studentElectiveModule1List = this.selectedProgramModulesList.filter(module => module !== this.filteredOutElectives[2] && module !== this.filteredOutElectives[1]);  // remove electives selected in 2 and 3
+      this.studentElectiveModule2List = this.selectedProgramModulesList.filter(module => module !== this.filteredOutElectives[2] && module !== this.filteredOutElectives[0]);  // remove electives selected in 1 and 3  
     }
 
 }
-
-
-
-    // this.degreePrograms = [
-    //   "Bachelor of Science in Computer Science",
-    //   "Bachelor of Arts in Computer Science",
-    //   "Bachelor of Science in Software Engineering",
-    //   "Bachelor of Science in Information Technology",
-    //   "Bachelor of Science in Computer Engineering",
-    //   "Bachelor of Science in Data Science",
-    //   "Bachelor of Science in Cybersecurity",
-    //   "Bachelor of Science in Artificial Intelligence",
-    //   "Bachelor of Science in Game Development",
-    //   "Bachelor of Science in Network Engineering",
-    //   "Bachelor of Science in Information Systems",
-    //   "Bachelor of Science in Computer Information Systems",
-    //   "Bachelor of Science in Cloud Computing",
-    //   "Bachelor of Science in Computer Science"
-    // ];
