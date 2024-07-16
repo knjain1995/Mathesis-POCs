@@ -53,16 +53,17 @@ export class StudentInformationFormComponent implements OnInit {
       studentEmail: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]],
       studentPhoneNumber: ['',[Validators.required, Validators.pattern(/^[1-9][0-9]{9}$/)]],
       studentDateOfBirth: ['', Validators.required],
+      // studentDateOfBirth: ['', [Validators.required, Validators.pattern(/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/)]],
       studentPresentAddress: ['', Validators.required],
       studentIDNumber: ['WA', [Validators.required, Validators.pattern(/^WA[0-9]{4}$/)]],
       studentAcademicYear: ['', Validators.required],
-      studentDegreeProgram: ['', Validators.required],
       studentNationality: ['Domestic'],
       studentScholarshipStatus: ['No'],
       // studentScholarshipGained: ['', Validators.required],
       studentScholarsipsGained_CheveningScholarship: [false],
       studentScholarsipsGained_DeansScholarship: [false],
       studentScholarsipsGained_Other: [''],
+      studentDegreeProgram: ['', Validators.required],
       studentCoreModule1: [''],
       studentCoreModule2: [''],
       studentElectiveModule1: ['', Validators.required],
@@ -223,7 +224,17 @@ export class StudentInformationFormComponent implements OnInit {
       this.filteredOutElectives = ['', '', '']; // initialize filtered out electives as an empty array
     }
 
-    else { // reset elective module lists if we deselect Degree Program
+    else { 
+      // Reset values in the form
+      this.studentInformationForm.patchValue({
+        studentCoreModule1: '',
+        studentCoreModule2: '',
+        studentElectiveModule1: '',      
+        studentElectiveModule2: '',
+        studentElectiveModule3: '' 
+      });
+
+      // reset elective module lists if we deselect Degree Program
       this.studentElectiveModule1List = [];
       this.studentElectiveModule2List = [];
       this.studentElectiveModule3List = [];
