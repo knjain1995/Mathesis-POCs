@@ -24,17 +24,14 @@ import { signUpData } from '../model/signupdata';
 })
 // export class DashboardComponent implements OnInit, AfterViewInit {
   export class DashboardComponent implements OnInit {
-
   displayedColumns: string[] = [];  // initialize the displayed columns array as an empty array
-
   dataSource!: MatTableDataSource<signUpData>;  // initialize variable as Material Table data source which aligns to signUpData interface
-
+ 
   @ViewChild(MatPaginator) // Declares a property paginator that Angular will assign a reference to the MatPaginator component.
   paginator!: MatPaginator; //initialize MatPaginator
 
   @ViewChild(MatSort) // Declares a property sort that Angular will assign a reference to the MatSort component.
   sort!: MatSort; //initialize MatPaginator
-
 
   constructor(  // inject services
     private signUpService: SignUpService,

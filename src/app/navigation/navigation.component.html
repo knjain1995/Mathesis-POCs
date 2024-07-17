@@ -6,11 +6,13 @@
     <span class="spacer"></span>
     <mat-menu #menu="matMenu">
       <button mat-menu-item type="button" routerLink="/dashboard">Sign-Up Information</button>
-      <button mat-menu-item type="button" routerLink="/studentinformationform">Student Information</button>
+      <button mat-menu-item type="button" routerLink="/studentinformationdashboard">Student Information</button>
+      <button mat-menu-item type="button" routerLink="/studentinformationform">Form</button>
     </mat-menu>    
     <div class="toolbar-buttons">
       <button mat-button type="button" routerLink="/dashboard">Sign-Up Information</button>
-      <button mat-button type="button" routerLink="/studentinformationform">Student Information</button>
+      <button mat-button type="button" routerLink="/studentinformationdashboard">Student Information</button>
+      <button mat-button type="button" routerLink="/studentinformationform">Form</button>
     </div>
     <button mat-button type="button" (click)="logout()">Logout</button>
   </mat-toolbar>
@@ -21,6 +23,5 @@
           (click)="activeLink = link"
           [active]="activeLink == link"> {{link}} </a>
       }
-      <a mat-tab-link disabled>Disabled Link</a>
   </nav>
   <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel> -->

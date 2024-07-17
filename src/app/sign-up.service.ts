@@ -18,6 +18,8 @@ export class SignUpService {
   // URL to JSON server
   serverURL = 'http://localhost:3000';
 
+  // SIGN-UP INFORMATION TABLE
+
   // Make HTTP post request to json server and return an observable
   addSignUp(signUpData: signUpData): Observable<any> {
     return this.httpClient.post(this.serverURL+'/signUpData', signUpData);
@@ -44,8 +46,18 @@ export class SignUpService {
   }
 
 
+  // STUDENT INFORMATION TABLE
+
   addStudentInformation(studentInformationData: studentData): Observable<any> {
     return this.httpClient.post(this.serverURL+'/studentInformationData', studentInformationData);
+  }
+
+  getStudentInformation(id: string): Observable<studentData> {
+    return this.httpClient.get<studentData>(this.serverURL+'/studentInformationData/'+id)
+  }
+
+  getAllStudentInformation(): Observable<studentData[]> {
+    return this.httpClient.get<studentData[]>(this.serverURL+'/studentInformationData')
   }
 
 }

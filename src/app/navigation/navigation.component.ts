@@ -16,13 +16,10 @@ export class NavigationComponent {
     private router: Router
   ) {}
 
-  // links = ['First', 'Second', 'Third'];
+  // links = ['/dashboard', '/studentinformationform'];
   // activeLink = this.links[0];
 
-  // addLink() {
-  //   this.links.push(`Link ${this.links.length + 1}`);
-  // }
-  
+ 
   // Route to Login Page
   logout() {
     localStorage.removeItem('loggedIn');

@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
+app-navigation {
+    min-height: 70px;
+    height: 70px;
+    max-height: 70px
+}
+
+mat-card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1em;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+mat-card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.table-container {
+    max-width: 100%;
+    flex-grow: 1;
+    overflow-x: auto;
+    min-height: 200px;
+}
+
+.filtered-no-value {
+    color: white;
+}
