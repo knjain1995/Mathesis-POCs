@@ -3,9 +3,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
 import { StepperOrientation } from '@angular/cdk/stepper';
 import { map, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 // Services Import
 import { UtilityService } from '../utility.service';
+import { SignUpService } from '../sign-up.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
 // Models Import
@@ -16,7 +18,7 @@ import { studentData } from '../model/studentdata';
   selector: 'app-student-information-form',
   templateUrl: './student-information-form.component.html',
   styleUrl: './student-information-form.component.css',
-  providers: [UtilityService, provideNativeDateAdapter()]
+  providers: [UtilityService, SignUpService, provideNativeDateAdapter()]
 })
 
 export class StudentInformationFormComponent implements OnInit {
@@ -27,7 +29,9 @@ export class StudentInformationFormComponent implements OnInit {
   // inject dependencies
   constructor(
     private utilityService: UtilityService,
+    private signUpService: SignUpService,
     private formBuilder: FormBuilder,
+    private router: Router,
     private dateAdapter: DateAdapter<Date>,
     private breakPointObserver: BreakpointObserver  // to check matching state of media queries
   ) {
@@ -127,8 +131,18 @@ export class StudentInformationFormComponent implements OnInit {
       
       let studentInformation = this.studentInformationForm.value; // assign form values to variable
       console.log(studentInformation);
-      this.utilityService.showSuccessMessage("Student Information Added Successfully!");
-  
+      
+      this.signUpService.addStudentInformation(studentInformation).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.utilityService.showSuccessMessage("Student Information "+ res.studentFirstName +" Added Successfully!");
+          this.router.navigate(['/dashboard']);
+        },
+        error: (error) => {
+          console.log(error);
+          this.utilityService.showWarningMessage("Student Information could not be added!");
+        }
+      });
     }
 
     else {

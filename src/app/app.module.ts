@@ -15,6 +15,8 @@ import { ConfirmationdialogComponent } from './confirmationdialog/confirmationdi
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentInformationFormComponent } from './student-information-form/student-information-form.component';
+import { StudentInformationDashboardComponent } from './student-information-dashboard/student-information-dashboard.component';
+
 
 // Animations
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -44,6 +46,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     DashboardComponent,
     ConfirmationdialogComponent,
     NavigationComponent,
-    StudentInformationFormComponent
+    StudentInformationFormComponent,
+    StudentInformationDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +87,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatSelectModule,
     MatRadioModule,
     MatStepperModule,
+    MatTabsModule
   ],
   providers: [
     provideAnimationsAsync(),

@@ -14,7 +14,7 @@
             <form [formGroup]="studentInformationForm" (ngSubmit)="onSubmit()">
 
                 <!-- MAT STEPPER START -->
-                <mat-stepper [orientation]="(stepperOrientation | async)!" [linear]="false">
+                <mat-stepper  [orientation]="(stepperOrientation | async)!" [linear]="false">
                     
                     <!-- MAT STEP 1 START -->
                     <mat-step label="Personal Details" [editable]="true" [stepControl]="studentInformationForm" 

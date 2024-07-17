@@ -15,6 +15,13 @@ export class NavigationComponent {
   constructor(
     private router: Router
   ) {}
+
+  // links = ['First', 'Second', 'Third'];
+  // activeLink = this.links[0];
+
+  // addLink() {
+  //   this.links.push(`Link ${this.links.length + 1}`);
+  // }
   
   // Route to Login Page
   logout() {

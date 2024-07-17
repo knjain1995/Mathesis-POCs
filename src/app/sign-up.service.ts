@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 // Model imports
 import { signUpData } from './model/signupdata';
+import { studentData } from './model/studentdata';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,11 @@ export class SignUpService {
   // delete signup data of passed id
   deleteSignUp(id: string): Observable<any> {
     return this.httpClient.delete(this.serverURL+'/signUpData/'+id);
+  }
+
+
+  addStudentInformation(studentInformationData: studentData): Observable<any> {
+    return this.httpClient.post(this.serverURL+'/studentInformationData', studentInformationData);
   }
 
 }

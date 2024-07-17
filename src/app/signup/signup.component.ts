@@ -121,8 +121,8 @@ export class SignupComponent implements OnInit {
               next: (res) => {
                 console.log(res);
 
-              // SET LOCAL STORAGE TO EMULATE SESSION
-              localStorage.setItem('loggedIn', 'true');
+                // SET LOCAL STORAGE TO EMULATE SESSION
+                localStorage.setItem('loggedIn', 'true');
 
                 this.utilityService.showSuccessMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
                 this.router.navigate(['/dashboard']);
