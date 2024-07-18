@@ -37,3 +37,12 @@ mat-card-content {
 .filtered-no-value {
     color: white;
 }
+
+.filter-and-addbutton {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-form-field {
+    flex-grow: 1;
+}

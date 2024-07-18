@@ -118,6 +118,11 @@
                             Next
                         </button>
 
+                        <!-- CANCEL FORM BUTTON -->
+                        <button mat-button type="button" [mat-dialog-close]="false">
+                            Cancel
+                        </button>
+
                     </mat-step>
                     <!-- MAT STEP 1 END -->
 
@@ -203,6 +208,11 @@
                             Next
                         </button>
 
+                        <!-- CANCEL FORM BUTTON -->
+                        <button mat-button type="button" [mat-dialog-close]="false">
+                            Cancel
+                        </button>
+
                     </mat-step>
                     <!-- MAT STEP 2 END -->                    
 
@@ -283,16 +293,17 @@
                             Back
                         </button>
 
-                        <!-- disable next button until required fields are true -->
-                        <button mat-button matStepperNext type="submit" 
+                        <!-- SUBMIT BUTTON -->
+                        <!-- disable submit button until all required fields are valid -->
+                        <button mat-button type="submit" 
                         [disabled]="studentInformationForm.invalid">
                             Submit Details
                         </button>
-                        
-                        <!-- SUBMIT BUTTON -->
-                        <!-- <button class="signup-login-submit-button" mat-raised-button color="primary" type="submit" [disabled]="studentInformationForm.invalid">
-                            Add Student Information
-                        </button> -->
+                    
+                        <!-- CANCEL FORM BUTTON -->
+                        <button mat-button type="button" [mat-dialog-close]="false">
+                            Cancel
+                        </button>
 
                     </mat-step>
                     <!-- MAT STEP 3 END -->

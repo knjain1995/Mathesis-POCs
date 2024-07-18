@@ -19,12 +19,24 @@
         <!-- MAT CARD CONTENT START -->
         <mat-card-content>
 
-            <!-- TABLE FILTER START -->
-            <mat-form-field class="filter-form-field">
-                <mat-label>Filter</mat-label>
-                <input matInput (keyup)="applyTableFilter($event)" placeholder="Enter to filter" #filtervalue>
-            </mat-form-field>
-            <!-- TABLE FILTER END -->
+            <!-- FILTER AND ADD BUTTON START -->
+            <div class="filter-and-addbutton">
+                <!-- TABLE FILTER START -->
+                <mat-form-field class="filter-form-field">
+                    <mat-label>Filter</mat-label>
+                    <input matInput (keyup)="applyTableFilter($event)" placeholder="Enter to filter" #filtervalue>
+                </mat-form-field>
+                <!-- TABLE FILTER END -->
+
+                <!-- ADD STUDENT INFORMATION DIALOG BUTTON -->
+                <button mat-fab type="button" color="primary" (click)="addStudentInformation()">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <!-- ///////////////////////////////////// -->
+
+            </div>
+            <!-- FILTER AND ADD BUTTON END -->
+
 
             <!-- TABLE CONTAINER START -->
             <div class="mat-elevation-z8 table-container">

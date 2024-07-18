@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'editsignup/:id', component: SignupComponent, canActivate: [authGuard]},
   {path: 'login', component: LoginComponent, canActivate: [authGuard]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [authGuard]},
-  {path: 'studentinformationform', component: StudentInformationFormComponent, canActivate: [authGuard]},
+  // {path: 'studentinformationform', component: StudentInformationFormComponent, canActivate: [authGuard]},
   {path: 'studentinformationdashboard', component: StudentInformationDashboardComponent, canActivate: [authGuard]}
 ];
 

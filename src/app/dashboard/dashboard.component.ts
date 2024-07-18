@@ -71,9 +71,9 @@ import { signUpData } from '../model/signupdata';
     });
   }
 
-  openDialog(id: string) {
-    throw new Error('Method not implemented.');
-    }
+  // openDialog(id: string) {
+  //   throw new Error('Method not implemented.');
+  //   }
 
   // Function invoked when a row is to be deleted
   deleteRow(id: string) {

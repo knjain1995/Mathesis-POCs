@@ -101,8 +101,6 @@
       "id": "231a"
     }
   ],
-
-  
   "studentInformationData": [
     {
       "id": "d4b0",
@@ -455,6 +453,50 @@
       "studentElectiveModule1": "IT201 - Cloud Computing",
       "studentElectiveModule2": "IT202 - Cybersecurity Fundamentals",
       "studentElectiveModule3": "IT203 - IT Project Management"
+    },
+    {
+      "id": "2b3a",
+      "studentFirstName": "etst",
+      "studentLastName": "test",
+      "studentEmail": "tes@test.com",
+      "studentPhoneNumber": "8798378733",
+      "studentDateOfBirth": "2000-12-31T18:30:00.000Z",
+      "studentPresentAddress": "ddsdsdsd",
+      "studentIDNumber": "WA1234",
+      "studentAcademicYear": "2012-2013",
+      "studentNationality": "Domestic",
+      "studentScholarshipStatus": "No",
+      "studentScholarsipsGained_CheveningScholarship": false,
+      "studentScholarsipsGained_DeansScholarship": false,
+      "studentScholarsipsGained_Other": "",
+      "studentDegreeProgram": "Bachelor of Science in Computer Science",
+      "studentCoreModule1": "CS101 - Introduction to Computer Science",
+      "studentCoreModule2": "CS102 - Data Structures and Algorithms",
+      "studentElectiveModule1": "CS201 - Operating Systems",
+      "studentElectiveModule2": "CS202 - Database Systems",
+      "studentElectiveModule3": "CS203 - Computer Networks"
+    },
+    {
+      "id": "9165",
+      "studentFirstName": "dfgdf",
+      "studentLastName": "gjhghjg",
+      "studentEmail": "hkjhkjh@jhkjh.com",
+      "studentPhoneNumber": "4534534534",
+      "studentDateOfBirth": "2000-12-31T18:30:00.000Z",
+      "studentPresentAddress": "dfgdfgdfg",
+      "studentIDNumber": "WA1234",
+      "studentAcademicYear": "2011-2012",
+      "studentNationality": "International",
+      "studentScholarshipStatus": "Yes",
+      "studentScholarsipsGained_CheveningScholarship": false,
+      "studentScholarsipsGained_DeansScholarship": false,
+      "studentScholarsipsGained_Other": "fsdfsdf",
+      "studentDegreeProgram": "Bachelor of Science in Cloud Computing",
+      "studentCoreModule1": "CC101 - Introduction to Cloud Computing",
+      "studentCoreModule2": "CC102 - Cloud Architecture",
+      "studentElectiveModule1": "CC201 - Cloud Security",
+      "studentElectiveModule2": "CC202 - Cloud DevOps",
+      "studentElectiveModule3": "CC203 - Cloud Services"
     }
   ]
 }

@@ -4,6 +4,7 @@ import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
 import { StepperOrientation } from '@angular/cdk/stepper';
 import { map, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
 
 // Services Import
 import { UtilityService } from '../utility.service';
@@ -28,6 +29,7 @@ export class StudentInformationFormComponent implements OnInit {
 
   // inject dependencies
   constructor(
+    private matDialogRef: MatDialogRef<StudentInformationFormComponent>,  // make this component a mat dialog
     private utilityService: UtilityService,
     private signUpService: SignUpService,
     private formBuilder: FormBuilder,
@@ -126,7 +128,7 @@ export class StudentInformationFormComponent implements OnInit {
  
   // Method invokes when we click on the submit button
   onSubmit(): void {
-    
+
     if(this.studentInformationForm.valid) {
       
       let studentInformation = this.studentInformationForm.value; // assign form values to variable
@@ -136,7 +138,8 @@ export class StudentInformationFormComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.utilityService.showSuccessMessage("Student Information "+ res.studentFirstName +" Added Successfully!");
-          this.router.navigate(['/dashboard']);
+          this.matDialogRef.close(true);
+          // this.router.navigate(['/dashboard']);
         },
         error: (error) => {
           console.log(error);

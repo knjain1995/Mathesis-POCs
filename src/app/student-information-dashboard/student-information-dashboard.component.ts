@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 // Import Models
 import { studentData } from '../model/studentdata';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { StudentInformationFormComponent } from '../student-information-form/student-information-form.component';
 
 @Component({
   selector: 'app-student-information-dashboard',
@@ -46,9 +47,36 @@ export class StudentInformationDashboardComponent implements OnInit {
       this.tableDataSource.paginator.firstPage(); // if we have a paginator, move to the first page (this is where we will show the filter results)
     }
   }
+
+  // Method to invoke student information form component which is in a dialogbox
+  addStudentInformation() {
+      let openAddStudentInformationDialog = this.matDialog.open(StudentInformationFormComponent);
+
+      openAddStudentInformationDialog.afterClosed().subscribe({
+        next: (res) => {
+          if(res) {
+            console.log("Record added successfully");
+            this.initializeDataSource();  // intialize datasource, maginator and sorter again
+            // this.utilityService.showSuccessMessage("Record Added Successfully");
+          }
+          else {
+            this.utilityService.showWarningMessage("Operation Cancelled")
+          }
+        },
+        error: (error) => {
+          console.log(error);
+          this.utilityService.showWarningMessage("Record Could Not Be Added")
+        }
+      });
+
+    }
   
   ngOnInit(): void {
-    
+    this.initializeDataSource();
+  }
+
+  //  method to initialize DataSource for Mat Table
+  initializeDataSource() {
     this.signUpService.getAllStudentInformation().subscribe({
       next: (res) => {
         this.tableDataSource = new MatTableDataSource(res); // assign all student information as mat table datasource
@@ -75,16 +103,14 @@ export class StudentInformationDashboardComponent implements OnInit {
           "studentElectiveModule2",
           "studentElectiveModule3"
           ]
-        this.tableDataSource.paginator = this.tablePaginator;   // assign paginator to table datasource
-        this.tableDataSource.sort = this.tableSort;   // assign sort to table datasource
+          this.tableDataSource.paginator = this.tablePaginator;   // assign paginator to table datasource
+          this.tableDataSource.sort = this.tableSort;   // assign sort to table datasource  
       },
       error: (error) => {
         console.log(error);
       }
     });
-
   }
-
 
 
 }
