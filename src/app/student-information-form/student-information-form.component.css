@@ -1,7 +1,11 @@
 /* GENERAL STYLING IRRESPECTIVE OF SCREENSIZE */
 
-h2 {
+/* h2 {
     text-align: center;
+} */
+
+mat-dialog-content {
+  --mat-dialog-content-padding: 0;
 }
 
 .signup-login-submit-button {
@@ -29,41 +33,34 @@ h2 {
 /* For phone in portrait  */
 @media screen and (max-width: 600px) {
   
-  .container {
+  mat-card {
     overflow-y: auto;
   }
-
-
-  mat-card {
+  /* mat-card {
     max-width: 100%;
     min-height: 100%;
-    padding: 1em;
-
     justify-content: center;
-  }
-
+  } */
 }
 
 
 /* For all other devices and phones in landscape mode  */
 @media screen and (min-width: 600px) {
   
-  .container {
+  mat-card {
     display: flex;
     flex-direction: column;
-
     justify-content: center;
-    align-items: center;
-    overflow-y: auto;
-
+    /* max-height: 100%;
+    max-width: 100%;
+    overflow-y: auto; */
   }
 
-  mat-card {
+  /* mat-card {
     display: block;
-    padding: 2em;
     max-width: 700px;
     justify-content: center;
     overflow-y: auto;
-  }
+  } */
 
 }
