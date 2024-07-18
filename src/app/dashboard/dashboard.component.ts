@@ -11,6 +11,8 @@ import { SignUpService } from '../sign-up.service';
 import { UtilityService } from '../utility.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { SpinnerLoaderService } from '../spinner-loader.service';
+
 
 // Import Models
 import { signUpData } from '../model/signupdata';
@@ -34,6 +36,7 @@ import { signUpData } from '../model/signupdata';
   sort!: MatSort; //initialize MatPaginator
 
   constructor(  // inject services
+    public spinnerLoaderService: SpinnerLoaderService,
     private signUpService: SignUpService,
     private utilityService: UtilityService,
     private matDialog: MatDialog,

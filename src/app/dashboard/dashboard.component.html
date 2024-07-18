@@ -1,3 +1,9 @@
+  <!-- MAT PROGRESS SPINNER START -->
+  <div class="spinner-container" *ngIf="spinnerLoaderService.isLoading | async">
+    <mat-spinner></mat-spinner>
+  </div>
+  <!-- MAT PRORESS SPINNER END -->
+
 <div class="container">
 
   <!-- NAV BAR -->
@@ -59,7 +65,7 @@
 
           <!-- DOB Column -->
           <ng-container matColumnDef="dateofbirth">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> DOB (dd/MM/YYYY) </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> DOB (DD/MM/YYYY) </th>
             <td mat-cell *matCellDef="let row"> {{row.dateofbirth | date:'dd/MM/YYY'}} </td>
           </ng-container>            
 

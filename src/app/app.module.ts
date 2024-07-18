@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 // Module imports
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
 // Components
@@ -47,6 +47,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RequestRouteInterceptorService } from './request-route-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -87,10 +90,13 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSelectModule,
     MatRadioModule,
     MatStepperModule,
-    MatTabsModule
+    MatTabsModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     provideAnimationsAsync(),
+    {provide: HTTP_INTERCEPTORS, useClass: RequestRouteInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

@@ -89,16 +89,6 @@
       "password": "bQ4,.A5",
       "newsletterintent": true,
       "id": "48SH"
-    },
-    {
-      "firstname": "Peter",
-      "lastname": "Parker",
-      "email": "spiderman@avenger.com",
-      "phone": "9999999993",
-      "dateofbirth": "1969-06-08T18:30:00.000Z",
-      "password": "spiderman",
-      "newsletterintent": false,
-      "id": "231a"
     }
   ],
   "studentInformationData": [
