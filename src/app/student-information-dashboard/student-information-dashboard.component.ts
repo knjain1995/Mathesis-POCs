@@ -17,6 +17,9 @@ import { studentData } from '../model/studentdata';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { StudentInformationFormComponent } from '../student-information-form/student-information-form.component';
 
+// Import Pipes
+import { TruncDataPipe } from '../trunc-data.pipe';
+
 @Component({
   selector: 'app-student-information-dashboard',
   templateUrl: './student-information-dashboard.component.html',

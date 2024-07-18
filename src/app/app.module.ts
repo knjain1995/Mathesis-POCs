@@ -20,6 +20,9 @@ import { StudentInformationFormComponent } from './student-information-form/stud
 import { StudentInformationDashboardComponent } from './student-information-dashboard/student-information-dashboard.component';
 import { SpinnerLoaderComponent } from './spinner-loader/spinner-loader.component';
 
+// Pipes
+import { TruncDataPipe } from './trunc-data.pipe';
+
 
 // Animations
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -64,6 +67,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     StudentInformationFormComponent,
     StudentInformationDashboardComponent,
     SpinnerLoaderComponent,
+    TruncDataPipe,
   ],
   imports: [
     BrowserModule,

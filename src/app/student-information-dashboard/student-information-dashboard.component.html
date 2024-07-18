@@ -85,7 +85,7 @@
                     <!-- STUDENT PRESENT ADDRESS COLUMN -->
                     <ng-container matColumnDef="studentPresentAddress">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Present Address</th>
-                        <td mat-cell *matCellDef="let row">{{row.studentPresentAddress}}</td>
+                        <td mat-cell [matTooltip]="row.studentPresentAddress" *matCellDef="let row">{{row.studentPresentAddress | truncData:4:"..." }}</td>
                     </ng-container>
 
                     <!-- STUDENT ID NUMBER COLUMN -->
