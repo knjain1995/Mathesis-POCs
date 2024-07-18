@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
+// Service Imports
+import { RequestRouteInterceptorService } from './request-route-interceptor.service';
 
 // Components
 import { AppComponent } from './app.component';
@@ -16,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentInformationFormComponent } from './student-information-form/student-information-form.component';
 import { StudentInformationDashboardComponent } from './student-information-dashboard/student-information-dashboard.component';
+import { SpinnerLoaderComponent } from './spinner-loader/spinner-loader.component';
 
 
 // Animations
@@ -49,7 +52,6 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { RequestRouteInterceptorService } from './request-route-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import { RequestRouteInterceptorService } from './request-route-interceptor.serv
     ConfirmationdialogComponent,
     NavigationComponent,
     StudentInformationFormComponent,
-    StudentInformationDashboardComponent
+    StudentInformationDashboardComponent,
+    SpinnerLoaderComponent,
   ],
   imports: [
     BrowserModule,

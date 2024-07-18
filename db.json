@@ -57,7 +57,7 @@
       "phone": "8576841866",
       "dateofbirth": "2001-09-20T07:33:04Z",
       "password": "bR1(va",
-      "newsletterintent": false,
+      "newsletterintent": true,
       "id": "GNI7"
     },
     {
@@ -487,6 +487,50 @@
       "studentElectiveModule1": "CC201 - Cloud Security",
       "studentElectiveModule2": "CC202 - Cloud DevOps",
       "studentElectiveModule3": "CC203 - Cloud Services"
+    },
+    {
+      "id": "c0da",
+      "studentFirstName": "test",
+      "studentLastName": "test",
+      "studentEmail": "test@test.com",
+      "studentPhoneNumber": "1234567890",
+      "studentDateOfBirth": "2000-12-31T18:30:00.000Z",
+      "studentPresentAddress": "test\n",
+      "studentIDNumber": "WA1234",
+      "studentAcademicYear": "2013-2014",
+      "studentNationality": "International",
+      "studentScholarshipStatus": "Yes",
+      "studentScholarsipsGained_CheveningScholarship": false,
+      "studentScholarsipsGained_DeansScholarship": true,
+      "studentScholarsipsGained_Other": "test",
+      "studentDegreeProgram": "Bachelor of Science in Information Systems",
+      "studentCoreModule1": "IS101 - Introduction to Information Systems",
+      "studentCoreModule2": "IS102 - System Analysis and Design",
+      "studentElectiveModule1": "IS205 - IS Project Management",
+      "studentElectiveModule2": "IS203 - IT Governance",
+      "studentElectiveModule3": "IS202 - Business Intelligence"
+    },
+    {
+      "id": "cf39",
+      "studentFirstName": "tes",
+      "studentLastName": "test",
+      "studentEmail": "test@gmail.com",
+      "studentPhoneNumber": "4723894723",
+      "studentDateOfBirth": "2000-12-31T18:30:00.000Z",
+      "studentPresentAddress": "ashjdhsakj",
+      "studentIDNumber": "WA1234",
+      "studentAcademicYear": "2012-2013",
+      "studentNationality": "Domestic",
+      "studentScholarshipStatus": "No",
+      "studentScholarsipsGained_CheveningScholarship": false,
+      "studentScholarsipsGained_DeansScholarship": false,
+      "studentScholarsipsGained_Other": "",
+      "studentDegreeProgram": "Bachelor of Arts in Computer Science",
+      "studentCoreModule1": "CSBA101 - Introduction to Computer Science",
+      "studentCoreModule2": "CSBA102 - Data Structures and Algorithms",
+      "studentElectiveModule1": "CSBA202 - Human-Computer Interaction",
+      "studentElectiveModule2": "CSBA201 - Software Engineering",
+      "studentElectiveModule3": "CSBA204 - Data Visualization"
     }
   ]
 }
