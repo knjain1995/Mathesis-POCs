@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 // Service Imports
-import { RequestRouteInterceptorService } from './request-route-interceptor.service';
+import { RequestRouteInterceptorService } from './interceptor.service';
 
 // Components
 import { AppComponent } from './app.component';
@@ -23,6 +23,8 @@ import { SpinnerLoaderComponent } from './spinner-loader/spinner-loader.componen
 // Pipes
 import { TruncDataPipe } from './trunc-data.pipe';
 
+// Directives
+import { RowSelectAttributeDirective } from './row-select-attribute.directive';
 
 // Animations
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -55,6 +57,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -68,6 +71,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     StudentInformationDashboardComponent,
     SpinnerLoaderComponent,
     TruncDataPipe,
+    RowSelectAttributeDirective,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +103,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatStepperModule,
     MatTabsModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatRippleModule
   ],
   providers: [
     provideAnimationsAsync(),

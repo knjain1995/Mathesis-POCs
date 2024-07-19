@@ -50,3 +50,10 @@ table {
 .filter-form-field {
     flex-grow: 1;
 }
+
+
+/* Custom directive styling */
+.rowSelected {
+    background-color: black;
+  }
+  /* //////////////////////// */

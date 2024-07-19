@@ -170,8 +170,8 @@
 
                     <!-- TABLE ROWS START -->
                     <!-- tell the table which columns will be rendered in the header and data rows -->
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"><!-- tell the table which columns will be rendered in the header and data rows --> 
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr><!-- tell the table which columns will be rendered in the header and data rows --> 
+                    <tr mat-row appRowSelectAttribute *matRowDef="let row; columns: displayedColumns;"></tr>    <!-- USING A CUSTOM ATTRIBUTE HERE -->
                     <!-- TABLE ROWS END -->
 
                     <!-- ROW SHOWN WHEN FILTER RESULTS IN NO ROWS -->

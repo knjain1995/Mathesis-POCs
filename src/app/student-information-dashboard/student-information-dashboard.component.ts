@@ -17,8 +17,11 @@ import { studentData } from '../model/studentdata';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { StudentInformationFormComponent } from '../student-information-form/student-information-form.component';
 
-// Import Pipes
+// Import Custom Pipes
 import { TruncDataPipe } from '../trunc-data.pipe';
+
+// Import Custom Directives
+import { RowSelectAttributeDirective } from '../row-select-attribute.directive';
 
 @Component({
   selector: 'app-student-information-dashboard',
@@ -53,7 +56,9 @@ export class StudentInformationDashboardComponent implements OnInit {
 
   // Method to invoke student information form component which is in a dialogbox
   addStudentInformation() {
-      let openAddStudentInformationDialog = this.matDialog.open(StudentInformationFormComponent);
+      let openAddStudentInformationDialog = this.matDialog.open(StudentInformationFormComponent, {
+        height: '60%'
+      });
 
       openAddStudentInformationDialog.afterClosed().subscribe({
         next: (res) => {
