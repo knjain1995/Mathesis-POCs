@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 // Service Imports
-import { RequestRouteInterceptorService } from './interceptor.service';
+import { RequestRouteInterceptorService } from './request-route-interceptor.service';
 
 // Components
 import { AppComponent } from './app.component';
@@ -46,7 +46,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavigationComponent } from './navigation/navigation.component';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -58,6 +58,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRippleModule } from '@angular/material/core';
+import { ColumnVisibilityStructuralDirective } from './column-visibility-structural.directive';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { MatRippleModule } from '@angular/material/core';
     SpinnerLoaderComponent,
     TruncDataPipe,
     RowSelectAttributeDirective,
+    ColumnVisibilityStructuralDirective,
   ],
   imports: [
     BrowserModule,
@@ -104,7 +106,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatTabsModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatRippleModule
+    MatRippleModule,
+    MatMenuTrigger
   ],
   providers: [
     provideAnimationsAsync(),

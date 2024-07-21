@@ -24,7 +24,6 @@ export class UserAuthService  {
       // get all signups and check if the user info checks out
       this.signUpService.getAllSignUp().subscribe({
         next: (res) => {
-          console.log('all signups loaded in checklogin');
           this.allSignUpData = res;
 
           let correctEmail = this.allSignUpData.find(signedUpUsers => signedUpUsers.email === currentLoginData.email);  
@@ -54,7 +53,6 @@ export class UserAuthService  {
     return new Observable(observer => {
       this.signUpService.getAllSignUp().subscribe({
         next: (res) => {
-          console.log('all signups loaded in checklogin');
           this.allSignUpData = res;
   
           let duplicateEmail = this.allSignUpData.find(signedUpUser =>

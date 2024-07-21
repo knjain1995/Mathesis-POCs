@@ -60,4 +60,14 @@ export class SignUpService {
     return this.httpClient.get<studentData[]>(this.serverURL+'/studentInformationData')
   }
 
+  // Put updated student information form in the dataset
+  updateStudentInformation(id: string, editedStudentInformation: studentData) {
+    return this.httpClient.put(this.serverURL+'/studentInformationData/'+id, editedStudentInformation);
+  }
+
+  // delete student information data of passed id
+  deleteStudentInformation(id: string): Observable<any> {
+    return this.httpClient.delete(this.serverURL+'/studentInformationData/'+id);
+  }
+
 }

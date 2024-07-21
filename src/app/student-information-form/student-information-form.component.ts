@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
 import { StepperOrientation } from '@angular/cdk/stepper';
 import { map, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 // Services Import
 import { UtilityService } from '../utility.service';
@@ -26,10 +26,10 @@ export class StudentInformationFormComponent implements OnInit {
   
   stepperOrientation!: Observable<StepperOrientation>;  // bound to orientation in html  
 
-
   // inject dependencies
   constructor(
     private matDialogRef: MatDialogRef<StudentInformationFormComponent>,  // make this component a mat dialog
+    @Inject(MAT_DIALOG_DATA) public dialogData: any,  // inject data into the dialog (this component) -> currently we give isEditForm (flag to tell if the form will be populated by a users value)
     private utilityService: UtilityService,
     private signUpService: SignUpService,
     private formBuilder: FormBuilder,
@@ -37,20 +37,23 @@ export class StudentInformationFormComponent implements OnInit {
     private dateAdapter: DateAdapter<Date>,
     private breakPointObserver: BreakpointObserver  // to check matching state of media queries
   ) {
-    this.dateAdapter.setLocale('en-IN');
 
+    this.dateAdapter.setLocale('en-IN');
     // Use BreakpointObserver to create an observable that will emit
     // the appropriate stepper orientation based on the screen size
     this.stepperOrientation = breakPointObserver.observe('(max-width: 600px')
-    .pipe(map(({matches}) => (matches ? 'vertical' : 'horizontal')));
+    .pipe(map(({matches}) => (matches ? 'vertical' : 'horizontal')));  
+    
   }
 
 
   studentInformationForm: FormGroup = new FormGroup({}); // initialize formgroup for accepting student information
 
+  // set maxDate for the date selector
   readonly currentDate = new Date();
   readonly maxDate = new Date(this.currentDate.getTime() - (24 * 60 * 60 * 1000));    
 
+  // intialize lists for the select fields in the form
   academicYears: string[] = []; // assign academic years form selection field
   degreePrograms: string[] = []; // assign degree program form selection field
   degreeProgramModules: any = {};  // assign degree program modules for selection fields
@@ -60,39 +63,23 @@ export class StudentInformationFormComponent implements OnInit {
   studentElectiveModule3List: string[] = [];  // all elective modules for selected degree program with selected electives (1 and 2) filtered out
   filteredOutElectives: string[] = ['', '', ''];  // electives selected in each of the selection fields
 
+
   ngOnInit(): void {
 
-    // initialize form
-    this.studentInformationForm = this.formBuilder.group({
-      studentFirstName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],
-      studentLastName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],
-      studentEmail: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]],
-      studentPhoneNumber: ['',[Validators.required, Validators.pattern(/^[1-9][0-9]{9}$/)]],
-      studentDateOfBirth: ['', Validators.required],
-      // studentDateOfBirth: ['', [Validators.required, Validators.pattern(/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/)]],
-      studentPresentAddress: ['', Validators.required],
-      studentIDNumber: ['WA', [Validators.required, Validators.pattern(/^WA[0-9]{4}$/)]],
-      studentAcademicYear: ['', Validators.required],
-      studentNationality: ['Domestic'],
-      studentScholarshipStatus: ['No'],
-      // studentScholarshipGained: ['', Validators.required],
-      studentScholarsipsGained_CheveningScholarship: [false],
-      studentScholarsipsGained_DeansScholarship: [false],
-      studentScholarsipsGained_Other: [''],
-      studentDegreeProgram: ['', Validators.required],
-      studentCoreModule1: [''],
-      studentCoreModule2: [''],
-      studentElectiveModule1: ['', Validators.required],
-      studentElectiveModule2: ['', Validators.required],
-      studentElectiveModule3: ['', Validators.required]
-    });
+    // initialize the form
+    this.initializeStudentForm();
 
-    // call methods to load selection fiels
+    // call methods to load selection fields
     this.getAcademicYears();  // load academic years
     this.getDegreeProgramModules(); // load degree program modules (call before getDegreePrograms to get keys)
     this.getDegreePrograms(); // load degree programs
 
-    // subscribe to chanege in student scholarship status field, reset its subfields if set to false
+    // If this dialog is called to edit students information populate the fields 
+    if(this.dialogData.isEditForm) {
+      this.populateStudentFormFieldsForEdit(this.dialogData.editStudentRecordID);
+    }
+
+    // subscribe to changes in student scholarship status field, reset its subfields if set to false
     this.studentInformationForm.get('studentScholarshipStatus')?.valueChanges.subscribe(res => {
       if (res==='No') {
         this.studentInformationForm.patchValue({
@@ -125,29 +112,92 @@ export class StudentInformationFormComponent implements OnInit {
 
   }
 
+  // method to initialize student information form 
+  initializeStudentForm(): void {
+
+    // initialize form
+    this.studentInformationForm = this.formBuilder.group({
+      studentFirstName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],
+      studentLastName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],
+      studentEmail: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]],
+      studentPhoneNumber: ['',[Validators.required, Validators.pattern(/^[1-9][0-9]{9}$/)]],
+      studentDateOfBirth: ['', Validators.required],
+      // studentDateOfBirth: ['', [Validators.required, Validators.pattern(/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/)]],
+      studentPresentAddress: ['', Validators.required],
+      studentIDNumber: ['WA', [Validators.required, Validators.pattern(/^WA[0-9]{4}$/)]],
+      studentAcademicYear: ['', Validators.required],
+      studentNationality: ['Domestic'],
+      studentScholarshipStatus: ['No'],
+      // studentScholarshipGained: ['', Validators.required],
+      studentScholarsipsGained_CheveningScholarship: [false],
+      studentScholarsipsGained_DeansScholarship: [false],
+      studentScholarsipsGained_Other: [''],
+      studentDegreeProgram: ['', Validators.required],
+      studentCoreModule1: [''],
+      studentCoreModule2: [''],
+      studentElectiveModule1: ['', Validators.required],
+      studentElectiveModule2: ['', Validators.required],
+      studentElectiveModule3: ['', Validators.required]
+    });
+
+  }
+
+  // method to populate the form fields if this dialog was opened to edit student information
+  populateStudentFormFieldsForEdit(editStudentRecordID: string): void {
+    this.signUpService.getStudentInformation(editStudentRecordID).subscribe({
+      next: (res) => {
+        if (res) { 
+          this.studentInformationForm.patchValue(res); // if we succesfully get subscribers information, put them in the form fields
+        }
+      },
+      error: (error) => {
+        console.log(error);
+        this.utilityService.showWarningMessage("Could not recieve details!"); // user could not be found
+      }
+    });
+  }
+
  
-  // Method invokes when we click on the submit button
+  // Method invokes when we click on the submit button -> puts (update) or posts (add) data if form is valid and based on flag to indicate edit/new
   onSubmit(): void {
 
+    // check if form is valid
     if(this.studentInformationForm.valid) {
       
       let studentInformation = this.studentInformationForm.value; // assign form values to variable
-      console.log(studentInformation);
       
-      this.signUpService.addStudentInformation(studentInformation).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.utilityService.showSuccessMessage("Student Information "+ res.studentFirstName +" Added Successfully!");
-          this.matDialogRef.close(true);
-          // this.router.navigate(['/dashboard']);
-        },
-        error: (error) => {
-          console.log(error);
-          this.utilityService.showWarningMessage("Student Information could not be added!");
-        }
-      });
-    }
+      // if dialog was opened to edit student details, call update function
+      if (this.dialogData.isEditForm) {
+        this.signUpService.updateStudentInformation(this.dialogData.editStudentRecordID, studentInformation).subscribe({
+          next: (res1) => {
+            this.utilityService.showSuccessMessage("Student Information Updated Sucessfully!");
+            this.matDialogRef.close(true);  //return true when closing dialog box    
+          },
+          error: (error) => {
+            console.log(error);
+            this.utilityService.showWarningMessage("Student Information could not be updated!");  
+          }
+        });
+      }
+      
+      // if dialog was opened to add student details, call add function
+      else {
+        this.signUpService.addStudentInformation(studentInformation).subscribe({
+          next: (res) => {
+            console.log(res);
+            this.utilityService.showSuccessMessage("Student Information "+ res.studentFirstName +" Added Successfully!");
+            this.matDialogRef.close(true);
+            // this.router.navigate(['/dashboard']);
+          },
+          error: (error) => {
+            console.log(error);
+            this.utilityService.showWarningMessage("Student Information could not be added!");
+          }
+        });
+      }
 
+    }
+      
     else {
       console.error("Something went wrong!");
       this.utilityService.showWarningMessage("Encountered some issue adding student information!")  

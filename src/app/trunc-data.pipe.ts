@@ -21,8 +21,6 @@ export class TruncDataPipe implements PipeTransform {
 
     // add '...' or specified string via parameter 
     valueNew = valueNew.trim() + param2;
-
-    console.log(valueNew);
     
     return valueNew;
   }

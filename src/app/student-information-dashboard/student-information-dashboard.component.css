@@ -57,3 +57,26 @@ table {
     background-color: black;
   }
   /* //////////////////////// */
+
+/* CSS for column selector card */
+.column-selector-menu {
+    display: flex;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 150px;
+    --mat-menu-container-max-height: 200px;
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 8px;
+    background-color: black;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ////////////////////////////*/

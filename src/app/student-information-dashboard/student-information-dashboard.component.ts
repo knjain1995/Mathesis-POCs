@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
 // Import Components
+import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationdialog.component';
 
 
 // Import Services
@@ -22,6 +23,8 @@ import { TruncDataPipe } from '../trunc-data.pipe';
 
 // Import Custom Directives
 import { RowSelectAttributeDirective } from '../row-select-attribute.directive';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { MatSelectionList } from '@angular/material/list';
 
 @Component({
   selector: 'app-student-information-dashboard',
@@ -31,17 +34,46 @@ import { RowSelectAttributeDirective } from '../row-select-attribute.directive';
 })
 export class StudentInformationDashboardComponent implements OnInit {
 
-  displayedColumns: string[] = [];  // Array of columns which will be displayed in the table
+
   tableDataSource!: MatTableDataSource<studentData>;   // initialize variable as Material Table data source which aligns to studentData interface
   @ViewChild(MatPaginator) tablePaginator!: MatPaginator;  // initialize MatPaginator
   @ViewChild(MatSort) tableSort!: MatSort; // initialize MatSort
 
+  // list of column fields which will be displayed in the table
+  displayedColumns: string[] = [ 
+    "id",
+    "studentFirstName",
+    "studentLastName",
+    "studentEmail",
+    "studentPhoneNumber",
+    "studentDateOfBirth",
+    "studentPresentAddress",
+    "studentIDNumber",
+    "studentAcademicYear",
+    "studentNationality",
+    "studentScholarshipStatus",
+    // "studentScholarshipGained",
+    "studentScholarsipsGained_CheveningScholarship",
+    "studentScholarsipsGained_DeansScholarship",
+    "studentScholarsipsGained_Other",
+    "studentDegreeProgram",
+    "studentCoreModule1",
+    "studentCoreModule2",
+    "studentElectiveModule1",
+    "studentElectiveModule2",
+    "studentElectiveModule3",
+    "edit",
+    "delete"
+    ];
+
+  // list which contains the same values as displayed columns. This is to maintain the original list when filtering out columns selected in the filter column menu
+  menuColumns: string[] = this.displayedColumns;
 
   constructor (
     private router: Router,
     private signUpService: SignUpService,
     private utilityService: UtilityService,
-    private matDialog: MatDialog 
+    private matDialog: MatDialog
   ) {}
 
   // function to get filter-formfield input and filter the data based on it 
@@ -56,16 +88,14 @@ export class StudentInformationDashboardComponent implements OnInit {
 
   // Method to invoke student information form component which is in a dialogbox
   addStudentInformation() {
-      let openAddStudentInformationDialog = this.matDialog.open(StudentInformationFormComponent, {
-        height: '60%'
+      let openAddStudentInformationDialogRef = this.matDialog.open(StudentInformationFormComponent, {
+        height: '60%', data: { isEditForm: false } // set height for the dialog box and send flag telling that this is not an edit form 
       });
 
-      openAddStudentInformationDialog.afterClosed().subscribe({
+      openAddStudentInformationDialogRef.afterClosed().subscribe({
         next: (res) => {
           if(res) {
-            console.log("Record added successfully");
-            this.initializeDataSource();  // intialize datasource, maginator and sorter again
-            // this.utilityService.showSuccessMessage("Record Added Successfully");
+            this.initializeDataSource();  // reintialize datasource, maginator and sorter
           }
           else {
             this.utilityService.showWarningMessage("Operation Cancelled")
@@ -79,6 +109,7 @@ export class StudentInformationDashboardComponent implements OnInit {
 
     }
   
+  //  method run on component instantiation
   ngOnInit(): void {
     this.initializeDataSource();
   }
@@ -88,31 +119,9 @@ export class StudentInformationDashboardComponent implements OnInit {
     this.signUpService.getAllStudentInformation().subscribe({
       next: (res) => {
         this.tableDataSource = new MatTableDataSource(res); // assign all student information as mat table datasource
-        this.displayedColumns = [ // list of column fields which will be displayed in the table
-          "id",
-          "studentFirstName",
-          "studentLastName",
-          "studentEmail",
-          "studentPhoneNumber",
-          "studentDateOfBirth",
-          "studentPresentAddress",
-          "studentIDNumber",
-          "studentAcademicYear",
-          "studentNationality",
-          "studentScholarshipStatus",
-          // "studentScholarshipGained",
-          "studentScholarsipsGained_CheveningScholarship",
-          "studentScholarsipsGained_DeansScholarship",
-          "studentScholarsipsGained_Other",
-          "studentDegreeProgram",
-          "studentCoreModule1",
-          "studentCoreModule2",
-          "studentElectiveModule1",
-          "studentElectiveModule2",
-          "studentElectiveModule3"
-          ]
-          this.tableDataSource.paginator = this.tablePaginator;   // assign paginator to table datasource
-          this.tableDataSource.sort = this.tableSort;   // assign sort to table datasource  
+        this.displayedColumns;  // declare all columns which will be displayed
+        this.tableDataSource.paginator = this.tablePaginator;   // assign paginator to table datasource
+        this.tableDataSource.sort = this.tableSort;   // assign sort to table datasource  
       },
       error: (error) => {
         console.log(error);
@@ -120,5 +129,114 @@ export class StudentInformationDashboardComponent implements OnInit {
     });
   }
 
+  // Method to delete specific row
+  deleteRow(studentID: string) {
 
+    // open dialog box and gets its reference
+    let openDeleteDialogRef = this.matDialog.open(ConfirmationdialogComponent, {
+      data: { message: "Are you sure you want to delete this record?"}  // send message to appear in this dialog box
+    });
+
+    openDeleteDialogRef.afterClosed().subscribe({
+      
+      next: (res1) => { // value bound in confirmationdialog.component.html     
+        if(res1) {  // if dialog box returns true
+          this.signUpService.deleteStudentInformation(studentID).subscribe({ // call delete method in signUpService and return the deleted object
+            next: (res2) => {
+              this.tableDataSource.data = this.tableDataSource.data.filter((res3) => res3.id !== res2.id);  // filter out the deleted object
+              this.utilityService.showSuccessMessage("Record Deleted Succesfully!");
+            },
+            error: (error) => {
+              console.log(error);
+              this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
+            }
+          });
+        }
+
+        else {
+          this.utilityService.showWarningMessage("Deletion Cancelled!");
+        }   
+      },
+      error: (error) => {
+        console.log(error);
+        this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
+      }
+    });
+
+  }
+
+
+  // Method to populate the student information form to update data
+  editRow(studentRecordID: string) {
+    // open dialog box and gets its reference
+    let openAddStudentInformationDialogRef = this.matDialog.open(StudentInformationFormComponent, {
+      height: '60%', data: { isEditForm: true, editStudentRecordID: studentRecordID } // set height for the dialog box and send flag telling that this "is" an edit form and share the student record id of the record to be edited 
+    });
+
+    openAddStudentInformationDialogRef.afterClosed().subscribe({
+      next: (res) => {
+        if(res) { // If dialog box returns true
+          console.log("Record added successfully");
+          this.initializeDataSource();  // intialize datasource, maginator and sorter again
+        }
+        else {
+          this.utilityService.showWarningMessage("Operation Cancelled")
+        }
+      },
+      error: (error) => {
+        console.log(error);
+        this.utilityService.showWarningMessage("Record Could Not Be Added")
+      }
+    });
+  }
+  
+
+/////////////////////////////////////////////////////////////////////////////////
+////////////////////// CODE FOR COLUMN SELECTOR ////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  selectedColumns: Set<string> = new Set(this.displayedColumns);
+
+  @ViewChild(MatMenuTrigger)
+  columnSelectorMenuTrigger!: MatMenuTrigger;
+
+  @ViewChild('shoes')
+  selectionList!: MatSelectionList;
+
+
+  toggleColumnSelector() {
+    this.columnSelectorMenuTrigger.openMenu();
+  }
+
+  applyColumnFilter() {
+    // Logic to apply the column filter based on selected options   
+    this.selectedColumns.clear();
+    this.menuColumns.forEach(column => {
+      const selectedOption = this.selectionList.selectedOptions.selected.find(option => option.value === column);
+      if (selectedOption) {
+        this.selectedColumns.add(selectedOption.value);
+      }
+    });
+    console.log(this.selectedColumns);
+    this.columnSelectorMenuTrigger.closeMenu();
+    this.displayedColumns = Array.from(this.selectedColumns);
+    this.initializeDataSource();
+  }
+
+  toggleSelectAll(event: any) {
+    if (event.checked) {
+      this.selectionList.selectAll();
+    } else {
+      this.selectionList.deselectAll();
+    }
+  }
+
+  isColumnSelected(column: string): boolean {
+    return this.selectedColumns.has(column);
+  }
+
+
+ // -x-x--x-x-x-x-x-x--x-x-x--x-x-x--x-x-x--x-x-x--x-x-x--x-x-x--x-x-x--x //
+// -x-x--x-x-x--x END OF CODE FOR COLUMN SELECTOR -x-x--x-x-x--x-x-x--x-
+// -x-x--x-x-x--x-x-x--x-x-x--x-x-x--x-x-x--x-x-x--x-x-x--x-x-x--x-x-x--x
 }

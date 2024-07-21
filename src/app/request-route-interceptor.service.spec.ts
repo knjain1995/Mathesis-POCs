@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RequestRouteInterceptorService } from './interceptor.service';
+import { RequestRouteInterceptorService } from './request-route-interceptor.service';
 
 describe('RequestRouteInterceptorService', () => {
   let service: RequestRouteInterceptorService;
