@@ -4,7 +4,7 @@ export interface signUpData {
     firstname: string,
     lastname: string,
     email: string,
-    phone: number,
+    phone: string,
     dateofbirth: Date,
     password: string,
     newsletterintent: boolean   

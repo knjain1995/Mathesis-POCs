@@ -16,35 +16,53 @@ export class SignUpService {
   ) { }
 
   // URL to JSON server
-  serverURL = 'http://localhost:3000';
+  private serverURL = 'http://localhost:3000';
+
+
+  // URL to Backend API
+  private backendAPI = 'http://localhost:8080/api/signup'
 
   // SIGN-UP INFORMATION TABLE
 
   // Make HTTP post request to json server and return an observable
+  // addSignUp(signUpData: signUpData): Observable<any> {
+  //   return this.httpClient.post(this.serverURL+'/signUpData', signUpData);
+  // }
   addSignUp(signUpData: signUpData): Observable<any> {
-    return this.httpClient.post(this.serverURL+'/signUpData', signUpData);
+    return this.httpClient.post<signUpData>(this.backendAPI, signUpData);
   }
 
   // Get specific signup's information from JSON server
+  // getSignUp(id: string): Observable<signUpData> {
+  //   return this.httpClient.get<signUpData>(this.serverURL+'/signUpData/'+id);
+  // }
   getSignUp(id: string): Observable<signUpData> {
-    return this.httpClient.get<signUpData>(this.serverURL+'/signUpData/'+id);
+    return this.httpClient.get<signUpData>(this.backendAPI+'/'+id);
   }
 
   // Get all signup information from JSON server
+  // getAllSignUp(): Observable<signUpData[]> {
+  //   return this.httpClient.get<signUpData[]>(this.serverURL+'/signUpData');
+  // }
   getAllSignUp(): Observable<signUpData[]> {
-    return this.httpClient.get<signUpData[]>(this.serverURL+'/signUpData');
+    return this.httpClient.get<signUpData[]>(this.backendAPI);
   }
 
   // Put updated form in the dataset
+  // updateSignUp(id: string, editedSignUpData: signUpData) {
+  //   return this.httpClient.put(this.serverURL+'/signUpData/'+id, editedSignUpData);
+  // }
   updateSignUp(id: string, editedSignUpData: signUpData) {
-    return this.httpClient.put(this.serverURL+'/signUpData/'+id, editedSignUpData);
+    return this.httpClient.put(this.backendAPI+'/'+id, editedSignUpData);
   }
 
   // delete signup data of passed id
+  // deleteSignUp(id: string): Observable<any> {
+  //   return this.httpClient.delete(this.serverURL+'/signUpData/'+id);
+  // }
   deleteSignUp(id: string): Observable<any> {
-    return this.httpClient.delete(this.serverURL+'/signUpData/'+id);
+    return this.httpClient.delete(this.backendAPI+'/'+id);
   }
-
 
   // STUDENT INFORMATION TABLE
 

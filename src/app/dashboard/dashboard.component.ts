@@ -112,6 +112,8 @@ import { signUpData } from '../model/signupdata';
   
     // Function invoked when a row is to be edited
     editRow(id: string) {
+      console.log(id);
+      
       this.router.navigate(['/editsignup/'+id]);
     } 
   }
