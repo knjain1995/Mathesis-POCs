@@ -18,8 +18,12 @@ export class UserAuthService  {
 
   constructor(private signUpService: SignUpService) {}
 
-  // Function authenticates user
-  checkLogin(currentLoginData: loginData): Observable<any> {
+//////////////////////////////////////////////////
+ //  THIS FUNCTION IS CURRENTLY NOT BEING USED //
+//////////////////////////////////////////////////
+
+  // Function to authenticate login 
+checkLogin(currentLoginData: loginData): Observable<any> {
     return new Observable(observer => {
       // get all signups and check if the user info checks out
       this.signUpService.getAllSignUp().subscribe({
@@ -43,6 +47,33 @@ export class UserAuthService  {
         }
       });
     });
+
+
+  // Function authenticates user
+  // checkLogin(currentLoginData: loginData): Observable<any> {
+  //   return new Observable(observer => {
+  //     // get all signups and check if the user info checks out
+  //     this.signUpService.getAllSignUp().subscribe({
+  //       next: (res) => {
+  //         this.allSignUpData = res;
+
+  //         let correctEmail = this.allSignUpData.find(signedUpUsers => signedUpUsers.email === currentLoginData.email);  
+  //         let correctPassword = this.allSignUpData.find(signedUpUsers => signedUpUsers.password === currentLoginData.password);
+          
+  //         if(correctEmail && correctPassword) {
+  //           observer.next(correctEmail.firstname);
+  //         }
+  //         else {
+  //           observer.next(null);
+  //         }
+  //         observer.complete();
+  //       },
+  //       error: (error) => {
+  //         console.log(error);
+  //         observer.error(error);
+  //       }
+  //     });
+  //   });
         
   }
 

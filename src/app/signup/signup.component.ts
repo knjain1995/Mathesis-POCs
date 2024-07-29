@@ -81,7 +81,14 @@ export class SignupComponent implements OnInit {
         },
         error: (error) => {
           console.log(error);
-          this.utilityService.showWarningMessage("Could not recieve details!"); // user could not be found
+          console.log(error.status);
+          
+          if (error.status==404) {
+            this.utilityService.showWarningMessage("Sign Up Details Not Found!"); // user could not be found
+          }
+          else {
+            this.utilityService.showWarningMessage("Could Not Recieve Sign Up Details!");
+          }
         }
       });
     }
@@ -98,20 +105,26 @@ export class SignupComponent implements OnInit {
       // check if there are any parameters in the link
       this.checkIdInURL();
 
-
-      // check if email while signing up is duplicate
-      this.userAuthService.checkDuplicateEmail(currentSignUpData, this.editRegId).subscribe({
-        next: (isDuplicate) => {
-          if (isDuplicate) {
-            this.utilityService.showWarningMessage("This Email ID or Phone Number is already in use");
-            return; // exit the function
-          }
           
           // If we an id in the link, run the update form on signup page
           if (this.editRegId) {
-            this.signUpService.updateSignUp(this.editRegId, currentSignUpData).subscribe((res) => {
-              this.utilityService.showSuccessMessage("Registration Information Updated Sucessfully");  // if data updated succesfully
-              this.router.navigate(['/dashboard']);
+            // this.signUpService.updateSignUp(this.editRegId, currentSignUpData).subscribe((res) => {
+            //   this.utilityService.showSuccessMessage("Registration Information Updated Sucessfully");  // if data updated succesfully
+            //   this.router.navigate(['/dashboard']);
+            // });
+            this.signUpService.updateSignUp(this.editRegId, currentSignUpData).subscribe({
+              next: (res) => {
+                this.utilityService.showSuccessMessage("Registration Information Updated Sucessfully");  // if data updated succesfully
+                this.router.navigate(['/dashboard']);
+              },
+              error: (error) => {
+                if (error.status == 409) {
+                  this.utilityService.showWarningMessage("The Email Or Phone Number Is Already In Use!");  
+                }
+                else {
+                  this.utilityService.showWarningMessage("Update Failed!"); // if login not succesful
+                }
+              }
             });
           }
 
@@ -128,17 +141,16 @@ export class SignupComponent implements OnInit {
                 this.router.navigate(['/dashboard']);
               },
               error: (error) => {
-                console.log(error);
-                this.utilityService.showWarningMessage("Registration Failed!"); // if login not succesful
+                if (error.status == 409) {
+                  this.utilityService.showWarningMessage("The Email Or Phone Number Is Already In Use!");  
+                }
+                else {
+                  this.utilityService.showWarningMessage("Registration Failed!"); // if login not succesful
+                }
               }
             }); 
           }
-        },
-        error: (error) => {
-          console.log(error);
         }
-      });
-    }
 
     else {
       console.error('Sign Up Error'); // this shouldn't run

@@ -52,34 +52,41 @@ export class LoginComponent implements OnInit {
 
    // Function to be executed with Submit button is clicked 
    onSubmit(): void {
-    
+
     if(this.loginForm.valid) { // check if signup form is valid
       
       let userData = this.loginForm.value; //  initialize a variable of type signUpData (interface) to have the input field values 
-      this.userAuth.checkLogin(userData).subscribe({
-        next: (loggedInUser) => {
+      this.signUpService.checkLogin(userData).subscribe({
+        next: (loggedInUser) => {          
+                    
           if(loggedInUser!==null) {
 
+            console.log(loggedInUser.statusCode);
             // SET LOCAL STORAGE TO EMULATE SESSION
             localStorage.setItem('loggedIn', 'true');
             
-            this.utilityService.showSuccessMessage("Login Succesful! Welcome " + loggedInUser);  // if succesful login
+            this.utilityService.showSuccessMessage("Login Succesful! Welcome " + loggedInUser.firstname);  // if succesful login
             this.router.navigate(['/dashboard']);
-            // console.log('we are here');
           }
           else {
-            this.utilityService.showWarningMessage("Error Occured! Please Check Email and Password");
+            console.log("Null returned! This error should not occur");
           }
         },
         error: (error) => {
-          console.error(error);
-          this.utilityService.showWarningMessage("Error Occurred! Please Try Again Later");
+          // console.log(error.status);
+          
+          if (error.status==404) {
+            this.utilityService.showWarningMessage("Error Occurred! Please Check Email and Password");
+          }
+          else {
+            this.utilityService.showWarningMessage("Error Occurred! Please Try Again Later");
+          }
         }
       });  
     }
 
     else {
-      console.error('Sign Up Error'); // this shouldn't run
+      console.log('Form Invalid! This error should not occur'); // this shouldn't run
     }
   } 
 

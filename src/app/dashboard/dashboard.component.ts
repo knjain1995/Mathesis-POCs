@@ -94,8 +94,12 @@ import { signUpData } from '../model/signupdata';
               this.utilityService.showSuccessMessage("Record Deleted Succesfully!");
             },
             error: (error) => {
-              console.log(error);
-              this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
+              if (error.status == 404) {
+                this.utilityService.showWarningMessage("Record Could Not Be Found! Deletion Cancelled!");  
+              }
+              else {
+                this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
+              }
             }
           });
         }
@@ -104,16 +108,14 @@ import { signUpData } from '../model/signupdata';
         }      
       },
       error: (error) => {
-        console.log(error);
-        this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
+        console.log("Some error with the Dialog Box");
+        // this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
       }
     });    
   }
   
     // Function invoked when a row is to be edited
     editRow(id: string) {
-      console.log(id);
-      
       this.router.navigate(['/editsignup/'+id]);
     } 
   }

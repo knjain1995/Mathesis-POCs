@@ -64,7 +64,7 @@ table {
     max-height: 200px;
     overflow-y: auto;
     width: 150px;
-    --mat-menu-container-max-height: 200px;
+    /* --mat-menu-container-max-height: 200px; */
 }
 
 .sticky-header {

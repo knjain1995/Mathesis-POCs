@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 // Model imports
 import { signUpData } from './model/signupdata';
 import { studentData } from './model/studentdata';
+import { loginData } from './model/logindata';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class SignUpService {
   private backendAPI = 'http://localhost:8080/api/signup'
 
   // SIGN-UP INFORMATION TABLE
+
+  checkLogin(loginData: loginData): Observable<any> {
+    return this.httpClient.post<loginData>(this.backendAPI+'/checkLoginCredentials', loginData);
+  } 
 
   // Make HTTP post request to json server and return an observable
   // addSignUp(signUpData: signUpData): Observable<any> {
