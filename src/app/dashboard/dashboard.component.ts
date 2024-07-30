@@ -67,6 +67,12 @@ import { signUpData } from '../model/signupdata';
         this.dataSource.sort = this.sort; // assign sorter to datasource       
       },
       error: (error) => {
+        if (error.status==404) {
+          this.utilityService.showWarningMessage("Data Could Not Be Loaded!");
+        }
+        else {
+          this.utilityService.showWarningMessage("Some Error Occured!");
+        }
         console.log(error);
       }
     });

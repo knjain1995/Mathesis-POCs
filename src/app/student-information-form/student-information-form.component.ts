@@ -83,9 +83,9 @@ export class StudentInformationFormComponent implements OnInit {
     this.studentInformationForm.get('studentScholarshipStatus')?.valueChanges.subscribe(res => {
       if (res==='No') {
         this.studentInformationForm.patchValue({
-          studentScholarsipsGained_CheveningScholarship: false,       
-          studentScholarsipsGained_DeansScholarship: false,
-          studentScholarsipsGained_Other: ''
+          studentScholarshipsGained_CheveningScholarship: false,       
+          studentScholarshipsGained_DeansScholarship: false,
+          studentScholarshipsGained_Other: ''
         });
       }
     });
@@ -129,9 +129,9 @@ export class StudentInformationFormComponent implements OnInit {
       studentNationality: ['Domestic'],
       studentScholarshipStatus: ['No'],
       // studentScholarshipGained: ['', Validators.required],
-      studentScholarsipsGained_CheveningScholarship: [false],
-      studentScholarsipsGained_DeansScholarship: [false],
-      studentScholarsipsGained_Other: [''],
+      studentScholarshipsGained_CheveningScholarship: [false],
+      studentScholarshipsGained_DeansScholarship: [false],
+      studentScholarshipsGained_Other: [''],
       studentDegreeProgram: ['', Validators.required],
       studentCoreModule1: [''],
       studentCoreModule2: [''],
@@ -152,7 +152,13 @@ export class StudentInformationFormComponent implements OnInit {
       },
       error: (error) => {
         console.log(error);
-        this.utilityService.showWarningMessage("Could not recieve details!"); // user could not be found
+        if(error.status==404)
+        {
+          this.utilityService.showWarningMessage("Details Not Found!"); // user could not be found  
+        }
+        else {
+          this.utilityService.showWarningMessage("Could Not Recieve Details!"); // user could not be found
+        }
       }
     });
   }
@@ -175,7 +181,15 @@ export class StudentInformationFormComponent implements OnInit {
           },
           error: (error) => {
             console.log(error);
-            this.utilityService.showWarningMessage("Student Information could not be updated!");  
+            if (error.status==404) {
+              this.utilityService.showWarningMessage("Student Information Could Not Be Updated! Information Not Found!");  
+            }
+            else if (error.status==409) {
+              this.utilityService.showWarningMessage("Email, Phone Number Or Student ID Used In Another Record!");
+            }
+            else {
+              this.utilityService.showWarningMessage("Student Information Could Not Be Updated!");
+            }  
           }
         });
       }
@@ -191,16 +205,20 @@ export class StudentInformationFormComponent implements OnInit {
           },
           error: (error) => {
             console.log(error);
-            this.utilityService.showWarningMessage("Student Information could not be added!");
+            if (error.status==409) {
+              this.utilityService.showWarningMessage("Email, Phone Number Or Student ID Used In Another Record!");
+            }
+            else {
+              this.utilityService.showWarningMessage("Student Information Could Not Be Added!");
+            }
           }
         });
       }
 
-    }
-      
+    } 
     else {
       console.error("Something went wrong!");
-      this.utilityService.showWarningMessage("Encountered some issue adding student information!")  
+      this.utilityService.showWarningMessage("Encountered Some Issue Adding Student Information!")  
     }
 
   }

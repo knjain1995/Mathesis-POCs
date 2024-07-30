@@ -2,7 +2,7 @@
 export interface studentData {
     id: number,
     studentFirstName: string,
-    studentlastName: string,
+    studentLastName: string,
     studentEmail: string,
     studentPhoneNumber: number,
     studentDateOfBirth: Date,
@@ -12,9 +12,9 @@ export interface studentData {
     studentNationality: string, // International, Domestic (radio)
     studentScholarshipStatus: boolean, // Yes, No
     studentScholarshipGained: string,   // One of Chevening, Dean's Award, Other and other is a input field
-    studentScholarsipsGained_CheveningScholarship: boolean,
-    studentScholarsipsGained_DeansScholarship: boolean,
-    studentScholarsipsGained_Other: string,
+    studentScholarshipsGained_CheveningScholarship: boolean,
+    studentScholarshipsGained_DeansScholarship: boolean,
+    studentScholarshipsGained_Other: string,
     // Autopopulate core modules based on selected degree program and select elective modules
     studentDegreeProgram: string,  // Selection
     studentCoreModule1: string,    // Selection

@@ -21,7 +21,8 @@ export class SignUpService {
 
 
   // URL to Backend API
-  private backendAPI = 'http://localhost:8080/api/signup'
+  private backendAPI = 'http://localhost:8080/api'
+
 
   // SIGN-UP INFORMATION TABLE
 
@@ -34,7 +35,7 @@ export class SignUpService {
   //   return this.httpClient.post(this.serverURL+'/signUpData', signUpData);
   // }
   addSignUp(signUpData: signUpData): Observable<any> {
-    return this.httpClient.post<signUpData>(this.backendAPI, signUpData);
+    return this.httpClient.post<signUpData>(this.backendAPI+'/signup', signUpData);
   }
 
   // Get specific signup's information from JSON server
@@ -42,7 +43,7 @@ export class SignUpService {
   //   return this.httpClient.get<signUpData>(this.serverURL+'/signUpData/'+id);
   // }
   getSignUp(id: string): Observable<signUpData> {
-    return this.httpClient.get<signUpData>(this.backendAPI+'/'+id);
+    return this.httpClient.get<signUpData>(this.backendAPI+'/signup/'+id);
   }
 
   // Get all signup information from JSON server
@@ -50,7 +51,7 @@ export class SignUpService {
   //   return this.httpClient.get<signUpData[]>(this.serverURL+'/signUpData');
   // }
   getAllSignUp(): Observable<signUpData[]> {
-    return this.httpClient.get<signUpData[]>(this.backendAPI);
+    return this.httpClient.get<signUpData[]>(this.backendAPI+'/signup');
   }
 
   // Put updated form in the dataset
@@ -58,7 +59,7 @@ export class SignUpService {
   //   return this.httpClient.put(this.serverURL+'/signUpData/'+id, editedSignUpData);
   // }
   updateSignUp(id: string, editedSignUpData: signUpData) {
-    return this.httpClient.put(this.backendAPI+'/'+id, editedSignUpData);
+    return this.httpClient.put(this.backendAPI+'/signup/'+id, editedSignUpData);
   }
 
   // delete signup data of passed id
@@ -66,31 +67,34 @@ export class SignUpService {
   //   return this.httpClient.delete(this.serverURL+'/signUpData/'+id);
   // }
   deleteSignUp(id: string): Observable<any> {
-    return this.httpClient.delete(this.backendAPI+'/'+id);
+    return this.httpClient.delete(this.backendAPI+'/signup/'+id);
   }
 
   // STUDENT INFORMATION TABLE
 
+  // addStudentInformation(studentInformationData: studentData): Observable<any> {
+  //   return this.httpClient.post(this.serverURL+'/studentInformationData', studentInformationData);
+  // }
   addStudentInformation(studentInformationData: studentData): Observable<any> {
-    return this.httpClient.post(this.serverURL+'/studentInformationData', studentInformationData);
+    return this.httpClient.post(this.backendAPI+'/studentInformationData', studentInformationData);
   }
 
   getStudentInformation(id: string): Observable<studentData> {
-    return this.httpClient.get<studentData>(this.serverURL+'/studentInformationData/'+id)
+    return this.httpClient.get<studentData>(this.backendAPI+'/studentInformationData/'+id)
   }
 
   getAllStudentInformation(): Observable<studentData[]> {
-    return this.httpClient.get<studentData[]>(this.serverURL+'/studentInformationData')
+    return this.httpClient.get<studentData[]>(this.backendAPI+'/studentInformationData')
   }
 
   // Put updated student information form in the dataset
   updateStudentInformation(id: string, editedStudentInformation: studentData) {
-    return this.httpClient.put(this.serverURL+'/studentInformationData/'+id, editedStudentInformation);
+    return this.httpClient.put(this.backendAPI+'/studentInformationData/'+id, editedStudentInformation);
   }
 
   // delete student information data of passed id
   deleteStudentInformation(id: string): Observable<any> {
-    return this.httpClient.delete(this.serverURL+'/studentInformationData/'+id);
+    return this.httpClient.delete(this.backendAPI+'/studentInformationData/'+id);
   }
 
 }

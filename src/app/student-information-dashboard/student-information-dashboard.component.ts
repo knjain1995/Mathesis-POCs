@@ -53,9 +53,9 @@ export class StudentInformationDashboardComponent implements OnInit {
     "studentNationality",
     "studentScholarshipStatus",
     // "studentScholarshipGained",
-    "studentScholarsipsGained_CheveningScholarship",
-    "studentScholarsipsGained_DeansScholarship",
-    "studentScholarsipsGained_Other",
+    "studentScholarshipsGained_CheveningScholarship",
+    "studentScholarshipsGained_DeansScholarship",
+    "studentScholarshipsGained_Other",
     "studentDegreeProgram",
     "studentCoreModule1",
     "studentCoreModule2",
@@ -98,12 +98,12 @@ export class StudentInformationDashboardComponent implements OnInit {
             this.initializeDataSource();  // reintialize datasource, maginator and sorter
           }
           else {
-            this.utilityService.showWarningMessage("Operation Cancelled")
+            this.utilityService.showWarningMessage("Add Operation Cancelled")
           }
         },
         error: (error) => {
           console.log(error);
-          this.utilityService.showWarningMessage("Record Could Not Be Added")
+          this.utilityService.showWarningMessage("Record Could Not Be Added! Some Error With The Dialog Box!")
         }
       });
 
@@ -124,6 +124,12 @@ export class StudentInformationDashboardComponent implements OnInit {
         this.tableDataSource.sort = this.tableSort;   // assign sort to table datasource  
       },
       error: (error) => {
+        if (error.status==404) {
+          this.utilityService.showWarningMessage("Data Could Not Be Loaded!");
+        }
+        else {
+          this.utilityService.showWarningMessage("Some Error Occured!");
+        }
         console.log(error);
       }
     });
@@ -148,18 +154,22 @@ export class StudentInformationDashboardComponent implements OnInit {
             },
             error: (error) => {
               console.log(error);
-              this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
+              if (error.status==404) {
+                this.utilityService.showWarningMessage("Record Not Found! Deletion Cancelled!");
+              }
+              else {
+                this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
+              }
             }
           });
         }
-
         else {
           this.utilityService.showWarningMessage("Deletion Cancelled!");
         }   
       },
       error: (error) => {
         console.log(error);
-        this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
+        this.utilityService.showWarningMessage("Record Could Not Be Deleted! Some issue occured");
       }
     });
 
@@ -176,16 +186,16 @@ export class StudentInformationDashboardComponent implements OnInit {
     openAddStudentInformationDialogRef.afterClosed().subscribe({
       next: (res) => {
         if(res) { // If dialog box returns true
-          console.log("Record added successfully");
+          console.log("Record Edited Successfully");
           this.initializeDataSource();  // intialize datasource, maginator and sorter again
         }
         else {
-          this.utilityService.showWarningMessage("Operation Cancelled")
+          this.utilityService.showWarningMessage("Edit Cancelled")
         }
       },
       error: (error) => {
         console.log(error);
-        this.utilityService.showWarningMessage("Record Could Not Be Added")
+        this.utilityService.showWarningMessage("Record Could Not Be Edited! Some Error in the Dialog Box!")
       }
     });
   }
