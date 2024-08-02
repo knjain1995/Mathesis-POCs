@@ -82,13 +82,13 @@ export class SignupComponent implements OnInit {
         error: (error) => {
           console.log(error);
           console.log(error.status);
-          
-          if (error.status==404) {
-            this.utilityService.showWarningMessage("Sign Up Details Not Found!"); // user could not be found
-          }
-          else {
-            this.utilityService.showWarningMessage("Could Not Recieve Sign Up Details!");
-          }
+          this.utilityService.showWarningMessage(error.error);          
+          // if (error.status==404) {
+          //   this.utilityService.showWarningMessage("Sign Up Details Not Found!"); // user could not be found
+          // }
+          // else {
+          //   this.utilityService.showWarningMessage("Could Not Recieve Sign Up Details!");
+          // }
         }
       });
     }
@@ -118,12 +118,13 @@ export class SignupComponent implements OnInit {
                 this.router.navigate(['/dashboard']);
               },
               error: (error) => {
-                if (error.status == 409) {
-                  this.utilityService.showWarningMessage("The Email Or Phone Number Is Already In Use!");  
-                }
-                else {
-                  this.utilityService.showWarningMessage("Update Failed!"); // if login not succesful
-                }
+                // if (error.status == 409) {
+                //   this.utilityService.showWarningMessage("The Email Or Phone Number Is Already In Use!");  
+                // }
+                // else {
+                //   this.utilityService.showWarningMessage("Update Failed!"); // if login not succesful
+                // }
+                this.utilityService.showWarningMessage(error.error);
               }
             });
           }
@@ -141,12 +142,13 @@ export class SignupComponent implements OnInit {
                 this.router.navigate(['/dashboard']);
               },
               error: (error) => {
-                if (error.status == 409) {
-                  this.utilityService.showWarningMessage("The Email Or Phone Number Is Already In Use!");  
-                }
-                else {
-                  this.utilityService.showWarningMessage("Registration Failed!"); // if login not succesful
-                }
+                // if (error.status == 409) {
+                //   this.utilityService.showWarningMessage("The Email Or Phone Number Is Already In Use!");  
+                // }
+                // else {
+                //   this.utilityService.showWarningMessage("Registration Failed!"); // if login not succesful
+                // }
+                this.utilityService.showWarningMessage(error.error);
               }
             }); 
           }

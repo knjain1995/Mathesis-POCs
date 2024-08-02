@@ -73,14 +73,16 @@ export class LoginComponent implements OnInit {
           }
         },
         error: (error) => {
-          // console.log(error.status);
+          console.log(error);
+          console.log(error.status);
           
-          if (error.status==404) {
-            this.utilityService.showWarningMessage("Error Occurred! Please Check Email and Password");
-          }
-          else {
-            this.utilityService.showWarningMessage("Error Occurred! Please Try Again Later");
-          }
+          // if (error.status==404) {
+          //   this.utilityService.showWarningMessage("Error Occurred! Please Check Email and Password");
+          // }
+          // else {
+          //   this.utilityService.showWarningMessage("Error Occurred! Please Try Again Later");
+          // }
+          this.utilityService.showWarningMessage(error.error);
         }
       });  
     }
