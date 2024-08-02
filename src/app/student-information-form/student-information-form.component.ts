@@ -152,13 +152,15 @@ export class StudentInformationFormComponent implements OnInit {
       },
       error: (error) => {
         console.log(error);
-        if(error.status==404)
-        {
-          this.utilityService.showWarningMessage("Details Not Found!"); // user could not be found  
-        }
-        else {
-          this.utilityService.showWarningMessage("Could Not Recieve Details!"); // user could not be found
-        }
+        // this.utilityService.showWarningMessage(error);
+        // if(error.status==404)
+        // {
+        //   this.utilityService.showWarningMessage("Details Not Found!"); // user could not be found  
+        // }
+        // else {
+        //   this.utilityService.showWarningMessage("Could Not Recieve Details!"); // user could not be found
+        // }
+        this.utilityService.showWarningMessage(error.error);
       }
     });
   }
@@ -181,15 +183,16 @@ export class StudentInformationFormComponent implements OnInit {
           },
           error: (error) => {
             console.log(error);
-            if (error.status==404) {
-              this.utilityService.showWarningMessage("Student Information Could Not Be Updated! Information Not Found!");  
-            }
-            else if (error.status==409) {
-              this.utilityService.showWarningMessage("Email, Phone Number Or Student ID Used In Another Record!");
-            }
-            else {
-              this.utilityService.showWarningMessage("Student Information Could Not Be Updated!");
-            }  
+            // if (error.status==404) {
+            //   this.utilityService.showWarningMessage("Student Information Could Not Be Updated! Information Not Found!");  
+            // }
+            // else if (error.status==409) {
+            //   this.utilityService.showWarningMessage("Email, Phone Number Or Student ID Used In Another Record!");
+            // }
+            // else {
+            //   this.utilityService.showWarningMessage("Student Information Could Not Be Updated!");
+            // }  
+            this.utilityService.showWarningMessage(error.error);
           }
         });
       }
@@ -205,12 +208,13 @@ export class StudentInformationFormComponent implements OnInit {
           },
           error: (error) => {
             console.log(error);
-            if (error.status==409) {
-              this.utilityService.showWarningMessage("Email, Phone Number Or Student ID Used In Another Record!");
-            }
-            else {
-              this.utilityService.showWarningMessage("Student Information Could Not Be Added!");
-            }
+            // if (error.status==409) {
+            //   this.utilityService.showWarningMessage("Email, Phone Number Or Student ID Used In Another Record!");
+            // }
+            // else {
+            //   this.utilityService.showWarningMessage("Student Information Could Not Be Added!");
+            // }
+            this.utilityService.showWarningMessage(error.error);
           }
         });
       }

@@ -103,7 +103,7 @@ export class StudentInformationDashboardComponent implements OnInit {
         },
         error: (error) => {
           console.log(error);
-          this.utilityService.showWarningMessage("Record Could Not Be Added! Some Error With The Dialog Box!")
+          this.utilityService.showWarningMessage("Record Could Not Be Added! Some Error In The Dialog Box!")
         }
       });
 
@@ -124,13 +124,14 @@ export class StudentInformationDashboardComponent implements OnInit {
         this.tableDataSource.sort = this.tableSort;   // assign sort to table datasource  
       },
       error: (error) => {
-        if (error.status==404) {
-          this.utilityService.showWarningMessage("Data Could Not Be Loaded!");
-        }
-        else {
-          this.utilityService.showWarningMessage("Some Error Occured!");
-        }
+        // if (error.status==404) {
+        //   this.utilityService.showWarningMessage("Data Could Not Be Loaded!");
+        // }
+        // else {
+        //   this.utilityService.showWarningMessage("Some Error Occured!");
+        // }
         console.log(error);
+        this.utilityService.showWarningMessage(error.error);
       }
     });
   }
@@ -154,12 +155,13 @@ export class StudentInformationDashboardComponent implements OnInit {
             },
             error: (error) => {
               console.log(error);
-              if (error.status==404) {
-                this.utilityService.showWarningMessage("Record Not Found! Deletion Cancelled!");
-              }
-              else {
-                this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
-              }
+              // if (error.status==404) {
+              //   this.utilityService.showWarningMessage("Record Not Found! Deletion Cancelled!");
+              // }
+              // else {
+              //   this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
+              // }
+              this.utilityService.showWarningMessage(error.error);
             }
           });
         }
@@ -169,7 +171,7 @@ export class StudentInformationDashboardComponent implements OnInit {
       },
       error: (error) => {
         console.log(error);
-        this.utilityService.showWarningMessage("Record Could Not Be Deleted! Some issue occured");
+        this.utilityService.showWarningMessage("Record Could Not Be Deleted! Some Issue With The Dialog Box");
       }
     });
 
