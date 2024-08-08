@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { signUpData } from './model/signupdata';
 import { studentData } from './model/studentdata';
 import { loginData } from './model/logindata';
+import { Router } from '@angular/router';
+import { UtilityService } from './utility.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,7 @@ export class SignUpService {
 
   constructor(
     private httpClient: HttpClient, // inject HTTP client to make http requests to json server
+    private router: Router
   ) { }
 
   // URL to JSON server
@@ -95,6 +98,13 @@ export class SignUpService {
   // delete student information data of passed id
   deleteStudentInformation(id: string): Observable<any> {
     return this.httpClient.delete(this.backendAPI+'/studentInformationData/'+id);
+  }
+
+  // Signout function
+  logout(): void {
+    localStorage.removeItem('loggedIn');  // remove status loggedIn in Local Storage
+    localStorage.removeItem('access_token');  // remove access token in Local Storage
+    this.router.navigate(['/login']);
   }
 
 }

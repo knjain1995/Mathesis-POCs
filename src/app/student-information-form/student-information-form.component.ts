@@ -161,6 +161,11 @@ export class StudentInformationFormComponent implements OnInit {
         //   this.utilityService.showWarningMessage("Could Not Recieve Details!"); // user could not be found
         // }
         this.utilityService.showWarningMessage(error.error);
+        
+        // if jwt is expired
+        // if (error.status==401) {
+        //   this.signUpService.logout();
+        // }     
       }
     });
   }
@@ -193,6 +198,11 @@ export class StudentInformationFormComponent implements OnInit {
             //   this.utilityService.showWarningMessage("Student Information Could Not Be Updated!");
             // }  
             this.utilityService.showWarningMessage(error.error);
+
+            // if jwt is expired
+            // if (error.status==401) {
+            //   this.signUpService.logout();
+            // }     
           }
         });
       }
@@ -215,6 +225,11 @@ export class StudentInformationFormComponent implements OnInit {
             //   this.utilityService.showWarningMessage("Student Information Could Not Be Added!");
             // }
             this.utilityService.showWarningMessage(error.error);
+              
+            // if jwt is expired
+            // if (error.status==401) {
+            //   this.signUpService.logout();
+            // }     
           }
         });
       }

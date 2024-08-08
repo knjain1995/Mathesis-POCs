@@ -2,18 +2,23 @@ import { Component } from '@angular/core';
 
 // Import Services
 import { Router } from '@angular/router';
+import { SignUpService } from '../sign-up.service';
+import { UtilityService } from '../utility.service';
 
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.css',
+  providers: [SignUpService]
 })
 
 export class NavigationComponent {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private signUpService: SignUpService,
+    private utilityService: UtilityService
   ) {}
 
   // links = ['/dashboard', '/studentinformationform'];
@@ -21,11 +26,11 @@ export class NavigationComponent {
 
  
   // Route to Login Page
+
   logout() {
-    localStorage.removeItem('loggedIn');  // remove status loggedIn in Local Storage
-    localStorage.removeItem('access_token');  // remove access token in Local Storage
-    this.router.navigate(['/login'])
-    }
+    this.utilityService.showWarningMessage("Logged Out!");
+    this.signUpService.logout();
+  }  
 
 }
 

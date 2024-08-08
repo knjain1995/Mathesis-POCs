@@ -67,13 +67,18 @@ import { signUpData } from '../model/signupdata';
         this.dataSource.sort = this.sort; // assign sorter to datasource       
       },
       error: (error) => {
-        if (error.status==404) {
-          this.utilityService.showWarningMessage("Data Could Not Be Loaded!");
-        }
-        else {
-          this.utilityService.showWarningMessage("Some Error Occured!");
-        }
+        // if (error.status==404) {
+        //   this.utilityService.showWarningMessage("Data Could Not Be Loaded!");
+        // }
+        // else {
+        //   this.utilityService.showWarningMessage("Some Error Occured!");
+        // }
         console.log(error);
+        this.utilityService.showWarningMessage(error.error);
+        // if jwt is expired
+        // if (error.status==401) {
+        //   this.signUpService.logout();
+        // }        
       }
     });
   }
@@ -100,12 +105,17 @@ import { signUpData } from '../model/signupdata';
               this.utilityService.showSuccessMessage("Record Deleted Succesfully!");
             },
             error: (error) => {
-              if (error.status == 404) {
-                this.utilityService.showWarningMessage("Record Could Not Be Found! Deletion Cancelled!");  
-              }
-              else {
-                this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
-              }
+              // if (error.status == 404) {
+              //   this.utilityService.showWarningMessage("Record Could Not Be Found! Deletion Cancelled!");  
+              // }
+              // else {
+              //   this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
+              // }
+              this.utilityService.showWarningMessage(error.error);
+                      // if jwt is expired
+              // if (error.status==401) {
+              //   this.signUpService.logout();
+              // }     
             }
           });
         }
@@ -115,7 +125,11 @@ import { signUpData } from '../model/signupdata';
       },
       error: (error) => {
         console.log("Some error with the Dialog Box");
-        // this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
+        this.utilityService.showWarningMessage(error.error);
+        // if jwt is expired
+        // if (error.status==401) {
+        //   this.signUpService.logout();
+        // }     
       }
     });    
   }

@@ -1,7 +1,10 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { finalize, Observable } from 'rxjs';
+import { catchError, finalize, Observable, of, throwError } from 'rxjs';
 import { SpinnerLoaderService } from './spinner-loader.service';
+import { Router } from '@angular/router';
+import { SignUpService } from './sign-up.service';
+import { UtilityService } from './utility.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,10 @@ import { SpinnerLoaderService } from './spinner-loader.service';
 export class RequestRouteInterceptorService implements HttpInterceptor {
 
   constructor (
-    public spinnerLoaderService: SpinnerLoaderService // Inject Loader Service
+    public spinnerLoaderService: SpinnerLoaderService, // Inject Loader Service
+    // private router: Router,
+    private signUpService: SignUpService,
+    private utilityService: UtilityService
   ) { }
 
 
@@ -40,6 +46,17 @@ export class RequestRouteInterceptorService implements HttpInterceptor {
     } 
     
     return next.handle(req).pipe( // handle the rest of the http call
+      catchError((err: any) => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 401) {
+            this.signUpService.logout();
+            console.log("401 Error: "+err.error);
+            
+            this.utilityService.showWarningMessage(err.error);
+          }
+        }
+        return of();
+      }),
       finalize( // after completing the call set isLoading to false irrespective of other issues or errors
         () => {
           this.spinnerLoaderService.isLoading.next(false);

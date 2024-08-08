@@ -79,7 +79,6 @@ export class LoginComponent implements OnInit {
         error: (error) => {
           console.log(error);
           console.log(error.status);
-          
           // if (error.status==404) {
           //   this.utilityService.showWarningMessage("Error Occurred! Please Check Email and Password");
           // }
@@ -87,6 +86,11 @@ export class LoginComponent implements OnInit {
           //   this.utilityService.showWarningMessage("Error Occurred! Please Try Again Later");
           // }
           this.utilityService.showWarningMessage(error.error);
+        
+          // if jwt is expired
+          // if (error.status==401) {
+          //   this.signUpService.logout();
+          // }     
         }
       });  
     }

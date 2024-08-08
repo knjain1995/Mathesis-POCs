@@ -82,7 +82,12 @@ export class SignupComponent implements OnInit {
         error: (error) => {
           console.log(error);
           console.log(error.status);
-          this.utilityService.showWarningMessage(error.error);          
+          this.utilityService.showWarningMessage(error.error);     
+          
+          // if jwt is expired
+          // if (error.status==401) {
+          //   this.signUpService.logout();
+          // }     
           // if (error.status==404) {
           //   this.utilityService.showWarningMessage("Sign Up Details Not Found!"); // user could not be found
           // }
@@ -125,6 +130,11 @@ export class SignupComponent implements OnInit {
                 //   this.utilityService.showWarningMessage("Update Failed!"); // if login not succesful
                 // }
                 this.utilityService.showWarningMessage(error.error);
+
+                // if jwt is expired
+                // if (error.status==401) {
+                //   this.signUpService.logout();
+                // }     
               }
             });
           }
@@ -136,10 +146,11 @@ export class SignupComponent implements OnInit {
                 console.log(res);
 
                 // SET LOCAL STORAGE TO EMULATE SESSION
-                localStorage.setItem('loggedIn', 'true');
+                // localStorage.setItem('loggedIn', 'true');
 
-                this.utilityService.showSuccessMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
-                this.router.navigate(['/dashboard']);
+                // this.utilityService.showSuccessMessage("Registration Succesful! Welcome " + res.firstname);  // if succesful login
+                this.utilityService.showSuccessMessage("Registration Succesful! Please Login");
+                this.router.navigate(['/login']);
               },
               error: (error) => {
                 // if (error.status == 409) {
@@ -149,6 +160,11 @@ export class SignupComponent implements OnInit {
                 //   this.utilityService.showWarningMessage("Registration Failed!"); // if login not succesful
                 // }
                 this.utilityService.showWarningMessage(error.error);
+
+                // if jwt is expired
+                // if (error.status==401) {
+                //   this.signUpService.logout();
+                // }     
               }
             }); 
           }

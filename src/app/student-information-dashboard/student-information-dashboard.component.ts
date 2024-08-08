@@ -98,12 +98,17 @@ export class StudentInformationDashboardComponent implements OnInit {
             this.initializeDataSource();  // reintialize datasource, maginator and sorter
           }
           else {
-            this.utilityService.showWarningMessage("Add Operation Cancelled")
+            this.utilityService.showWarningMessage("Add Operation Cancelled");
           }
         },
         error: (error) => {
           console.log(error);
-          this.utilityService.showWarningMessage("Record Could Not Be Added! Some Error In The Dialog Box!")
+          this.utilityService.showWarningMessage("Record Could Not Be Added! Some Error In The Dialog Box!");
+
+          // if jwt is expired
+          // if (error.status==401) {
+          //   this.signUpService.logout();
+          // }     
         }
       });
 
@@ -132,6 +137,11 @@ export class StudentInformationDashboardComponent implements OnInit {
         // }
         console.log(error);
         this.utilityService.showWarningMessage(error.error);
+
+        // if jwt is expired
+        // if (error.status==401) {
+        //   this.signUpService.logout();
+        // }     
       }
     });
   }
@@ -163,6 +173,11 @@ export class StudentInformationDashboardComponent implements OnInit {
               //   this.utilityService.showWarningMessage("Record Could Not Be Deleted!");
               // }
               this.utilityService.showWarningMessage(error.error);
+
+              // if jwt is expired
+              // if (error.status==401) {
+              //   this.signUpService.logout();
+              // }     
             }
           });
         }
@@ -173,6 +188,10 @@ export class StudentInformationDashboardComponent implements OnInit {
       error: (error) => {
         console.log(error);
         this.utilityService.showWarningMessage("Record Could Not Be Deleted! Some Issue With The Dialog Box");
+        // if jwt is expired
+        // if (error.status==401) {
+        //   this.signUpService.logout();
+        // }     
       }
     });
 
@@ -198,7 +217,11 @@ export class StudentInformationDashboardComponent implements OnInit {
       },
       error: (error) => {
         console.log(error);
-        this.utilityService.showWarningMessage("Record Could Not Be Edited! Some Error in the Dialog Box!")
+        this.utilityService.showWarningMessage("Record Could Not Be Edited! Some Error in the Dialog Box!");
+        // if jwt is expired
+        // if (error.status==401) {
+        //   this.signUpService.logout();
+        // }     
       }
     });
   }
