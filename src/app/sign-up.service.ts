@@ -27,7 +27,7 @@ export class SignUpService {
   // SIGN-UP INFORMATION TABLE
 
   checkLogin(loginData: loginData): Observable<any> {
-    return this.httpClient.post<loginData>(this.backendAPI+'/checkLoginCredentials', loginData);
+    return this.httpClient.post<loginData>(this.backendAPI+'/authenticate/checkLoginCredentials', loginData);
   } 
 
   // Make HTTP post request to json server and return an observable
@@ -35,7 +35,7 @@ export class SignUpService {
   //   return this.httpClient.post(this.serverURL+'/signUpData', signUpData);
   // }
   addSignUp(signUpData: signUpData): Observable<any> {
-    return this.httpClient.post<signUpData>(this.backendAPI+'/signup', signUpData);
+    return this.httpClient.post<signUpData>(this.backendAPI+'/authenticate/signup', signUpData);
   }
 
   // Get specific signup's information from JSON server

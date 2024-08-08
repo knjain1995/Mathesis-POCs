@@ -57,17 +57,21 @@ export class LoginComponent implements OnInit {
       
       let userData = this.loginForm.value; //  initialize a variable of type signUpData (interface) to have the input field values 
       this.signUpService.checkLogin(userData).subscribe({
-        next: (loggedInUser) => {          
-                    
-          if(loggedInUser!==null) {
+        next: (res) => {  
 
-            console.log(loggedInUser.statusCode);
+          console.log("Response from server after login: "+JSON.stringify(res));                  
+          console.log("Res!==null: "+res!==null);
+                 
+          if(res!==null) {
+            console.log(res.statusCode);
             // SET LOCAL STORAGE TO EMULATE SESSION
-            localStorage.setItem('loggedIn', 'true');
-            
-            this.utilityService.showSuccessMessage("Login Succesful! Welcome " + loggedInUser.firstname);  // if succesful login
+            localStorage.setItem('access_token', JSON.stringify(res.jwt));  // set jwt as access_token in local storage 
+            localStorage.setItem('loggedIn', 'true'); // set LoggenIn flag as true in local storage 
+            this.utilityService.showSuccessMessage("Login Succesful! Welcome!");
+            // this.utilityService.showSuccessMessage("Login Succesful! Welcome " + res.firstname);  // if succesful login
             this.router.navigate(['/dashboard']);
           }
+          
           else {
             console.log("Null returned! This error should not occur");
           }

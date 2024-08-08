@@ -21,6 +21,23 @@ export class RequestRouteInterceptorService implements HttpInterceptor {
     // DEBUGGING (PLEASE DELETE)
     console.log(this.spinnerLoaderService.isLoading.getValue());
     console.log("spinner activated");
+
+    // Add token in the header for further communication
+    let jwt = localStorage.getItem("access_token"); 
+    if(jwt) {
+      console.log("setting token");
+      console.log("Type: "+typeof(jwt.slice(1,-1)));
+      
+      let tokenHeader = "Bearer "+jwt.slice(1,-1);
+      console.log("token header: "+tokenHeader);
+                
+      req = req.clone({
+        setHeaders: {
+          Authorization: tokenHeader 
+        }
+      });
+      console.log("req: "+JSON.stringify(req));
+    } 
     
     return next.handle(req).pipe( // handle the rest of the http call
       finalize( // after completing the call set isLoading to false irrespective of other issues or errors

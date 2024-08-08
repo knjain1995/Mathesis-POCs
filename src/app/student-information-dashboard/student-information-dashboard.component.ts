@@ -150,7 +150,8 @@ export class StudentInformationDashboardComponent implements OnInit {
         if(res1) {  // if dialog box returns true
           this.signUpService.deleteStudentInformation(studentID).subscribe({ // call delete method in signUpService and return the deleted object
             next: (res2) => {
-              this.tableDataSource.data = this.tableDataSource.data.filter((res3) => res3.id !== res2.id);  // filter out the deleted object
+              this.initializeDataSource();  // intialize datasource, maginator and sorter again
+              // this.tableDataSource.data = this.tableDataSource.data.filter((res3) => res3.id !== res2.id);  // filter out the deleted object
               this.utilityService.showSuccessMessage("Record Deleted Succesfully!");
             },
             error: (error) => {

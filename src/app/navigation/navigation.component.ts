@@ -22,7 +22,8 @@ export class NavigationComponent {
  
   // Route to Login Page
   logout() {
-    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('loggedIn');  // remove status loggedIn in Local Storage
+    localStorage.removeItem('access_token');  // remove access token in Local Storage
     this.router.navigate(['/login'])
     }
 
